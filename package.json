@@ -4,15 +4,21 @@
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "gatsby": "^2.24.85",
+    "gatsby-plugin-material-ui": "^2.1.10",
+    "gatsby-plugin-react-helmet": "^3.3.14",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
 }
