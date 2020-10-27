@@ -24,6 +24,10 @@ const HtmlHead = ({ title, description }) => {
         name='description'
         content={description || site.siteMetadata.description}
       />
+      <link
+        href='https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&display=swap'
+        rel='stylesheet'
+      />
     </Helmet>
   )
 }

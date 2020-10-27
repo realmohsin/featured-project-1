@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   },
   typography: {
     htmlFontSize: 10,
-    fontFamily: ['sans-serif'].join(', '),
+    fontFamily: ['Libre Franklin', 'sans-serif'].join(', '),
     body1: {},
     body2: {}
   },
