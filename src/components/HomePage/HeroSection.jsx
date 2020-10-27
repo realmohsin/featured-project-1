@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid } from '@material-ui/core'
+import Navbar from '../Navigation/Navbar'
 
 const useStyles = makeStyles(theme => ({
   example: {
@@ -19,9 +20,17 @@ const useStyles = makeStyles(theme => ({
     }
   },
   heroSection: {
-    height: '94vh'
+    height: '94vh',
+    position: 'relative'
+    // overflow: 'hidden'
   },
   heroImg: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    // objectFit: 'cover',
     height: '100%',
     width: '100%'
   }
@@ -44,6 +53,7 @@ const HeroSection = props => {
 
   return (
     <section className={classes.heroSection}>
+      <Navbar />
       <Img
         fluid={data.hero1.childImageSharp.fluid}
         alt='The&Partnership, New York NY'
