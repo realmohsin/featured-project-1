@@ -45,8 +45,9 @@ const useStyles = makeStyles(theme => ({
   },
   navLink: {
     fontSize: '1.5rem',
+    textShadow: 'black 0px 0px 7px',
     fontWeight: 'bold',
-    padding: '0.8rem 0',
+    padding: '0.75rem 0',
     marginLeft: '3.2rem',
     position: 'relative',
     '&::before': {

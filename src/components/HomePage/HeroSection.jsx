@@ -5,6 +5,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid } from '@material-ui/core'
 import Navbar from '../Navigation/Navbar'
+import HeroContent from './HeroContent'
 
 const useStyles = makeStyles(theme => ({
   example: {
@@ -58,6 +59,12 @@ const HeroSection = props => {
         fluid={data.hero1.childImageSharp.fluid}
         alt='The&Partnership, New York NY'
         className={classes.heroImg}
+      />
+      <HeroContent
+        subtitle='The&Partnership / New York NY'
+        title='A Modern Approach to Thinking Outside the Box'
+        buttonText='View Project'
+        url='/'
       />
     </section>
   )
