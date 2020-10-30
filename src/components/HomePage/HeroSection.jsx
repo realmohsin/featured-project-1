@@ -44,7 +44,7 @@ const HeroSection = props => {
     query {
       hero1: file(name: { eq: "hero-img-1" }) {
         childImageSharp {
-          fluid(maxWidth: 2000, maxHeight: 1335) {
+          fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

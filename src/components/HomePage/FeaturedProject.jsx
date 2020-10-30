@@ -7,7 +7,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
-import bigImg from '../../assets/images/home-page/featured-3-big.jpg'
+import bigImg3 from '../../assets/images/home-page/featured-3-big.jpg'
 
 const useStyles = makeStyles(theme => ({
   example: {
@@ -156,7 +156,7 @@ const FeaturedProject = ({
               className={classes.bigImg}
               alt={`View of ${companyName} project`}
             />
-            {/* <img src={bigImg} className={classes.bigImg} /> */}
+            {/* <img src={bigImg3} className={classes.bigImg} /> */}
           </div>
           <div className={classes.smallImgContainer}>
             <Img

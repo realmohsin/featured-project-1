@@ -118,7 +118,7 @@ const ProjectSection = props => {
       }
       featured3Big: file(name: { eq: "featured-3-big" }) {
         childImageSharp {
-          fluid(maxWidth: 1000, maxHeight: 562, quality: 100) {
+          fluid(maxWidth: 1000, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

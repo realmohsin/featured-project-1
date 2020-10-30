@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
+import Slider from 'react-slick'
 
 const useStyles = makeStyles(theme => ({
   example: {
@@ -20,7 +21,70 @@ const useStyles = makeStyles(theme => ({
     }
   },
   newsSection: {
-    height: '95rem'
+    // height: '95rem',
+    padding: '12rem 4rem 14rem'
+  },
+  newsTitle: {
+    fontSize: '1.8rem',
+    margin: '3rem 0 5rem',
+    paddingLeft: '28rem',
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
+    wordSpacing: '1px'
+  },
+  slider: {
+    // height: '56rem'
+    cursor: 'move' /* fallback if grab cursor is unsupported */,
+    cursor: 'grab',
+    // overflow: 'visible',
+    '&:active': {
+      cursor: 'grabbing'
+    }
+  },
+  slide: {
+    height: '58rem',
+    padding: '0 2.5rem',
+    // margin: '0 2.5rem',
+    outline: 'none',
+    position: 'relative',
+    '&:hover > div': {
+      backgroundColor: 'rgba(0,0,0,0)'
+    },
+    '&:hover .gatsby-image-wrapper': {
+      transform: 'scale(1.02)'
+    }
+  },
+  slideImg: {
+    height: '100%',
+    transition: '0.4s all',
+    // boxShadow: theme.shadows[2],
+    '&:hover': {
+      // on slide class
+    }
+  },
+  slideTitle: {
+    position: 'absolute',
+    bottom: '4rem',
+    left: '6rem',
+    width: '26rem',
+    color: 'white',
+    fontSize: '3.3rem',
+    fontWeight: 'bold',
+    zIndex: 50,
+    lineHeight: '1.1',
+    textShadow: 'black 0px 0px 5px'
+  },
+  slideOverlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: '2.5rem',
+    left: '2.5rem',
+    backgroundColor: 'rgba(0,0,0, 0.3)',
+    transition: '0.4s all',
+    '&:hover': {
+      // on slide class
+    }
   }
 }))
 
@@ -36,10 +100,171 @@ const NewsSection = props => {
           }
         }
       }
+      news1: file(name: { eq: "news-1" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news2: file(name: { eq: "news-2" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news3: file(name: { eq: "news-3" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news4: file(name: { eq: "news-4" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news5: file(name: { eq: "news-5" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news6: file(name: { eq: "news-6" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news7: file(name: { eq: "news-7" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      news8: file(name: { eq: "news-8" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
-  return <section className={classes.newsSection}></section>
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4
+  }
+
+  return (
+    <section className={classes.newsSection}>
+      <Typography variant='h2' className={classes.newsTitle}>
+        Schimenti In The News
+      </Typography>
+      <Slider {...settings} className={classes.slider}>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news1.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Repositioning the Retail Market
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news2.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Times Square Mcdonald's Takes Infill Building to the Extreme
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news3.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            NYC Retail Panel: Industry Insights in Changing Market
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news4.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Highlighting High-End Retail at Hudson Yards
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news5.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            $175m FreshDirect Facility a Stepping Stone for Schimenti Growth
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news6.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Schimenti Recognized as a 2019 Best Company to Work For
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news7.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Times Square Bank of America Now Open
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+        <div className={classes.slide}>
+          <Img
+            fluid={data.news8.childImageSharp.fluid}
+            className={classes.slideImg}
+            id='slide-img'
+          />
+          <Link to='/' className={classes.slideTitle}>
+            Schimenti Construction Company Moves NYC HQs
+          </Link>
+          <div className={classes.slideOverlay} />
+        </div>
+      </Slider>
+    </section>
+  )
 }
 
 export default NewsSection

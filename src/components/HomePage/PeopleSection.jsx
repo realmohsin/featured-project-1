@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
     // background: 'blue',
     padding: '3.5rem',
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    boxShadow: theme.shadows[1],
     zIndex: 10,
     '&::before': {
       content: '""',
