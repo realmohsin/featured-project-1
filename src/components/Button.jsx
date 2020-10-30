@@ -55,13 +55,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Button = ({ isLink, to, alt, handleClick, text, extraClass }) => {
+const Button = ({ isLink, to, handleClick, text, extraClass }) => {
   const theme = useTheme()
   const classes = useStyles()
 
   if (isLink) {
     return (
-      <Link to={to} alt={alt} className={clsx(classes.button, extraClass)}>
+      <Link to={to} className={clsx(classes.button, extraClass)}>
         <span className={classes.textSpan}>{text}</span>
         <GoArrowRight className={classes.arrow} id='arrow' />
       </Link>
@@ -70,7 +70,8 @@ const Button = ({ isLink, to, alt, handleClick, text, extraClass }) => {
 
   return (
     <button onClick={handleClick} className={clsx(classes.button, extraClass)}>
-      {text} <GoArrowRight className={classes.arrow} id='arrow' />
+      <span className={classes.textSpan}>{text}</span>
+      <GoArrowRight className={classes.arrow} id='arrow' />
     </button>
   )
 }

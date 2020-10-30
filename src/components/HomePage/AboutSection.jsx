@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     height: '100%'
   },
   gridContainer: {
-    padding: '32rem 0'
+    // padding: '32rem 0'
+    marginTop: '32rem'
   },
   rightSide: {
     // display: 'flex',
