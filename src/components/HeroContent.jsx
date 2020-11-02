@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Typography } from '@material-ui/core'
@@ -62,12 +63,12 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const HeroContent = ({ subtitle, title, buttonText, url }) => {
+const HeroContent = ({ subtitle, title, buttonText, url, extraClass }) => {
   const theme = useTheme()
   const classes = useStyles()
 
   return (
-    <div className={classes.heroContent}>
+    <div className={clsx(classes.heroContent, extraClass)}>
       <Typography variant='body1' gutterBottom className={classes.subtitle}>
         {subtitle}
       </Typography>

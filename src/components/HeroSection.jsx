@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid } from '@material-ui/core'
-import Navbar from '../Navigation/Navbar'
+import Navbar from './Navigation/Navbar'
 import HeroContent from './HeroContent'
 
 const useStyles = makeStyles(theme => ({
@@ -37,35 +37,30 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const HeroSection = props => {
+const HeroSection = ({ heroBgFluid, children }) => {
   const theme = useTheme()
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      hero1: file(name: { eq: "hero-img-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     hero1: file(name: { eq: "hero-img-1" }) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
+  //           ...GatsbyImageSharpFluid
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <section className={classes.heroSection}>
       <Navbar />
       <Img
-        fluid={data.hero1.childImageSharp.fluid}
+        fluid={heroBgFluid}
         alt='The&Partnership, New York NY'
         className={classes.heroImg}
       />
-      <HeroContent
-        subtitle='The&Partnership / New York NY'
-        title='A Modern Approach to Thinking Outside the Box'
-        buttonText='View Project'
-        url='/'
-      />
+      {children}
     </section>
   )
 }

@@ -9,24 +9,31 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `common-images`,
-        path: `${__dirname}/src/assets/images/common`
+        name: `images`,
+        path: `${__dirname}/src/assets/images`
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `home-page-images`,
-        path: `${__dirname}/src/assets/images/home-page`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `careers-page-images`,
-        path: `${__dirname}/src/assets/images/careers-page`
-      }
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `common-images`,
+    //     path: `${__dirname}/src/assets/images/common`
+    //   }
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `home-page-images`,
+    //     path: `${__dirname}/src/assets/images/home-page`
+    //   }
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `careers-page-images`,
+    //     path: `${__dirname}/src/assets/images/careers-page`
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-material-ui',
       options: {
