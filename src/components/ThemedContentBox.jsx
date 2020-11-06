@@ -50,7 +50,8 @@ const ThemedContentBox = ({
   subtitle,
   children,
   onDarkBg,
-  extraClass
+  extraClass,
+  titleAs
 }) => {
   const theme = useTheme()
   const classes = useStyles()
@@ -67,7 +68,7 @@ const ThemedContentBox = ({
         </Typography>
       )}
       <Typography
-        variant='h2'
+        variant={titleAs || 'h2'}
         className={clsx(classes.title, onDarkBg && classes.textShadow)}
       >
         {title}

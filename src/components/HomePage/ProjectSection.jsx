@@ -12,6 +12,7 @@ import featuredProjectsData from '../../data/featuredProjects'
 import FeaturedProject from './FeaturedProject'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 import Button from '../Button'
+import changeFileNameToKey from '../../utils/changeFileNameToKey'
 
 const useStyles = makeStyles(theme => ({
   example: {
@@ -176,15 +177,6 @@ const ProjectSection = props => {
     slidesToScroll: 1
   }
 
-  const changeFileName = fileName => {
-    // changes 'featured-1-big', 'featured-2-small', etc to 'featured1Big', 'featured2Small'
-    const splitInArr = fileName.split('-')
-    const lastWord = splitInArr[splitInArr.length - 1]
-    splitInArr[splitInArr.length - 1] =
-      lastWord[0].toUpperCase() + lastWord.slice(1)
-    return splitInArr.join('')
-  }
-
   return (
     // <BackgroundImage
     //   Tag='section'
@@ -199,13 +191,13 @@ const ProjectSection = props => {
             return {
               ...featuredProject,
               bigImgFluid:
-                data[changeFileName(featuredProject.bigImgName)].childImageSharp
-                  .fluid,
+                data[changeFileNameToKey(featuredProject.bigImgName)]
+                  .childImageSharp.fluid,
               smallImgFluid:
-                data[changeFileName(featuredProject.smallImgName)]
+                data[changeFileNameToKey(featuredProject.smallImgName)]
                   .childImageSharp.fluid,
               logoImgFixed:
-                data[changeFileName(featuredProject.logoImgName)]
+                data[changeFileNameToKey(featuredProject.logoImgName)]
                   .childImageSharp.fixed
             }
           })

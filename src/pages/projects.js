@@ -7,6 +7,8 @@ import HeroSection from '../components/HeroSection'
 import SubcontractorSection from '../components/ContactPage/SubcontractorSection'
 import LocationSection from '../components/ContactPage/LocationSection'
 import ContactFormSection from '../components/ContactPage/ContactFormSection'
+import ProjectsHeroSection from '../components/ProjectsPage/ProjectsHeroSection'
+import ProjectsGrid from '../components/ProjectsPage/ProjectsGrid'
 // import contactHeroBg from '../assets/images/common/footer-bg.jpg'
 
 const useStyles = makeStyles(theme => ({
@@ -34,15 +36,14 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function AboutPage () {
+export default function ProjectsPage () {
   const classes = useStyles()
 
   return (
     <Layout>
       <HeroSection isJustNav />
-      <LocationSection />
-      <ContactFormSection />
-      <SubcontractorSection />
+      <ProjectsHeroSection />
+      <ProjectsGrid />
     </Layout>
   )
 }
