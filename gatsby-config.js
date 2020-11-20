@@ -2,7 +2,12 @@ module.exports = {
   siteMetadata: {
     title: 'template-2',
     description: 'Description for template-2.',
-    author: '' // this is for twitter seo, use twitter handle
+    author: '', // this is for twitter seo, use twitter handle
+    // projects: [{ name: 'Krispy Kreme' }, { name: 'JD Sports' }],
+    projects: [
+      { name: 'Krispy Kreme', slug: '/projects/krispy-kreme' },
+      { name: 'JD Sports', slug: '/projects/jd-sports' }
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
