@@ -34,7 +34,16 @@ const theme = createMuiTheme({
           padding: 0
         },
         html: {
-          fontSize: '62.5%'
+          fontSize: '62.5%',
+          '@media (max-width: 1280px)': {
+            fontSize: '60%'
+          },
+          '@media (max-width: 960px)': {
+            fontSize: '58%'
+          },
+          '@media (max-width: 600px)': {
+            fontSize: '56%'
+          }
         },
         a: {
           display: 'block',

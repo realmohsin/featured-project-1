@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Container, Typography } from '@material-ui/core'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
 import Button from '../Button'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   contactFormSection: {
     padding: '10rem 0 16rem',
     backgroundImage: `url(${sectionBg2})`,
@@ -26,10 +13,16 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: '0% 0%'
   },
   leftGridItem: {
-    paddingRight: '3rem'
+    paddingRight: '3rem',
+    [theme.breakpoints.down('md')]: {
+      paddingRight: 0
+    }
   },
   rightGridItem: {
-    paddingLeft: '3rem'
+    paddingLeft: '3rem',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: 0
+    }
   },
   label: {
     display: 'block',
@@ -63,19 +56,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ContactFormSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
-
-  const [state, setState] = useState('initial-state')
-
-  useEffect(() => {
-    return () => {}
-  }, [])
-
-  const atXsDown = useMediaQuery(theme.breakpoints.down('xs')) // below 600
-  const atMdUp = useMediaQuery(theme.breakpoints.up('md')) // 960 and above
-  const atSmOnly = useMediaQuery(theme.breakpoints.only('sm')) // only between 600 and 959
-  const betweenSmLg = useMediaQuery(theme.breakpoints.between('sm', 'lg')) // only between 600 and 1919
 
   return (
     <section className={classes.contactFormSection}>

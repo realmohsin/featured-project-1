@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
+import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Typography } from '@material-ui/core'
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   themedContentBox: {
     ...theme.custom.themedBorderAndPadding,
-    width: '60rem',
+    maxWidth: '60rem',
     marginBottom: '8rem',
     '& p:first-of-type::before': {
       ...theme.custom.themedArrowForBefore,
@@ -30,7 +31,10 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     ...theme.custom.title2,
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    [theme.breakpoints.up('xs')]: {
+      fontSize: '3rem'
+    }
   },
   subtitle: {
     fontSize: '1.25rem',
@@ -42,12 +46,17 @@ const useStyles = makeStyles(theme => ({
   textShadow: {
     textShadow: 'black 0px 0px 3px',
     color: 'white'
+  },
+  headerImg: {
+    maxWidth: '30rem',
+    marginBottom: '2rem'
   }
 }))
 
 const ThemedContentBox = ({
   title,
   subtitle,
+  headerImgFluid,
   children,
   onDarkBg,
   extraClass,
@@ -67,12 +76,24 @@ const ThemedContentBox = ({
           {subtitle}
         </Typography>
       )}
-      <Typography
-        variant={titleAs || 'h2'}
-        className={clsx(classes.title, onDarkBg && classes.textShadow)}
-      >
-        {title}
-      </Typography>
+
+      {headerImgFluid && (
+        <Img
+          fluid={headerImgFluid}
+          alt='Think Safe, Work Safe, Live Safe'
+          className={classes.headerImg}
+        />
+      )}
+
+      {title && (
+        <Typography
+          variant={titleAs || 'h2'}
+          className={clsx(classes.title, onDarkBg && classes.textShadow)}
+        >
+          {title}
+        </Typography>
+      )}
+
       {children}
     </div>
   )

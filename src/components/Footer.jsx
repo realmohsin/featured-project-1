@@ -1,41 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Container, Typography } from '@material-ui/core'
+import { Grid, Container, Typography, Hidden } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import footerBg from '../assets/images/common/footer-bg.jpg'
 import { GoLogoGist } from 'react-icons/go'
 import { FaFacebookF, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   footer: {
     height: '57rem',
     backgroundImage: `url(${footerBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     color: theme.palette.common.gray1,
-    padding: '16rem 0'
+    padding: '16rem 0',
+    [theme.breakpoints.down('sm')]: {
+      padding: '10rem 0 0',
+      height: '70rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '95rem'
+    }
   },
   topDiv: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '8rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: 0
+    }
   },
   logoContainer: {
-    width: '18.5rem'
+    width: '18.5rem',
+    [theme.breakpoints.down('xs')]: {
+      margin: '0 auto'
+    }
   },
   authLinksContainer: {
     display: 'flex'
@@ -58,19 +61,32 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.55rem',
     fontWeight: 'bold',
     color: 'white',
-    marginBottom: '0.5rem'
+    marginBottom: '0.5rem',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      marginTop: '5rem'
+    }
   },
   address: {
     color: theme.palette.common.gray1,
     textTransform: 'uppercase',
     fontSize: '1.3rem',
-    // lineHeight: '1.4',
-    fontWeight: 300
+    fontWeight: 300,
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center'
+    }
   },
   socialIconsContainer: {
     marginTop: '5rem',
     width: 'max-content',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '12rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '10rem auto 0',
+      transform: 'translateX(-1.5rem)'
+    }
   },
   socialIcon: {
     fontSize: '3rem',
@@ -85,7 +101,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: '7rem',
     width: 'max-content',
     marginLeft: 'auto',
-    fontSize: '1.25rem'
+    fontSize: '1.25rem',
+    [theme.breakpoints.down('xs')]: {
+      margin: '7rem auto 0'
+    }
   },
   privacyLink: {
     display: 'inline-block',
@@ -99,7 +118,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Footer = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -129,20 +147,22 @@ const Footer = props => {
     <section className={classes.footer}>
       <Container>
         <div className={classes.topDiv}>
-          <div className={classes.authLinksContainer}>
-            <Link to='/' className={classes.authLink}>
-              Employee Login
-            </Link>
-            <Link to='/' className={classes.authLink}>
-              Subcontractors
-            </Link>
-          </div>
+          <Hidden smDown>
+            <div className={classes.authLinksContainer}>
+              <Link to='/' className={classes.authLink}>
+                Employee Login
+              </Link>
+              <Link to='/' className={classes.authLink}>
+                Subcontractors
+              </Link>
+            </div>
+          </Hidden>
           <div className={classes.logoContainer}>
             <Img fluid={data.logo.childImageSharp.fluid} alt='logo' />
           </div>
         </div>
         <Grid container className={classes.gridContainer}>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} sm={4} md={3}>
             <Typography variant='body1' className={classes.addressTitle}>
               New York
             </Typography>
@@ -153,7 +173,7 @@ const Footer = props => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} sm={4} md={3}>
             <Typography variant='body1' className={classes.addressTitle}>
               Los Angeles
             </Typography>
@@ -164,7 +184,7 @@ const Footer = props => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} sm={4} md={3}>
             <Typography variant='body1' className={classes.addressTitle}>
               Connecticut
             </Typography>
@@ -175,7 +195,7 @@ const Footer = props => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} sm={12}>
             <div className={classes.socialIconsContainer}>
               <FaFacebookF className={classes.socialIcon} />
               <FaInstagram className={classes.socialIcon} />
@@ -185,9 +205,11 @@ const Footer = props => {
           </Grid>
         </Grid>
         <div className={classes.bottomDiv}>
-          <Link to='/' className={classes.privacyLink}>
-            Privacy Policy
-          </Link>
+          <Hidden xsDown>
+            <Link to='/' className={classes.privacyLink}>
+              Privacy Policy
+            </Link>
+          </Hidden>
           <span>© SCHIMENTI CONSTRUCTION COMPANY, LLC</span>
         </div>
       </Container>

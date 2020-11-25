@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Container, Grid, Typography } from '@material-ui/core'
 import {
   withScriptjs,
@@ -12,26 +11,28 @@ import {
 // there is no h1 on this page, consider adding (invisible) one
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   locationSection: {
     padding: '12rem 0',
     background: theme.palette.secondary.main,
     color: 'white',
-    height: '72rem'
+    height: '72rem',
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: '0',
+      height: '172rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '-5rem'
+    }
   },
   gridItem: {
-    height: '40rem'
+    height: '40rem',
+    [theme.breakpoints.down('sm')]: {
+      padding: '5rem 8rem',
+      marginBottom: '17rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '1rem'
+    }
   },
   addressBox: {
     marginLeft: '3rem',
@@ -65,7 +66,6 @@ const MyMapComponent = withScriptjs(
 )
 
 const LocationSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (

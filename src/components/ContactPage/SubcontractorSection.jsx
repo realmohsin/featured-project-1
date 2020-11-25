@@ -1,44 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import subcontractorSectionBg from '../../assets/images/contact-page/contact-subcontractors-bg.jpg'
 import Button from '../Button'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   subcontractorSection: {
     paddingTop: '24rem',
     backgroundImage: `url(${subcontractorSectionBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '93.4rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: '12rem'
+    }
   }
 }))
 
-const SubcontractorSection = props => {
-  const theme = useTheme()
+const SubcontractorSection = () => {
   const classes = useStyles()
 
   return (
     <section className={classes.subcontractorSection}>
       <Container>
         <Grid container>
-          <Grid item xs={0} md={6} />
-          <Grid item xs={12} md={6}>
+          <Grid item xs={0} md={0} lg={6} />
+          <Grid item xs={12} md={12} lg={6}>
             <ThemedContentBox
               title='Strong Subcontractor Relationships Equal Success'
               subtitle='Partnerships'

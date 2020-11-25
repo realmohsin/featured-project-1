@@ -64,14 +64,14 @@ const HeroSection = ({ heroBgFluid, children, isJustNav }) => {
     <section
       className={clsx(classes.heroSection, isJustNav && classes.isJustNav)}
     >
-      <Navbar />
+      {/* <Navbar />
       {!isJustNav && (
         <Img
           fluid={heroBgFluid}
           alt='The&Partnership, New York NY'
           className={classes.heroImg}
         />
-      )}
+      )} */}
       {children}
     </section>
   )
