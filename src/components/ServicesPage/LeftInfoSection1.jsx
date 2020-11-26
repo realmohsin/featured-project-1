@@ -6,25 +6,27 @@ import ThemedContentBox from '../ThemedContentBox'
 import leftInfoSection1Bg from '../../assets/images/services-page/left-info-section-1-bg.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   leftInfoSection1: {
     paddingTop: '31rem',
     backgroundImage: `url(${leftInfoSection1Bg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '84.7rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      height: '78rem',
+      paddingTop: '22rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '72rem',
+      paddingTop: '18rem',
+      backgroundPosition: '50% 50%'
+    }
+  },
+  extraThemedBox: {
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto'
+    }
   }
 }))
 
@@ -36,11 +38,12 @@ const LeftInfoSection1 = props => {
     <section className={classes.leftInfoSection1}>
       <Container>
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item sm={12} md={6}>
             <ThemedContentBox
               title='Seeking and Finding the Right Direction'
               subtitle='Pre-Construction'
               onDarkBg
+              extraClass={classes.extraThemedBox}
             >
               <Typography variant='body1' gutterBottom>
                 Schimenti’s early involvement prior to construction can greatly
@@ -53,7 +56,7 @@ const LeftInfoSection1 = props => {
               </Typography>
             </ThemedContentBox>
           </Grid>
-          <Grid item xs={0} md={6} />
+          <Grid item sm={0} md={6} />
         </Grid>
       </Container>
     </section>

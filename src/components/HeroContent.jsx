@@ -5,26 +5,41 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   heroContent: {
     position: 'absolute',
     bottom: '21rem',
     left: '13rem',
-    width: '79rem',
+    maxWidth: '79rem',
     ...theme.custom.themedBorderAndPadding,
     paddingTop: '0.5rem',
-    paddingBottom: '0.5rem'
+    paddingBottom: '0.5rem',
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '74rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '54rem',
+      left: '6rem',
+      bottom: '14rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '50rem',
+      left: '4rem'
+    },
+    '@media (max-width: 495px)': {
+      left: '3rem',
+      maxWidth: '40rem',
+      bottom: '12rem'
+    },
+    '@media (max-width: 410px)': {
+      left: '2rem',
+      maxWidth: '35rem',
+      bottom: '10rem'
+    },
+    '@media (max-width: 360px)': {
+      left: '1rem',
+      maxWidth: '30rem',
+      bottom: '10rem'
+    }
   },
   subtitle: {
     fontSize: '1.25rem',
@@ -42,6 +57,12 @@ const useStyles = makeStyles(theme => ({
     '&::before': {
       ...theme.custom.themedArrowForBefore,
       top: '1.6em'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.6rem !important'
+    },
+    '@media (max-width: 360px)': {
+      fontSize: '2.2rem !important'
     }
   },
   button: {
@@ -59,6 +80,11 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       color: 'black',
       backgroundColor: 'white'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.1rem',
+      padding: '0 3rem',
+      letterSpacing: '2px'
     }
   }
 }))

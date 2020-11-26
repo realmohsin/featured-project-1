@@ -36,7 +36,7 @@ export default function AboutPage ({ data }) {
 
   return (
     <Layout>
-      <HeroSection heroBgFluid={data.servicesHeroBg.childImageSharp.fluid}>
+      <HeroSection heroBgFluid={data.careersHeroBg.childImageSharp.fluid}>
         <HeroContent
           subtitle='Elevate Your Career'
           title='Cultivating, inspiring and challenging future leaders to overcome boundaries, stretch goals and reach new heights.'
@@ -55,7 +55,7 @@ export default function AboutPage ({ data }) {
 
 export const query = graphql`
   query {
-    servicesHeroBg: file(name: { eq: "services-hero-bg" }) {
+    careersHeroBg: file(name: { eq: "careers-hero-bg" }) {
       childImageSharp {
         fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
           ...GatsbyImageSharpFluid

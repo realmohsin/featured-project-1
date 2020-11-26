@@ -6,25 +6,27 @@ import ThemedContentBox from '../ThemedContentBox'
 import leftInfoSection2Bg from '../../assets/images/services-page/left-info-section-2-bg.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   leftInfoSection2: {
     paddingTop: '35rem',
     backgroundImage: `url(${leftInfoSection2Bg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '86rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      height: '78rem',
+      paddingTop: '22rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '70rem',
+      paddingTop: '18rem',
+      backgroundPosition: '100% 50%'
+    }
+  },
+  extraThemedBox: {
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto'
+    }
   }
 }))
 
@@ -36,11 +38,12 @@ const LeftInfoSection2 = props => {
     <section className={classes.leftInfoSection2}>
       <Container>
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item sm={12} md={6}>
             <ThemedContentBox
               title='Building from Start to Finish'
               subtitle='General Construction'
               onDarkBg
+              extraClass={classes.extraThemedBox}
             >
               <Typography variant='body1' gutterBottom>
                 From inception to completion, our construction management group
@@ -52,7 +55,7 @@ const LeftInfoSection2 = props => {
               </Typography>
             </ThemedContentBox>
           </Grid>
-          <Grid item xs={0} md={6} />
+          <Grid item sm={0} md={6} />
         </Grid>
       </Container>
     </section>

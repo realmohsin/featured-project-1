@@ -1,41 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import jobListings from '../../data/jobListings'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
+  exploreSection: {
+    padding: '14rem 0 20rem',
+    [theme.breakpoints.down('md')]: {
+      padding: '12rem 0 10rem'
     },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
+    [theme.breakpoints.down('xs')]: {
+      padding: '10rem 0'
     }
   },
-  exploreSection: {
-    padding: '14rem 0 24rem'
-  },
   leftSide: {
-    paddingRight: '5rem'
+    paddingRight: '5rem',
+    [theme.breakpoints.down('md')]: {
+      paddingRight: '2rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingRight: '0'
+    }
   },
   rightSide: {
-    paddingLeft: '3rem'
+    paddingLeft: '3rem',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '0'
+    }
   },
   title: {
     fontSize: '1.4rem',
     margin: '3rem 0 4rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center'
+    }
   },
   jobListings: {
     borderTop: '2px solid #808085',
@@ -65,18 +69,31 @@ const useStyles = makeStyles(theme => ({
   },
   exploreCareersImg: {
     width: '80%',
-    marginBottom: '10rem'
+    marginBottom: '10rem',
+    [theme.breakpoints.down('sm')]: {
+      margin: '2rem auto 10rem',
+      width: '70%'
+    }
   },
   extraThemedBox: {
     width: '50rem',
     '& h4': {
       fontSize: '3.4rem'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: 'auto',
+      marginRight: '1rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 auto 12rem'
     }
+  },
+  recruiterImg: {
+    width: '100%'
   }
 }))
 
 const ExploreSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -138,7 +155,10 @@ const ExploreSection = props => {
             <Typography variant='h3' className={classes.title}>
               Connect with our Recruiter
             </Typography>
-            <Img fluid={data.explore2.childImageSharp.fluid} />
+            <Img
+              fluid={data.explore2.childImageSharp.fluid}
+              className={classes.recruiterImg}
+            />
             <Typography variant='body1' className={classes.joinMessage}>
               Join Our Team of Dynamic and Talented Professionals
             </Typography>

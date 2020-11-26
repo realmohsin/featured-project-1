@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     top: 0,
     boxShadow: theme.shadows[3],
-    zIndex: 1
+    zIndex: 100
   },
   ctaButton: {
     [theme.breakpoints.down('sm')]: {

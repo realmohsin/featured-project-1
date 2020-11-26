@@ -1,25 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 
 // children should be paragraph elements
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   themedContentBox: {
     ...theme.custom.themedBorderAndPadding,
     maxWidth: '60rem',
@@ -47,6 +34,11 @@ const useStyles = makeStyles(theme => ({
     textShadow: 'black 0px 0px 3px',
     color: 'white'
   },
+  textShadowParas: {
+    '& p': {
+      textShadow: 'black 0px 0px 15px'
+    }
+  },
   headerImg: {
     maxWidth: '30rem',
     marginBottom: '2rem'
@@ -66,7 +58,13 @@ const ThemedContentBox = ({
   const classes = useStyles()
 
   return (
-    <div className={clsx(classes.themedContentBox, extraClass)}>
+    <div
+      className={clsx(
+        classes.themedContentBox,
+        extraClass,
+        onDarkBg && classes.textShadowParas
+      )}
+    >
       {subtitle && (
         <Typography
           variant='h5'

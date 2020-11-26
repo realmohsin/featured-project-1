@@ -73,6 +73,24 @@ const theme = createMuiTheme({
       gutterBottom: {
         marginBottom: '1.2em'
       }
+    },
+    MuiContainer: {
+      root: {
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        '@media (min-width: 600px)': {
+          paddingLeft: '4rem',
+          paddingRight: '4rem'
+        },
+        '@media (min-width: 960px)': {
+          paddingLeft: '6rem',
+          paddingRight: '6rem'
+        },
+        '@media (min-width: 1280px)': {
+          paddingLeft: '7rem',
+          paddingRight: '7rem'
+        }
+      }
     }
   },
   custom: {
@@ -90,7 +108,11 @@ const theme = createMuiTheme({
     themedBorderAndPadding: {
       // styles for container with themed left border
       borderLeft: `12px solid ${primaryColor}`,
-      paddingLeft: '4rem'
+      paddingLeft: '4rem',
+      '@media (max-width: 600px)': {
+        borderLeft: `10px solid ${primaryColor}`,
+        paddingLeft: '3.3rem'
+      }
     },
     themedArrowForBefore: {
       // styles for ::before of text to be pointed at
@@ -104,7 +126,10 @@ const theme = createMuiTheme({
       width: 0,
       fontSize: '2.2rem',
       position: 'relative',
-      left: '-4rem'
+      left: '-4rem',
+      '@media (max-width: 600px)': {
+        left: '-3.4rem'
+      }
     }
   }
 })

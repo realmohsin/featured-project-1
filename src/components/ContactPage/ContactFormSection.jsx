@@ -10,17 +10,20 @@ const useStyles = makeStyles(theme => ({
     padding: '10rem 0 16rem',
     backgroundImage: `url(${sectionBg2})`,
     backgroundSize: 'cover',
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    [theme.breakpoints.down('xs')]: {
+      padding: '8rem 0 14rem'
+    }
   },
   leftGridItem: {
     paddingRight: '3rem',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingRight: 0
     }
   },
   rightGridItem: {
     paddingLeft: '3rem',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingLeft: 0
     }
   },
@@ -28,7 +31,10 @@ const useStyles = makeStyles(theme => ({
     display: 'block',
     fontSize: '2.8rem',
     fontWeight: 'bold',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2.4rem'
+    }
   },
   input: {
     outline: 'none',
@@ -46,12 +52,21 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'uppercase',
     letterSpacing: '2px',
     wordSpacing: '1px',
-    paddingLeft: '3rem'
+    paddingLeft: '3rem',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      paddingLeft: 0
+    }
   },
   message: {
     width: '100%',
     height: 'auto',
     padding: '2rem'
+  },
+  extraButtonClass: {
+    [theme.breakpoints.down('xs')]: {
+      margin: '0 auto'
+    }
   }
 }))
 
@@ -121,7 +136,7 @@ const ContactFormSection = props => {
               ></textarea>
             </Grid>
           </Grid>
-          <Button text='Send Mail' />
+          <Button text='Send Mail' extraClass={classes.extraButtonClass} />
         </form>
       </Container>
     </section>

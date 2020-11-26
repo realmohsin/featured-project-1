@@ -24,26 +24,44 @@ const useStyles = makeStyles(theme => ({
     }
   },
   videoSafetySection: {
-    // padding: '61.5rem 0 19rem',
     padding: '0rem 0 19rem',
     backgroundImage: `url(${videoSafetyBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '138.4rem',
-    color: 'white'
-    // position: 'relative'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      height: '148rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '150rem'
+    }
   },
   gridContainer: {
-    marginTop: '-7rem'
+    marginTop: '-7rem',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '-1rem'
+    }
   },
   leftSide: {
     paddingTop: '4rem',
-    paddingRight: '4.5rem'
+    paddingRight: '4.5rem',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      marginBottom: '10rem',
+      padding: '4rem 1rem 0'
+    }
   },
   quote: {
     fontSize: '2.6rem',
     fontWeight: 'bold',
-    lineHeight: 1.4
+    lineHeight: 1.4,
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2.3rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.8rem'
+    }
   },
   quoter: {
     marginTop: '3rem',
@@ -54,13 +72,26 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.5rem'
   },
   rightSide: {
-    paddingLeft: '5rem'
+    paddingLeft: '5rem',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      padding: '1rem'
+    }
   },
   emrTitleContainer: {
-    display: 'flex'
+    display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center'
+    }
   },
   emrImg: {
-    width: '20%'
+    width: '22%',
+    [theme.breakpoints.down('sm')]: {
+      width: '12%'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '26%'
+    }
   },
   emrTitle: {
     fontSize: '4.2rem',
@@ -73,7 +104,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: '-0.8rem'
   },
   abcContainer: {
-    marginTop: '9rem'
+    marginTop: '9rem',
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '10rem'
+    }
   },
   abcImg: {
     width: '15rem',
@@ -83,13 +117,27 @@ const useStyles = makeStyles(theme => ({
     marginTop: '2rem'
   },
   video: {
-    height: '70.7rem',
+    height: '67rem',
     position: 'relative',
     overflow: 'hidden',
     boxShadow: '0px 30px 55px #00000a',
     transform: 'translateY(-25%)',
+    width: '92%',
+    margin: 'auto',
     '&:hover': {
       cursor: 'pointer'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+      height: '55rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '87%',
+      height: '40rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '96%',
+      height: '26rem'
     }
   },
   overlayContainer: {

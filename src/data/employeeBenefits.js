@@ -1,5 +1,5 @@
 export default [
-  'Choice of several comprehensive Medical plans',
+  'Choice of comprehensive Medical plans',
   'Choice of multiple Dental plans',
   'Choice of various Vision plans',
   'Company provided Life Insurance/AD&D',

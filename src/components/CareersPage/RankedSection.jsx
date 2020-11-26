@@ -1,40 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import Button from '../Button'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
+  rankedSection: {
+    padding: '14rem 0',
+    [theme.breakpoints.down('sm')]: {
+      padding: '10rem 0'
     }
   },
-  rankedSection: {
-    padding: '14rem 0'
-  },
   extraThemedBoxClass: {
-    width: '75rem'
+    // width: '75rem',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginRight: '1rem'
+    }
   },
   topRightSide: {
-    paddingLeft: '3rem'
+    paddingLeft: '3rem',
+    [theme.breakpoints.down('md')]: {
+      margin: '3rem 0 8rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '0rem 0 6rem'
+    }
+  },
+  quoteImg: {
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '75%'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '105%',
+      transform: 'translateX(-2.2rem)'
+    }
   },
   statGridContainer: {
     marginBottom: '7rem'
   },
   statGridItem: {
-    paddingRight: '7rem'
+    paddingRight: '2rem',
+    paddingLeft: '5rem',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '4rem'
+    }
   },
   statPercent: {
     color: theme.palette.primary.main,
@@ -43,11 +60,15 @@ const useStyles = makeStyles(theme => ({
   },
   statText: {
     marginTop: '-1rem'
+  },
+  extraButtonClass: {
+    [theme.breakpoints.down('md')]: {
+      margin: '-2rem auto 0'
+    }
   }
 }))
 
 const RankedSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -85,11 +106,15 @@ const RankedSection = props => {
             </ThemedContentBox>
           </Grid>
           <Grid item xs={12} md={4} className={classes.topRightSide}>
-            <Img fluid={data.quote.childImageSharp.fluid} alt='quote' />
+            <Img
+              fluid={data.quote.childImageSharp.fluid}
+              alt='quote'
+              className={classes.quoteImg}
+            />
           </Grid>
         </Grid>
         <Grid container className={classes.statGridContainer}>
-          <Grid item xs={12} md={3} className={classes.statGridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.statGridItem}>
             <Typography variant='body1' className={classes.statPercent}>
               95%
             </Typography>
@@ -97,7 +122,7 @@ const RankedSection = props => {
               think senior leaders live the core values of the company.
             </Typography>
           </Grid>
-          <Grid item xs={12} md={3} className={classes.statGridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.statGridItem}>
             <Typography variant='body1' className={classes.statPercent}>
               98%
             </Typography>
@@ -105,7 +130,7 @@ const RankedSection = props => {
               are proud to be a part of the Schimenti Team.
             </Typography>
           </Grid>
-          <Grid item xs={12} md={3} className={classes.statGridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.statGridItem}>
             <Typography variant='body1' className={classes.statPercent}>
               100%
             </Typography>
@@ -114,7 +139,7 @@ const RankedSection = props => {
               live safe.
             </Typography>
           </Grid>
-          <Grid item xs={12} md={3} className={classes.statGridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.statGridItem}>
             <Typography variant='body1' className={classes.statPercent}>
               95%
             </Typography>
@@ -123,7 +148,11 @@ const RankedSection = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Button asLink text='Connect with our Recruiter' />
+        <Button
+          asLink
+          text='Connect with our Recruiter'
+          extraClass={classes.extraButtonClass}
+        />
       </Container>
     </section>
   )

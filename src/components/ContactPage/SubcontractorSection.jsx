@@ -14,7 +14,18 @@ const useStyles = makeStyles(theme => ({
     height: '93.4rem',
     color: 'white',
     [theme.breakpoints.down('xs')]: {
-      paddingTop: '12rem'
+      paddingTop: '14rem',
+      height: '88rem'
+    }
+  },
+  extraThemedBox: {
+    [theme.breakpoints.down('xs')]: {
+      marginRight: '1.5rem'
+    }
+  },
+  extraButtonClass: {
+    [theme.breakpoints.down('xs')]: {
+      margin: '0 auto'
     }
   }
 }))
@@ -32,6 +43,7 @@ const SubcontractorSection = () => {
               title='Strong Subcontractor Relationships Equal Success'
               subtitle='Partnerships'
               onDarkBg
+              extraClass={classes.extraThemedBox}
             >
               <Typography variant='body1' gutterBottom>
                 Our subcontractors are the backbone of our business. We make a
@@ -48,7 +60,11 @@ const SubcontractorSection = () => {
                 with repeat business.
               </Typography>
             </ThemedContentBox>
-            <Button isLink text='Inquire Now' />
+            <Button
+              isLink
+              text='Inquire Now'
+              extraClass={classes.extraButtonClass}
+            />
           </Grid>
         </Grid>
       </Container>

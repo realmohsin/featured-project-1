@@ -4,47 +4,58 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Container, Grid, Typography } from '@material-ui/core'
+import { Container, Grid, Typography, Hidden } from '@material-ui/core'
 import Button from '../Button'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   challengingSection: {
     padding: '10rem 0 30rem',
     backgroundImage: `url(${sectionBg2})`,
     backgroundSize: 'cover',
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    [theme.breakpoints.down('md')]: {
+      paddingBottom: '22rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '12rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '6rem',
+      paddingTop: '8rem'
+    }
   },
   gridContainer: {
-    marginBottom: '5rem'
+    marginBottom: '6rem',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '10rem'
+    }
   },
   gridItemImg: {
     // paddingRight: '4rem'
   },
   challengeImg: {
     width: '29.1rem',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    [theme.breakpoints.down('md')]: {
+      margin: 'auto'
+    }
   },
   gridItemQuote: {
     display: 'flex',
     alignItems: 'center',
     paddingLeft: '3rem',
-    position: 'relative'
+    position: 'relative',
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      paddingLeft: 0
+    }
   },
   quote: {
-    maxWidth: '65rem'
+    maxWidth: '65rem',
+    [theme.breakpoints.down('md')]: {
+      margin: '5rem 0 2rem'
+    }
   },
   quoter: {
     fontWeight: 'bold',
@@ -55,13 +66,27 @@ const useStyles = makeStyles(theme => ({
     bottom: '3rem',
     left: '-12rem',
     transform: 'scale(0.9)',
-    zIndex: '10'
+    zIndex: '10',
+    [theme.breakpoints.down('md')]: {
+      position: 'static',
+      marginTop: '4rem',
+      marginBottom: '6rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      transform: 'scale(0.8)'
+    }
   },
   textBoxRightSide: {
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    textAlign: 'right',
+    paddingRight: '3rem',
+    [theme.breakpoints.down('md')]: {
+      paddingRight: '0',
+      transform: 'translateX(3rem)'
+    }
   },
   buttonOnRight: {
-    left: '59rem',
+    left: '70%',
     bottom: '5.5rem'
   },
   title: {
@@ -70,7 +95,14 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '8rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      padding: '0 1rem'
+    }
+  },
+  rightChallengeImg: {
+    marginRight: 'auto'
   }
 }))
 
@@ -110,13 +142,13 @@ const ChallengingSection = props => {
           CHALLENGING TOMORROW’S LEADERS
         </Typography>
         <Grid container className={classes.gridContainer}>
-          <Grid item xs={12} md={3} className={classes.gridItemImg}>
+          <Grid item xs={12} md={5} lg={3} className={classes.gridItemImg}>
             <Img
               fluid={data.challenging1.childImageSharp.fluid}
               className={classes.challengeImg}
             />
           </Grid>
-          <Grid item xs={12} md={9} className={classes.gridItemQuote}>
+          <Grid item xs={12} md={7} lg={9} className={classes.gridItemQuote}>
             <div>
               <Typography
                 variant='body1'
@@ -143,47 +175,55 @@ const ChallengingSection = props => {
           </Grid>
         </Grid>
 
-        <Grid container className={classes.gridContainer}>
-          <Grid item xs={12} md={9} className={classes.gridItemQuote}>
-            <div className={classes.textBoxRightSide}>
-              <Typography
-                variant='body1'
-                gutterBottom
-                className={classes.quote}
-              >
-                “It’s really cool to be part of a company that’s evolving and
-                becoming a real force in construction. Good camaraderie, great
-                teamwork. We’ve all got a common goal.”
-              </Typography>
-              <Typography variant='body1' className={classes.quoter}>
-                Angela Phillips
-              </Typography>
-              <Typography variant='body1' className={classes.quoterPosition}>
-                Senior Estimating Coordinator
-              </Typography>
-            </div>
-            <Button
-              isLink
-              text='Explore Project Management Careers'
-              extraClass={clsx(classes.buttonExtraClass, classes.buttonOnRight)}
-            />
+        <Hidden mdDown>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={12} md={7} lg={9} className={classes.gridItemQuote}>
+              <div className={classes.textBoxRightSide}>
+                <Typography
+                  variant='body1'
+                  gutterBottom
+                  className={classes.quote}
+                >
+                  “It’s really cool to be part of a company that’s evolving and
+                  becoming a real force in construction. Good camaraderie, great
+                  teamwork. We’ve all got a common goal.”
+                </Typography>
+                <Typography variant='body1' className={classes.quoter}>
+                  Angela Phillips
+                </Typography>
+                <Typography variant='body1' className={classes.quoterPosition}>
+                  Senior Estimating Coordinator
+                </Typography>
+              </div>
+              <Button
+                isLink
+                text='Explore Project Management Careers'
+                extraClass={clsx(
+                  classes.buttonExtraClass,
+                  classes.buttonOnRight
+                )}
+              />
+            </Grid>
+            <Grid item xs={12} md={5} lg={3}>
+              <Img
+                fluid={data.challenging2.childImageSharp.fluid}
+                className={clsx(
+                  classes.challengeImg,
+                  classes.rightChallengeImg
+                )}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={3}>
-            <Img
-              fluid={data.challenging2.childImageSharp.fluid}
-              className={classes.challengeImg}
-            />
-          </Grid>
-        </Grid>
+        </Hidden>
 
         <Grid container className={classes.gridContainer}>
-          <Grid item xs={12} md={3} className={classes.gridItemImg}>
+          <Grid item xs={12} md={5} lg={3} className={classes.gridItemImg}>
             <Img
               fluid={data.challenging3.childImageSharp.fluid}
               className={classes.challengeImg}
             />
           </Grid>
-          <Grid item xs={12} md={9} className={classes.gridItemQuote}>
+          <Grid item xs={12} md={7} lg={9} className={classes.gridItemQuote}>
             <div>
               <Typography
                 variant='body1'

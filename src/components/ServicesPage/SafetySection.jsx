@@ -1,51 +1,64 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import { IoMdArrowDropright } from 'react-icons/io'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   safetySection: {
     padding: '14rem 0 19rem',
     backgroundImage: `url(${sectionBg1})`,
     backgroundSize: 'cover',
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    [theme.breakpoints.down('sm')]: {
+      padding: '12rem 0 15rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '10rem 0 9rem'
+    }
   },
   safetyItem: {
-    marginBottom: '0.4rem'
+    marginBottom: '0.4rem',
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.2rem'
+    }
   },
   arrowIcon: {
     transform: 'translateY(2px)'
   },
   safetyImgContainer: {
     width: '30rem',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginRight: '6rem',
+    [theme.breakpoints.down('md')]: {
+      margin: '10rem auto'
+    }
   },
   safetyImg: {},
   extraThemedBoxClass: {
-    width: '80rem'
+    width: '80rem',
+    [theme.breakpoints.down('md')]: {
+      width: 'auto',
+      marginRight: '5rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+      margin: 'auto'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+      margin: 'auto'
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginRight: '1.3rem'
+    }
   }
 }))
 
 const SafetySection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
