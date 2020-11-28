@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Typography } from '@material-ui/core'
 import Layout from '../components/Layout'
 import HeroSection from '../components/HeroSection'
 import ProjectSection from '../components/HomePage/ProjectSection'

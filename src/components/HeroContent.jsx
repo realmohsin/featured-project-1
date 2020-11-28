@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   heroContent: {
@@ -56,7 +55,10 @@ const useStyles = makeStyles(theme => ({
     textShadow: 'black 0px 0px 5px',
     '&::before': {
       ...theme.custom.themedArrowForBefore,
-      top: '1.6em'
+      top: '2.8rem',
+      [theme.breakpoints.down('xs')]: {
+        top: '2.2rem'
+      }
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '2.6rem !important'
@@ -90,7 +92,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const HeroContent = ({ subtitle, title, buttonText, url, extraClass }) => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (

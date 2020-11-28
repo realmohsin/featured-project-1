@@ -1,28 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import Slider from 'react-slick'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   newsSection: {
     // height: '95rem',
-    padding: '12rem 4rem 14rem'
+    padding: '12rem 4rem 14rem',
+    [theme.breakpoints.down('xs')]: {
+      padding: '8rem 2rem 12rem'
+    }
   },
   newsTitle: {
     fontSize: '1.8rem',
@@ -30,7 +21,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '28rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0,
+      textAlign: 'center'
+    }
   },
   slider: {
     // height: '56rem'
@@ -52,7 +47,8 @@ const useStyles = makeStyles(theme => ({
     },
     '&:hover .gatsby-image-wrapper': {
       transform: 'scale(1.02)'
-    }
+    },
+    [theme.breakpoints.down('xs')]: {}
   },
   slideImg: {
     height: '100%',
@@ -72,7 +68,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     zIndex: 50,
     lineHeight: '1.1',
-    textShadow: 'black 0px 0px 5px'
+    textShadow: 'black 0px 0px 5px',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.5rem',
+      width: '20rem'
+    }
   },
   slideOverlay: {
     position: 'absolute',
@@ -89,7 +89,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const NewsSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -159,13 +158,26 @@ const NewsSection = props => {
     }
   `)
 
+  const lessThan1550 = useMediaQuery('(max-width:1550px)')
+  const lessThan1100 = useMediaQuery('(max-width:1100px)')
+  const lessThan795 = useMediaQuery('(max-width:795px)')
+
+  const getNumOfSlides = () => {
+    if (lessThan795) return 1
+    if (lessThan1100) return 2
+    if (lessThan1550) return 3
+    return 4
+  }
+
   const settings = {
     dots: false,
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4
+    slidesToShow: getNumOfSlides(),
+    slidesToScroll: getNumOfSlides(),
+    autoplay: 'true',
+    autoplaySpeed: 3500
   }
 
   return (

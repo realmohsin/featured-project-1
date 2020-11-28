@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import leftInfoSection2Bg from '../../assets/images/services-page/left-info-section-2-bg.jpg'
@@ -31,7 +30,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LeftInfoSection2 = props => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (

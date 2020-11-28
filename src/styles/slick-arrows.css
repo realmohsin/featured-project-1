@@ -1,0 +1,29 @@
+/* .slick-next {
+  background: url('../assets/images/common/next-arrow-carousel.png') center center no-repeat!important;
+  transform: translateX(3rem);
+}
+
+.slick-next::before {
+  display: none;
+}
+
+.slick-prev {
+  background: url('../assets/images/common/prev-arrow-carousel.png') center center no-repeat!important;
+}
+
+.slick-prev::before {
+    display: none;
+} */
+
+.slick-dots {
+  bottom: 105%;
+  right: 15%;
+  width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .slick-dots {
+    bottom: 22%;
+    right: 35%;
+  }
+}

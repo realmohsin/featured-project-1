@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import videoSafetyBg from '../../assets/images/services-page/video-safety-bg.jpg'
-import videoOverlayImg from '../../assets/images/services-page/services-video-overlay.jpg'
-import PlayButton from '../../assets/images/common/PlayButton'
 import { FaPlay } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   videoSafetySection: {
     padding: '0rem 0 19rem',
     backgroundImage: `url(${videoSafetyBg})`,
@@ -172,7 +156,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const VideoSafetySection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -204,7 +187,6 @@ const VideoSafetySection = props => {
     <section className={classes.videoSafetySection}>
       <Container>
         <div className={classes.video}>
-          {/* <img src={videoOverlayImg} alt='' className={classes.videoOverlay} /> */}
           <div className={classes.overlayContainer}>
             <Img
               fluid={data.videoOverlay.childImageSharp.fluid}
@@ -252,7 +234,7 @@ const VideoSafetySection = props => {
                 <b>
                   We continue to successfully beat industry-wide safety
                   standards and achieve significantly lower risk scores
-                </b>{' '}
+                </b>
                 by diligently maintaining our policies, continually implementing
                 new safety programs and taking a proactive approach to reduce
                 hazards and prevent injuries.

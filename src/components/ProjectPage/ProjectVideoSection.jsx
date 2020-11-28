@@ -1,34 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography, Container } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Container } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import { FaPlay } from 'react-icons/fa'
-import videoSafetyBg from '../../assets/images/services-page/video-safety-bg.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   videoSafetySection: {
-    // padding: '61.5rem 0 19rem',
     padding: '0rem 0 4rem',
-    // backgroundImage: `url(${videoSafetyBg})`,
     backgroundSize: 'center',
-    // backgroundPosition: '0% 0%',
-    // height: '138.4rem',
     color: 'white'
   },
   gridContainer: {
@@ -42,6 +22,19 @@ const useStyles = makeStyles(theme => ({
     transform: 'translateY(-25%)',
     '&:hover': {
       cursor: 'pointer'
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+      height: '55rem',
+      margin: '0 auto'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '87%',
+      height: '40rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '96%',
+      height: '26rem'
     }
   },
   overlayContainer: {
@@ -73,33 +66,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ProjectVideoSection = ({ overlayImgFluid, vidSectionBgFluid }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     videoOverlay: file(name: { eq: "services-video-overlay" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 2200, quality: 100) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //     abc: file(name: { eq: "abc" }) {
-  //       childImageSharp {
-  //         fixed(width: 150) {
-  //           ...GatsbyImageSharpFixed
-  //         }
-  //       }
-  //     }
-  //     emr: file(name: { eq: "emr" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 110, maxHeight: 130, quality: 100) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
 
   return (
     <BackgroundImage

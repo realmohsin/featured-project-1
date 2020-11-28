@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Container } from '@material-ui/core'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Grid, Container, Hidden } from '@material-ui/core'
 import aboutPartnersBg from '../../assets/images/about-page/about-partners-bg.jpg'
 import partnerCompanies from '../../data/partnerCompanies'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   partnersSection: {
     padding: '20rem 0 12rem',
     backgroundImage: `url(${aboutPartnersBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('xs')]: {
+      padding: '10rem 0 6rem'
+    }
   },
   title: {
     fontSize: '4rem',
@@ -54,7 +44,11 @@ const useStyles = makeStyles(theme => ({
     padding: '1.3rem 0 0.75rem',
     fontSize: '1.3rem',
     borderBottom: '1px solid #3D3F3A',
-    color: '#ccc'
+    color: '#ccc',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.2rem',
+      padding: '1.2rem 0 0.6rem'
+    }
   }
 }))
 
@@ -75,7 +69,6 @@ const PartnerList = ({ listTitle = '', list }) => {
 }
 
 const PartnersSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (
@@ -83,20 +76,22 @@ const PartnersSection = props => {
       <Container>
         <h2 className={classes.title}>The Company We Keep</h2>
         <Grid container>
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList
               listTitle='Specialty Retail'
               list={partnerCompanies['Specialty Retail'].slice(0, 22)}
             />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
-            <PartnerList
-              list={partnerCompanies['Specialty Retail'].slice(22)}
-            />
-          </Grid>
+          <Hidden xsDown>
+            <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
+              <PartnerList
+                list={partnerCompanies['Specialty Retail'].slice(22)}
+              />
+            </Grid>
+          </Hidden>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList
               listTitle='Developers'
               list={partnerCompanies['Developers']}
@@ -107,14 +102,14 @@ const PartnersSection = props => {
             />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList
               listTitle='Flagships'
               list={partnerCompanies['Flagships']}
             />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList
               listTitle='Corporate Interiors'
               list={partnerCompanies['Corporate Interiors']}
@@ -125,18 +120,18 @@ const PartnersSection = props => {
             />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList
               listTitle='Big Box'
               list={partnerCompanies['Big Box']}
             />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList listTitle='Luxury' list={partnerCompanies['Luxury']} />
           </Grid>
 
-          <Grid item xs={12} md={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <PartnerList listTitle='Banks' list={partnerCompanies['Banks']} />
             <PartnerList
               listTitle='Schools'

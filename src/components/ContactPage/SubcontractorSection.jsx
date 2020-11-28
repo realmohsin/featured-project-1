@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import subcontractorSectionBg from '../../assets/images/contact-page/contact-subcontractors-bg.jpg'

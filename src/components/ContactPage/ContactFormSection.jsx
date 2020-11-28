@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
 import Button from '../Button'

@@ -1,34 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from '../components/Layout'
 import HeroSection from '../components/HeroSection'
-import ProjectSection from '../components/HomePage/ProjectSection'
-import AboutSection from '../components/HomePage/AboutSection'
-import PeopleSection from '../components/HomePage/PeopleSection'
-import NewsSection from '../components/HomePage/NewsSection'
 import HeroContent from '../components/HeroContent'
 import PhilosophySection from '../components/AboutPage/PhilosophySection'
 import TraditionSection from '../components/AboutPage/TraditionSection'
-import CommunitySection from '../components/AboutPage/CommunitySection'
 import TeamSection from '../components/AboutPage/TeamSection'
 import SnapshotSection from '../components/AboutPage/SnapshotSection'
 import PartnersSection from '../components/AboutPage/PartnersSection'
+import { Hidden } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   extraHeroContent: {
     width: '92rem',
     '& h2': {
@@ -53,9 +36,13 @@ export default function AboutPage ({ data }) {
       </HeroSection>
       <PhilosophySection />
       <PartnersSection />
-      <SnapshotSection />
+      <Hidden xsDown>
+        <SnapshotSection />
+      </Hidden>
       <TeamSection />
-      <CommunitySection />
+      {/* <Hidden xsDown>
+        <CommunitySection />
+      </Hidden> */}
       <TraditionSection />
     </Layout>
   )

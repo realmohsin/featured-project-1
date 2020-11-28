@@ -1,42 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
-import { IoMdArrowDropright } from 'react-icons/io'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   infoSection: {
     padding: '14rem 0 14rem',
     backgroundImage: `url(${sectionBg1})`,
     backgroundSize: 'cover',
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    [theme.breakpoints.down('sm')]: {
+      padding: '12rem 0 4rem'
+    }
   },
   leftGridItem: {
     paddingRight: '3rem'
   },
   rightImgContainer: {
     width: '38rem',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '80%',
+      margin: '0 auto'
+    }
   },
   extraThemedBoxClass: {
-    width: '70rem'
+    width: '70rem',
+    [theme.breakpoints.down('md')]: {
+      width: 'auto'
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 auto 9rem'
+    }
   },
   statContainer: {
     padding: '8rem 0 15rem'
@@ -45,13 +42,24 @@ const useStyles = makeStyles(theme => ({
     borderLeft: '1px solid #ccc',
     padding: '2rem 5rem',
     '&:last-of-type': {
-      borderRight: '1px solid #ccc'
+      borderRight: '1px solid #ccc',
+      [theme.breakpoints.down('sm')]: {
+        borderRight: 'none'
+      }
+    },
+    [theme.breakpoints.down('sm')]: {
+      borderLeft: 'none',
+      borderBottom: '1px solid #ccc',
+      marginBottom: '2rem'
     }
   },
   stat: {
     fontSize: '5.4rem',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '4rem'
+    }
   },
   statLabel: {
     textAlign: 'center',
@@ -67,25 +75,13 @@ const InfoSection = ({
   timelineWks,
   clientSince
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      servicesSafety: file(name: { eq: "services-safety" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 176, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <section className={classes.infoSection}>
       <Container>
         <Grid container>
-          <Grid item xs={12} md={8} className={classes.leftGridItem}>
+          <Grid item xs={12} md={6} lg={8} className={classes.leftGridItem}>
             <ThemedContentBox
               headerImgFluid={logoFluid}
               extraClass={classes.extraThemedBoxClass}
@@ -97,7 +93,7 @@ const InfoSection = ({
               ))}
             </ThemedContentBox>
           </Grid>
-          <Grid item xs={12} md={4} className={classes.rightGridItem}>
+          <Grid item xs={12} md={6} lg={4} className={classes.rightGridItem}>
             <div className={classes.rightImgContainer}>
               <Img
                 fluid={rightImgFluid}

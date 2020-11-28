@@ -1,15 +1,7 @@
 import React from 'react'
-import clsx from 'clsx'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import {
-  makeStyles,
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Button
-} from '@material-ui/core'
+import { makeStyles, Grid } from '@material-ui/core'
 import Toggle from './Toggle'
 
 const useStyles = makeStyles(theme => ({

@@ -1,41 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Grid, Hidden, Typography } from '@material-ui/core'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
-import bigImg3 from '../../assets/images/home-page/featured-3-big.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   featuredProject: {},
   imgSide: {
     padding: '1rem',
     position: 'relative',
-    paddingRight: '4.4rem'
+    paddingRight: '4.4rem',
+    [theme.breakpoints.down('sm')]: {
+      padding: 0
+    }
   },
-  bigImgContainer: {
-    // width: '100rem'
-    // height: '56.2rem'
-  },
-  bigImg: {
-    // width: '100rem',
-    // height: '56.2rem'
-  },
+  bigImgContainer: {},
+  bigImg: {},
   smallImgContainer: {
     position: 'absolute',
     height: '38rem',
@@ -49,17 +31,10 @@ const useStyles = makeStyles(theme => ({
     width: '30rem',
     height: '45rem'
   },
-  infoSide: {
-    // padding: '1rem 10rem 1rem 0'
-  },
+  infoSide: {},
   info: {
     padding: '5.4rem 3.5rem',
-    // height: '100%',
-    width: '44rem',
-    // backgroundSize: 'cover',
-    // backgroundImage: `url(${sectionBg1})`,
-    // backgroundPosition: 'top right',
-    // boxShadow: '0px 0px 10px rgba(0,0,0,0.1)',
+    maxWidth: '44rem',
     backgroundColor: 'rgba(255, 255, 255, 0.87)',
     zIndex: 10,
     position: 'relative',
@@ -74,10 +49,18 @@ const useStyles = makeStyles(theme => ({
       position: 'absolute',
       zIndex: -1,
       opacity: 0.45
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '-8rem auto',
+      backgroundColor: 'rgba(255, 255, 255, 0.98)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '3rem 2rem',
+      width: '80%'
     }
   },
   logoImg: {
-    // width: '10rem'
+    width: '15rem',
     // height: '100%'
     marginBottom: '3rem'
   },
@@ -89,7 +72,10 @@ const useStyles = makeStyles(theme => ({
   themedBox: {
     borderLeft: `4px solid ${theme.palette.primary.main}`,
     paddingLeft: '2.2rem',
-    marginBottom: '6rem'
+    marginBottom: '6rem',
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '3rem'
+    }
   },
   companyName: {
     fontSize: '1.6rem',
@@ -111,40 +97,13 @@ const FeaturedProject = ({
     bigImgName,
     bigImgFluid,
     smallImgFluid,
-    logoImgFixed,
+    logoImgFluid,
     companyName,
     quoteText,
     quoter
   }
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  const {
-    sectionBg2: {
-      childImageSharp: { fluid: bg2Fluid }
-    }
-  } = useStaticQuery(graphql`
-    query {
-      sectionBg2: file(name: { eq: "section-bg-2" }) {
-        childImageSharp {
-          fluid(maxWidth: 1536, maxHeight: 1536) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  const [state, setState] = useState('initial-state')
-
-  useEffect(() => {
-    return () => {}
-  }, [])
-
-  const atXsDown = useMediaQuery(theme.breakpoints.down('xs')) // below 600
-  const atMdUp = useMediaQuery(theme.breakpoints.up('md')) // 960 and above
-  const atSmOnly = useMediaQuery(theme.breakpoints.only('sm')) // only between 600 and 959
-  const betweenSmLg = useMediaQuery(theme.breakpoints.between('sm', 'lg')) // only between 600 and 1919
 
   return (
     <article className={classes.featuredProject}>
@@ -158,19 +117,21 @@ const FeaturedProject = ({
             />
             {/* <img src={bigImg3} className={classes.bigImg} /> */}
           </div>
-          <div className={classes.smallImgContainer}>
-            <Img
-              fluid={smallImgFluid}
-              className={classes.smallImg}
-              alt={`View of ${companyName} project`}
-            />
-          </div>
+          <Hidden smDown>
+            <div className={classes.smallImgContainer}>
+              <Img
+                fluid={smallImgFluid}
+                className={classes.smallImg}
+                alt={`View of ${companyName} project`}
+              />
+            </div>
+          </Hidden>
         </Grid>
         <Grid item xs={12} md={4} className={classes.infoSide}>
           {/* <BackgroundImage Tag='div' className={classes.info} fluid={bg2Fluid}> */}
           <div className={classes.info}>
             <Img
-              fixed={logoImgFixed}
+              fluid={logoImgFluid}
               className={classes.logoImg}
               alt={`${companyName} logo`}
             />

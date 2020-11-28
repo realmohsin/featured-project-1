@@ -1,11 +1,10 @@
 import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography, Hidden } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import footerBg from '../assets/images/common/footer-bg.jpg'
-import { GoLogoGist } from 'react-icons/go'
 import { FaFacebookF, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({

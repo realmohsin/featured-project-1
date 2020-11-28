@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import aboutSnapshotBg from '../../assets/images/about-page/about-snapshot-bg.jpg'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   snapshotSection: {
     padding: '8rem 0 12rem',
     backgroundImage: `url(${aboutSnapshotBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '91rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('md')]: {
+      backgroundPosition: 'center'
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: '140rem'
+    }
   },
   gridItem: {
     marginBottom: '5rem',
     paddingRight: '4rem',
-    paddingLeft: '6rem'
+    paddingLeft: '6rem',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      marginBottom: '8rem'
+    }
   },
   icon: {
     width: '10rem',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 auto 2rem'
+    }
   },
   topText: {
     fontSize: '3rem',
@@ -51,7 +51,20 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '0rem',
     textTransform: 'uppercase',
     letterSpacing: '3px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 0 10rem'
+    }
+  },
+  iconCorrected: {
+    [theme.breakpoints.down('sm')]: {
+      transform: 'translateX(1.8rem)'
+    }
+  },
+  iconSlightlyCorrected: {
+    [theme.breakpoints.down('sm')]: {
+      transform: 'translateX(0.9rem)'
+    }
   }
 }))
 
@@ -59,7 +72,8 @@ const snapshotCardData = [
   {
     imgName: 'snapshot-1',
     topText: '$285MM',
-    bottomText: 'Annual Revenue'
+    bottomText: 'Annual Revenue',
+    iconCorrected: true
   },
   {
     imgName: 'snapshot-2',
@@ -81,30 +95,47 @@ const snapshotCardData = [
   {
     imgName: 'snapshot-5',
     topText: '200+',
-    bottomText: 'Employees strong and growing'
+    bottomText: 'Employees strong and growing',
+    iconSlightlyCorrected: true
   },
   {
     imgName: 'snapshot-6',
     topText: '30+',
-    bottomText: 'Project Managers on Staff'
+    bottomText: 'Project Managers on Staff',
+    iconCorrected: true
   },
   {
     imgName: 'snapshot-7',
     topText: '55+',
-    bottomText: 'Field Supervisors on Staff'
+    bottomText: 'Field Supervisors on Staff',
+    iconCorrected: true
   },
   {
     imgName: 'snapshot-8',
     topText: '50+',
-    bottomText: 'Trade Laborers on Staff'
+    bottomText: 'Trade Laborers on Staff',
+    iconSlightlyCorrected: true
   }
 ]
 
-const SnapshotCard = ({ imgFluid, topText, bottomText }) => {
+const SnapshotCard = ({
+  imgFluid,
+  topText,
+  bottomText,
+  iconCorrected,
+  iconSlightlyCorrected
+}) => {
   const classes = useStyles()
   return (
     <div className={classes.snapshotItem}>
-      <Img fluid={imgFluid} className={classes.icon} />
+      <Img
+        fluid={imgFluid}
+        className={clsx(
+          classes.icon,
+          iconCorrected && classes.iconCorrected,
+          iconSlightlyCorrected && classes.iconSlightlyCorrected
+        )}
+      />
       <p className={classes.topText}>{topText}</p>
       <p className={classes.bottomText}>{bottomText}</p>
     </div>
@@ -112,7 +143,6 @@ const SnapshotCard = ({ imgFluid, topText, bottomText }) => {
 }
 
 const SnapshotSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -185,7 +215,7 @@ const SnapshotSection = props => {
         </Typography>
         <Grid container className={classes.gridContainer}>
           {snapshotCardData.map(snapshotCard => (
-            <Grid item xs={6} md={3} className={classes.gridItem}>
+            <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
               <SnapshotCard
                 imgFluid={
                   data[changeImgName(snapshotCard.imgName)].childImageSharp
@@ -193,6 +223,8 @@ const SnapshotSection = props => {
                 }
                 topText={snapshotCard.topText}
                 bottomText={snapshotCard.bottomText}
+                iconCorrected={snapshotCard.iconCorrected}
+                iconSlightlyCorrected={snapshotCard.iconSlightlyCorrected}
               />
             </Grid>
           ))}

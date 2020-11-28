@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   quoteSection: {
     padding: '16rem 0'
   },
   leftGridItem: {
-    paddingRight: '10rem'
+    paddingRight: '10rem',
+    [theme.breakpoints.down('md')]: {
+      padding: '0 5rem',
+      marginBottom: '4rem'
+    }
   },
   quoteBox: {
     ...theme.custom.themedBorderAndPadding,
@@ -45,19 +34,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const QuoteSection = ({ quote, quoter, leftQuoteImgFluid }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     optionalName: file(name: { eq: "services-safety" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 300, maxHeight: 176, quality: 100) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
 
   return (
     <section className={classes.quoteSection}>

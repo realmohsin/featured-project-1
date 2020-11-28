@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Hidden } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -13,27 +11,23 @@ import FeaturedProject from './FeaturedProject'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 import Button from '../Button'
 import changeFileNameToKey from '../../utils/changeFileNameToKey'
+import '../../styles/slick-arrows.css'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   projectSection: {
     height: '100rem',
     backgroundImage: `url(${sectionBg1})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     padding: '16.5rem 6rem',
-    position: 'relative'
+    position: 'relative',
+    [theme.breakpoints.down('md')]: {
+      height: '125rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '14rem 0',
+      height: '90rem'
+    }
   },
   slider: {
     height: '80rem',
@@ -52,13 +46,39 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     position: 'absolute',
-    left: '17rem',
-    bottom: '15%'
+    // left: '17rem',
+    left: '9%',
+    bottom: '15%',
+    '@media (max-width: 1525px)': {
+      left: '6%',
+      bottom: '20%'
+    },
+    [theme.breakpoints.down('md')]: {
+      bottom: '25%',
+      left: '7%',
+      transform: 'scale(0.9)'
+    },
+    '@media (max-width: 1245px)': {
+      left: '5%'
+    },
+    '@media (max-width: 1125px)': {
+      left: '2%',
+      bottom: '35%',
+      transform: 'scale(0.75)'
+    },
+    [theme.breakpoints.down('sm')]: {
+      position: 'static',
+      transform: 'scale(1)',
+      margin: '6rem auto'
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '1rem auto',
+      right: '15%'
+    }
   }
 }))
 
 const ProjectSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -85,12 +105,12 @@ const ProjectSection = props => {
       }
       featured1Logo: file(name: { eq: "featured-1-logo" }) {
         childImageSharp {
-          # fluid(maxWidth: 680, maxHeight: 182) {
-          #   ...GatsbyImageSharpFluid
-          # }
-          fixed(width: 178) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 178) {
+            ...GatsbyImageSharpFluid
           }
+          # fixed(width: 178) {
+          #   ...GatsbyImageSharpFixed
+          # }
         }
       }
       featured2Big: file(name: { eq: "featured-2-big" }) {
@@ -109,12 +129,12 @@ const ProjectSection = props => {
       }
       featured2Logo: file(name: { eq: "featured-2-logo" }) {
         childImageSharp {
-          # fluid(maxWidth: 500, maxHeight: 223) {
-          #   ...GatsbyImageSharpFluid
-          # }
-          fixed(width: 220) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 220) {
+            ...GatsbyImageSharpFluid
           }
+          # fixed(width: 220) {
+          #   ...GatsbyImageSharpFixed
+          # }
         }
       }
       featured3Big: file(name: { eq: "featured-3-big" }) {
@@ -133,12 +153,12 @@ const ProjectSection = props => {
       }
       featured3Logo: file(name: { eq: "featured-3-logo" }) {
         childImageSharp {
-          # fluid(maxWidth: 180) {
-          #   ...GatsbyImageSharpFluid
-          # }
-          fixed(width: 180) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 180) {
+            ...GatsbyImageSharpFluid
           }
+          # fixed(width: 180) {
+          #   ...GatsbyImageSharpFixed
+          # }
         }
       }
       featured4Big: file(name: { eq: "featured-4-big" }) {
@@ -157,24 +177,26 @@ const ProjectSection = props => {
       }
       featured4Logo: file(name: { eq: "featured-4-logo" }) {
         childImageSharp {
-          # fluid(maxWidth: 154) {
-          #   ...GatsbyImageSharpFluid
-          # }
-          fixed(width: 154) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 154) {
+            ...GatsbyImageSharpFluid
           }
+          # fixed(width: 154) {
+          #   ...GatsbyImageSharpFixed
+          # }
         }
       }
     }
   `)
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: 'true',
+    autoplaySpeed: 2800
   }
 
   return (
@@ -196,16 +218,18 @@ const ProjectSection = props => {
               smallImgFluid:
                 data[changeFileNameToKey(featuredProject.smallImgName)]
                   .childImageSharp.fluid,
-              logoImgFixed:
+              logoImgFluid:
                 data[changeFileNameToKey(featuredProject.logoImgName)]
-                  .childImageSharp.fixed
+                  .childImageSharp.fluid
             }
           })
           .map(featuredProject => (
             <FeaturedProject featuredProject={featuredProject} />
           ))}
       </Slider>
-      <Button isLink text='Featured Projects' extraClass={classes.button} />
+      <Hidden xsDown>
+        <Button isLink text='Featured Projects' extraClass={classes.button} />
+      </Hidden>
     </section>
     // </BackgroundImage>
   )

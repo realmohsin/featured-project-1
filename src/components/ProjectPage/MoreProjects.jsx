@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   moreProjects: {
-    padding: '12rem 0 15rem'
+    padding: '12rem 0 15rem',
+    [theme.breakpoints.down('xs')]: {
+      padding: '8rem 0 10rem'
+    }
   },
   newsTitle: {
     fontSize: '1.6rem',
@@ -28,7 +16,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '5rem',
     textTransform: 'uppercase',
     letterSpacing: '3px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: 0,
+      textAlign: 'center'
+    }
   },
   project: {
     position: 'relative',
@@ -59,30 +51,7 @@ const MoreProjects = ({
   project2ImgFluid,
   project3ImgFluid
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      optionalName: file(name: { eq: "services-safety" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 176, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  const [state, setState] = useState('initial-state')
-
-  useEffect(() => {
-    return () => {}
-  }, [])
-
-  const atXsDown = useMediaQuery(theme.breakpoints.down('xs')) // below 600
-  const atMdUp = useMediaQuery(theme.breakpoints.up('md')) // 960 and above
-  const atSmOnly = useMediaQuery(theme.breakpoints.only('sm')) // only between 600 and 959
-  const betweenSmLg = useMediaQuery(theme.breakpoints.between('sm', 'lg')) // only between 600 and 1919
 
   return (
     <section className={classes.moreProjects}>

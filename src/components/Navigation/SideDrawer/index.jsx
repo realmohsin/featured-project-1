@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { makeStyles, Box, Divider, Grid } from '@material-ui/core'
+import { makeStyles, Box } from '@material-ui/core'
 import CSSTransition from 'react-transition-group/CSSTransition'
-import clsx from 'clsx'
 
 import logo from '../../../assets/images/common/logo.png'
 
@@ -60,8 +59,8 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.primary.main,
     textTransform: 'uppercase',
-    fontWeight: 700,
-    fontSize: '1.3rem',
+    // fontWeight: 700,
+    // fontSize: '1.3rem',
     letterSpacing: '0.5px',
     wordSpacing: '1.2px',
     fontSize: '1.1rem',

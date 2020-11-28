@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from '../components/Layout'
 import HeroSection from '../components/HeroSection'
@@ -11,18 +10,6 @@ import CareersVideoSection from '../components/CareersPage/CareersVideoSection'
 import ExploreSection from '../components/CareersPage/ExploreSection'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   extraHeroContent: {
     width: '92rem',
     '& h2': {

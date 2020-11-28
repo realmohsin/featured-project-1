@@ -1,43 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
+import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
 import employees from '../../data/employees'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   teamSection: {
     padding: '12rem 0',
     backgroundImage: `url(${sectionBg2})`,
     backgroundSize: 'cover',
-    backgroundPosition: '0% 0%'
+    backgroundPosition: '0% 0%',
+    [theme.breakpoints.down('xs')]: {
+      padding: '8rem 0'
+    }
   },
   employeeCard: {
     height: '42.2rem',
-    width: '29.1rem'
+    width: '29.1rem',
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto',
+      transform: 'scale(0.95)'
+    }
   },
   employeeImgContainer: {
     height: '29.1rem',
     width: '100%'
   },
-  employeeImg: {
-    // height: '29.1rem'
-  },
+  employeeImg: {},
   bottomOfCard: {
     display: 'flex',
     flexDirection: 'column',
@@ -56,7 +47,10 @@ const useStyles = makeStyles(theme => ({
   },
   gridContainer: {
     width: '95rem',
-    margin: '0 auto'
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto'
+    }
   },
   newsTitle: {
     fontSize: '1.8rem',
@@ -64,7 +58,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '15rem',
     textTransform: 'uppercase',
     letterSpacing: '2px',
-    wordSpacing: '1px'
+    wordSpacing: '1px',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      paddingLeft: 0
+    }
   }
 }))
 
@@ -89,7 +87,6 @@ const Employee = ({ imgFluid, name, position }) => {
 }
 
 const TeamSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -169,7 +166,7 @@ const TeamSection = props => {
         </Typography>
         <Grid container className={classes.gridContainer}>
           {employees.map(employee => (
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <Employee
                 imgFluid={
                   data[changeImgName(employee.imgName)].childImageSharp.fluid

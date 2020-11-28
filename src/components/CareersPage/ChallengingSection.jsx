@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography, Hidden } from '@material-ui/core'
 import Button from '../Button'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
@@ -107,7 +106,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ChallengingSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {

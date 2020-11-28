@@ -1,19 +1,13 @@
 import React from 'react'
 import Layout from '../components/layout'
-
-import { makeStyles, Box, Container, Grid, Typography } from '@material-ui/core'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import HeroSection from '../components/HeroSection'
 import HeroContent from '../components/HeroContent'
-import projects from '../data/projects'
 import InfoSection from '../components/ProjectPage/InfoSection'
 import ProjectVideoSection from '../components/ProjectPage/ProjectVideoSection'
 import QuoteSection from '../components/ProjectPage/QuoteSection'
 import NewsSection from '../components/ProjectPage/NewsSection'
 import MoreProjects from '../components/ProjectPage/MoreProjects'
-
-const useStyles = makeStyles(theme => ({}))
 
 const ProjectPageTemplate = ({ data, pageContext }) => {
   return (

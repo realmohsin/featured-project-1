@@ -85,10 +85,6 @@ const theme = createMuiTheme({
         '@media (min-width: 960px)': {
           paddingLeft: '6rem',
           paddingRight: '6rem'
-        },
-        '@media (min-width: 1280px)': {
-          paddingLeft: '7rem',
-          paddingRight: '7rem'
         }
       }
     }
@@ -111,7 +107,7 @@ const theme = createMuiTheme({
       paddingLeft: '4rem',
       '@media (max-width: 600px)': {
         borderLeft: `10px solid ${primaryColor}`,
-        paddingLeft: '3.3rem'
+        paddingLeft: '2.4rem'
       }
     },
     themedArrowForBefore: {
@@ -126,9 +122,9 @@ const theme = createMuiTheme({
       width: 0,
       fontSize: '2.2rem',
       position: 'relative',
-      left: '-4rem',
+      left: '-4.1rem',
       '@media (max-width: 600px)': {
-        left: '-3.4rem'
+        left: '-2.4rem'
       }
     }
   }

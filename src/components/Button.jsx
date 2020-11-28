@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'gatsby'
 import { GoArrowRight } from 'react-icons/go'
-import { FaArrowRight } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   button: {
     backgroundColor: theme.palette.primary.main,
     color: 'white',
@@ -56,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Button = ({ isLink, to, handleClick, text, extraClass }) => {
-  const theme = useTheme()
   const classes = useStyles()
 
   if (isLink) {

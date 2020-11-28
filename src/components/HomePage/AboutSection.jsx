@@ -1,76 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Grid, Typography } from '@material-ui/core'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Container, Grid, Typography } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
-import { Parallax, Background } from 'react-parallax'
+import { Parallax } from 'react-parallax'
 import parallaxBg from '../../assets/images/home-page/parallax-bg.jpg'
 import Button from '../Button'
+import ThemedContentBox from '../ThemedContentBox'
+import '../../styles/parallax.css'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   aboutSection: {
-    height: '109rem',
-    color: 'white'
+    height: '111rem',
+    color: 'white',
+    [theme.breakpoints.down('xs')]: {
+      height: '100rem'
+    }
   },
   parallax: {
     height: '100%'
   },
   gridContainer: {
-    // padding: '32rem 0'
-    marginTop: '32rem'
-  },
-  rightSide: {
-    // display: 'flex',
-    // alignItems: 'center',
-    // height: '100%'
-  },
-  contentBox: {
-    ...theme.custom.themedBorderAndPadding,
-    width: '60rem',
-    marginBottom: '8rem'
-  },
-  aboutTitle: {
-    ...theme.custom.title2,
-    textShadow: 'black 0px 0px 3px'
-  },
-  paragraph: {
-    textShadow: 'black 0px 0px 5px',
-    '&:first-of-type::before': {
-      ...theme.custom.themedArrowForBefore,
-      transform: 'translateY(1.9rem)'
+    marginTop: '32rem',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '21rem'
     }
   },
-  paragraph2: {}
+  extraThemedBox: {
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto'
+    }
+  },
+  extraButtonClass: {
+    [theme.breakpoints.down('sm')]: {
+      margin: ' 8rem auto 0'
+    }
+  }
 }))
 
 const AboutSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      aboutBg: file(name: { eq: "parallax-bg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2200, maxHeight: 1257) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
     // <BackgroundImage
@@ -84,41 +52,47 @@ const AboutSection = props => {
         className={classes.parallax}
         bgImage={parallaxBg}
       >
-        <Grid container className={classes.gridContainer}>
-          <Grid item xs={0} md={6} />
-          <Grid item xs={12} md={6} className={classes.rightSide}>
-            <div className={classes.contentBox}>
-              <Typography variant='h2' className={classes.aboutTitle}>
-                We Look At <br /> Construction Differently
-              </Typography>
-              <Typography
-                variant='body1'
-                gutterBottom
-                className={classes.paragraph}
+        <Container>
+          <Grid container className={classes.gridContainer}>
+            <Grid item sm={0} lg={6} />
+            <Grid item sm={12} lg={6} className={classes.rightSide}>
+              <ThemedContentBox
+                title={
+                  <>
+                    We Look At <br /> Construction Differently
+                  </>
+                }
+                subtitle='Pre-Construction'
+                onDarkBg
+                extraClass={classes.extraThemedBox}
               >
-                We’ve spent decades building an enviable reputation as one of
-                the nation’s leading general contractors. National retail and
-                commercial clients continually rely on us to meet – and exceed –
-                their schedules, specifications and budgets on each project we
-                are assigned. This has helped us grow successful relationships
-                with some of the most prominent brands in the world, such as Bed
-                Bath & Beyond, GAP, Kohl’s, Massimo Dutti, Sephora, Target,
-                Victoria’s Secret and ZARA.
-              </Typography>
-              <Typography
-                variant='body1'
-                gutterBottom
-                className={classes.paragraph}
-              >
-                With a staff of over 100 trade professionals, a field-tested
-                project management program and a sound business model, our
-                proprietary construction process delivers exceptional results –
-                project after project.
-              </Typography>
-            </div>
-            <Button isLink text='More About Us' to='/' alt='About Page' />
+                <Typography variant='body1' gutterBottom>
+                  We’ve spent decades building an enviable reputation as one of
+                  the nation’s leading general contractors. National retail and
+                  commercial clients continually rely on us to meet – and exceed
+                  – their schedules, specifications and budgets on each project
+                  we are assigned. This has helped us grow successful
+                  relationships with some of the most prominent brands in the
+                  world, such as Bed Bath & Beyond, GAP, Kohl’s, Massimo Dutti,
+                  Sephora, Target, Victoria’s Secret and ZARA.
+                </Typography>
+                <Typography variant='body1' gutterBottom>
+                  With a staff of over 100 trade professionals, a field-tested
+                  project management program and a sound business model, our
+                  proprietary construction process delivers exceptional results
+                  – project after project.
+                </Typography>
+              </ThemedContentBox>
+              <Button
+                isLink
+                text='More About Us'
+                to='/'
+                alt='About Page'
+                extraClass={classes.extraButtonClass}
+              />
+            </Grid>
           </Grid>
-        </Grid>
+        </Container>
       </Parallax>
     </section>
   )

@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { Container, Grid, Typography } from '@material-ui/core'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   projectsHeroSection: {
     padding: '12rem 0 8rem',
     background: theme.palette.secondary.main,
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      padding: '8rem 0 6rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: '6rem'
+    }
   },
   extraThemedBox: {
-    width: '125rem',
+    maxWidth: '125rem',
     '& > p': {
       fontSize: '3.2rem',
       fontWeight: 'bold',
-      lineHeight: 1.4
+      lineHeight: 1.4,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '2.6rem'
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize: '2.3rem'
+      }
     },
     '& p:first-of-type::before': {
       transform: 'translateY(2.9rem)'
@@ -36,7 +35,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ProjectsHeroSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (

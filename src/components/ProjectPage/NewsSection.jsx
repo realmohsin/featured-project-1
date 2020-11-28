@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
 import Button from '../Button'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   newsSection: {
     padding: '12rem 0',
     height: '96rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      height: '85rem',
+      padding: '9rem 0'
+    }
   },
   gridContainer: {
     padding: '12rem 0'
-    // marginTop: '32rem'
   },
-  rightSide: {
-    // display: 'flex',
-    // alignItems: 'center',
-    // height: '100%'
-  },
+  rightSide: {},
   contentBox: {
-    // ...theme.custom.themedBorderAndPadding,
     width: '60rem',
-    marginBottom: '8rem'
+    marginBottom: '8rem',
+    [theme.breakpoints.down('md')]: {
+      width: 'auto'
+    }
   },
   aboutTitle: {
     ...theme.custom.title2,
@@ -56,10 +42,6 @@ const useStyles = makeStyles(theme => ({
   paragraph: {
     textShadow: 'black 0px 0px 5px',
     fontSize: '1.7rem'
-    // '&:first-of-type::before': {
-    //   ...theme.custom.themedArrowForBefore,
-    //   transform: 'translateY(1.9rem)'
-    // }
   },
   newsLogo: {
     maxWidth: '18rem'
@@ -75,30 +57,7 @@ const NewsSection = ({
   newsButton,
   newsButtonLink
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      optionalName: file(name: { eq: "services-safety" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 176, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  const [state, setState] = useState('initial-state')
-
-  useEffect(() => {
-    return () => {}
-  }, [])
-
-  const atXsDown = useMediaQuery(theme.breakpoints.down('xs')) // below 600
-  const atMdUp = useMediaQuery(theme.breakpoints.up('md')) // 960 and above
-  const atSmOnly = useMediaQuery(theme.breakpoints.only('sm')) // only between 600 and 959
-  const betweenSmLg = useMediaQuery(theme.breakpoints.between('sm', 'lg')) // only between 600 and 1919
 
   return (
     <BackgroundImage

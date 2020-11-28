@@ -1,60 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import clsx from 'clsx'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import aboutTraditionBg from '../../assets/images/about-page/about-tradition-bg.jpg'
 import ThemedContentBox from '../ThemedContentBox'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   traditionSection: {
     paddingTop: '21rem',
     backgroundImage: `url(${aboutTraditionBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
     height: '96.3rem',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      height: '90rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '85rem',
+      paddingTop: '12rem'
+    },
+    '@media (max-width: 371px)': {
+      paddingTop: '10rem',
+      height: '90rem'
+    },
+    '@media (max-width: 325px)': {
+      height: '95rem'
+    }
+  },
+  extraThemedBox: {
+    [theme.breakpoints.down('md')]: {
+      margin: 'auto'
+    }
   }
 }))
 
 const TraditionSection = props => {
-  const theme = useTheme()
   const classes = useStyles()
-  const { data } = useStaticQuery(graphql`
-    query {
-      aboutTraditionBg: file(name: { eq: "about-tradition-bg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2000, maxHeight: 1333, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <section className={classes.traditionSection}>
       <Container>
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6}>
             <ThemedContentBox
               title='A Proud Tradition'
               subtitle="It's Deeper than Roots"
               onDarkBg
+              extraClass={classes.extraThemedBox}
             >
               <Typography variant='body1' gutterBottom>
                 Schimenti Construction, founded in 1994 by Matthew Schimenti,
@@ -79,7 +71,7 @@ const TraditionSection = props => {
               </Typography>
             </ThemedContentBox>
           </Grid>
-          <Grid item xs={0} md={6} />
+          <Grid item xs={0} sm={0} md={0} lg={6} />
         </Grid>
       </Container>
     </section>

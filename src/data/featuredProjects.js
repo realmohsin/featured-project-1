@@ -4,7 +4,7 @@ export default [
     smallImgName: 'featured-1-small',
     logoImgName: 'featured-1-logo',
     quoteText:
-      'Countless man hours went into this precision installation and the results truly speak for itself.',
+      'Amazing effort and countless man hours went into this precision installation and the results truly speak for itself.',
     companyName: 'Filson',
     quoter: 'Project Manager'
   },
@@ -22,7 +22,7 @@ export default [
     smallImgName: 'featured-3-small',
     logoImgName: 'featured-3-logo',
     quoteText:
-      "You know you're building something incredibly special when the project includes an interactive basketball court inside a SoHo retail experience. It really doesn't get any cooler than this.",
+      "You know you're building something incredibly special when the project includes an interactive basketball court inside a SoHo retail experience.",
     companyName: 'Nike',
     quoter: 'Project Manager'
   },

@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import Img from 'gatsby-image'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 
 // children should be paragraph elements
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     ...theme.custom.title2,
     marginBottom: '1rem',
-    [theme.breakpoints.up('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '3rem'
     }
   },
@@ -54,7 +54,6 @@ const ThemedContentBox = ({
   extraClass,
   titleAs
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
 
   return (
