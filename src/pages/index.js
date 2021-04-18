@@ -11,7 +11,7 @@ import HeroContent from '../components/HeroContent'
 export default function Home ({ data }) {
   return (
     <Layout>
-      <HeroSection heroBgFluid={data.hero1.childImageSharp.fluid}>
+      <HeroSection heroBgFluid={data.hero1.childImageSharp.fluid} homePage>
         <HeroContent
           subtitle='The&Partnership / New York NY'
           title='A Modern Approach to Thinking Outside the Box'

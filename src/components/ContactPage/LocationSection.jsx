@@ -7,6 +7,9 @@ import {
   GoogleMap,
   Marker
 } from 'react-google-maps'
+import Map1 from './GoogleMaps/Map1'
+import Map2 from './GoogleMaps/Map2'
+import Map3 from './GoogleMaps/Map3'
 
 // there is no h1 on this page, consider adding (invisible) one
 
@@ -52,14 +55,20 @@ const useStyles = makeStyles(theme => ({
   },
   phone: {
     letterSpacing: '1.2px'
+  },
+  mapContainer: {
+    paddingLeft: '3rem'
   }
 }))
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    <GoogleMap
+      defaultZoom={16}
+      defaultCenter={{ lat: 40.63077, lng: -74.13302 }}
+    >
       {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} />
+        <Marker position={{ lat: 40.63077, lng: -74.13302 }} />
       )}
     </GoogleMap>
   ))
@@ -73,15 +82,27 @@ const LocationSection = props => {
       <Container>
         <Grid container>
           <Grid item xs={12} md={4} className={classes.gridItem}>
-            <MyMapComponent
+            {/* <MyMapComponent
               isMarkerShown
-              googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+              googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAvwZE_MN_yybXvtTquNyAS4OzAJ2K4K5c&v=3.exp&libraries=geometry,drawing,places'
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={
                 <div style={{ height: `70%`, padding: '0 3rem' }} />
               }
               mapElement={<div style={{ height: `100%`, width: '100%' }} />}
+            /> */}
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2116880852395!2d-73.97368678459365!3d40.75736857932691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fcb54f5e4d%3A0xbdf0e472421593dd!2s575%20Lexington%20Ave%2018TH%20FLOOR%2C%20New%20York%2C%20NY%2010022!5e0!3m2!1sen!2sus!4v1614363224934!5m2!1sen!2sus'
+              width='310'
+              height='310'
+              style={{ border: 0, marginLeft: '3rem' }}
+              allowfullscreen=''
+              loading='lazy'
             />
+            {/* <div className={classes.mapContainer}>
+              <Map1 />
+            </div> */}
+
             <div className={classes.addressBox}>
               <Typography variant='h3' className={classes.locationTitle}>
                 New York
@@ -95,15 +116,27 @@ const LocationSection = props => {
             </div>
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridItem}>
-            <MyMapComponent
+            {/* <MyMapComponent
               isMarkerShown
-              googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+              googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAvwZE_MN_yybXvtTquNyAS4OzAJ2K4K5c&v=3.exp&libraries=geometry,drawing,places'
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={
                 <div style={{ height: `70%`, padding: '0 3rem' }} />
               }
               mapElement={<div style={{ height: `100%`, width: '100%' }} />}
+            /> */}
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2116880852395!2d-73.97368678459365!3d40.75736857932691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fcb54f5e4d%3A0xbdf0e472421593dd!2s575%20Lexington%20Ave%2018TH%20FLOOR%2C%20New%20York%2C%20NY%2010022!5e0!3m2!1sen!2sus!4v1614363224934!5m2!1sen!2sus'
+              width='310'
+              height='310'
+              style={{ border: 0, marginLeft: '3rem' }}
+              allowfullscreen=''
+              loading='lazy'
             />
+            {/* <div className={classes.mapContainer}>
+              <Map2 />
+            </div> */}
+
             <div className={classes.addressBox}>
               <Typography variant='h3' className={classes.locationTitle}>
                 Los Angeles
@@ -117,15 +150,27 @@ const LocationSection = props => {
             </div>
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridItem}>
-            <MyMapComponent
+            {/* <MyMapComponent
               isMarkerShown
-              googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+              googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAvwZE_MN_yybXvtTquNyAS4OzAJ2K4K5c&v=3.exp&libraries=geometry,drawing,places'
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={
                 <div style={{ height: `70%`, padding: '0 3rem' }} />
               }
               mapElement={<div style={{ height: `100%`, width: '100%' }} />}
+            /> */}
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2116880852395!2d-73.97368678459365!3d40.75736857932691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fcb54f5e4d%3A0xbdf0e472421593dd!2s575%20Lexington%20Ave%2018TH%20FLOOR%2C%20New%20York%2C%20NY%2010022!5e0!3m2!1sen!2sus!4v1614363224934!5m2!1sen!2sus'
+              width='310'
+              height='310'
+              style={{ border: 0, marginLeft: '3rem' }}
+              allowfullscreen=''
+              loading='lazy'
             />
+            {/* <div className={classes.mapContainer}>
+              <Map3 />
+            </div> */}
+
             <div className={classes.addressBox}>
               <Typography variant='h3' className={classes.locationTitle}>
                 Connecticut

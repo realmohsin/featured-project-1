@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
-import Button from '../Button'
+import Button from '../Button' 
 
 const useStyles = makeStyles(theme => ({
   contactFormSection: {
@@ -79,7 +79,7 @@ const ContactFormSection = props => {
         <Typography variant='h2' className={classes.title}>
           Send Us A Message
         </Typography>
-        <form>
+        <form action='https://formspree.io/f/xnqokpoq' method='POST'>
           <Grid container>
             <Grid item xs={12} md={6} className={classes.leftGridItem}>
               <label htmlFor='name' className={classes.label}>
@@ -108,10 +108,10 @@ const ContactFormSection = props => {
                 Company
               </label>
               <input
-                type='company'
+                type='text'
                 id='company'
                 className={classes.input}
-                name='email'
+                name='company'
               />
             </Grid>
             <Grid item xs={12} md={6} className={classes.rightGridItem}>
@@ -119,7 +119,7 @@ const ContactFormSection = props => {
                 Subject
               </label>
               <input
-                type='subject'
+                type='text'
                 id='subject'
                 className={classes.input}
                 name='subject'
@@ -143,4 +143,4 @@ const ContactFormSection = props => {
   )
 }
 
-export default ContactFormSection
+export default ContactFormSection 

@@ -9,7 +9,7 @@ import { FaFacebookF, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    height: '57rem',
+    height: '66rem',
     backgroundImage: `url(${footerBg})`,
     backgroundSize: 'cover',
     backgroundPosition: '0% 0%',
@@ -17,10 +17,10 @@ const useStyles = makeStyles(theme => ({
     padding: '16rem 0',
     [theme.breakpoints.down('sm')]: {
       padding: '10rem 0 0',
-      height: '70rem'
+      height: '72rem'
     },
     [theme.breakpoints.down('xs')]: {
-      height: '95rem'
+      height: '100rem'
     }
   },
   topDiv: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   logoContainer: {
-    width: '18.5rem',
+    width: '14.5rem',
     [theme.breakpoints.down('xs')]: {
       margin: '0 auto'
     }
@@ -54,7 +54,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   gridContainer: {
-    marginTop: '5rem'
+    marginTop: '5rem',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '2rem'
+    }
   },
   addressTitle: {
     fontSize: '1.55rem',
@@ -129,7 +132,7 @@ const Footer = props => {
       }
       logo: file(name: { eq: "logo" }) {
         childImageSharp {
-          fluid(maxWidth: 280, maxHeight: 104) {
+          fluid(maxWidth: 280) {
             ...GatsbyImageSharpFluid
           }
         }

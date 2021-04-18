@@ -6,23 +6,11 @@ import { Link } from 'gatsby'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  example: {
-    // ...mobile first styles,
-    [theme.breakpoints.up('sm')]: {
-      //...sm and up styles
-    },
-    [theme.breakpoints.up('md')]: {
-      //...md and up styles
-    },
-    '@media (min-width: 1320px)': {
-      //...rules for above 1320px
-    }
-  },
   navbarContainer: {
     position: 'absolute',
     width: '100%',
     zIndex: '100',
-    padding: '7rem 5rem 0',
+    padding: '2rem 5rem 0',
     color: 'white',
     background: 'transparent'
   },
@@ -79,7 +67,7 @@ const Navbar = props => {
     query {
       logo: file(name: { eq: "logo" }) {
         childImageSharp {
-          fluid(maxWidth: 280, maxHeight: 104) {
+          fluid(maxWidth: 280) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -87,37 +75,49 @@ const Navbar = props => {
     }
   `)
 
+  const isActive = ({ isCurrent }) => {
+    return isCurrent
+      ? { className: clsx(classes.navLink, classes.activeLink) }
+      : { className: classes.navLink }
+  }
+
+  const isPartiallyActive = ({ isPartiallyCurrent }) => {
+    return isPartiallyCurrent
+      ? { className: clsx(classes.navLink, classes.activeLink) }
+      : { className: classes.navLink }
+  }
+
   return (
     <div className={classes.navbarContainer}>
       <nav className={classes.navbar}>
         <ul className={classes.navUl}>
           <li>
-            <Link to='/' className={clsx(classes.navLink, classes.activeLink)}>
+            <Link to='/' getProps={isActive}>
               Home
             </Link>
           </li>
           <li>
-            <Link to='/' className={classes.navLink}>
+            <Link to='/about' getProps={isActive}>
               About
             </Link>
           </li>
           <li>
-            <Link to='/' className={classes.navLink}>
+            <Link to='/projects' getProps={isPartiallyActive}>
               Projects
             </Link>
           </li>
           <li>
-            <Link to='/' className={classes.navLink}>
+            <Link to='/services' getProps={isActive}>
               Services
             </Link>
           </li>
           <li>
-            <Link to='/' className={classes.navLink}>
+            <Link to='/careers' getProps={isActive}>
               Careers
             </Link>
           </li>
           <li>
-            <Link to='/' className={classes.navLink}>
+            <Link to='/contact' getProps={isActive}>
               Contact
             </Link>
           </li>

@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   logoContainer: {
     height: '100%',
-    width: '10rem'
+    width: '57rem'
   }
 }))
 

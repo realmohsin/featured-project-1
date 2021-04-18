@@ -77,17 +77,17 @@ export default [
   {
     imgName: 'cmx-cinebistro',
     name: 'CMX CineBistro'
-  },
-  {
-    imgName: 'mcdonalds',
-    name: "McDonald's"
-  },
-  {
-    imgName: 'schimenti-hq',
-    name: 'Schimenti HQ'
-  },
-  {
-    imgName: 'primark',
-    name: 'Primark'
   }
+  // {
+  //   imgName: 'mcdonalds',
+  //   name: "McDonald's"
+  // },
+  // {
+  //   imgName: 'schimenti-hq',
+  //   name: 'Schimenti HQ'
+  // },
+  // {
+  //   imgName: 'primark',
+  //   name: 'Primark'
+  // }
 ]

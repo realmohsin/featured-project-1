@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     left: 0,
     top: 0,
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.secondary.main,
     boxShadow: '3px 0px 10px 2px rgba(0, 0, 0, 0.4)',
     transition: 'transform 0.4s ease-out',
     transform: 'translateX(-104%)',
@@ -92,45 +92,15 @@ const SideDrawer = ({ showing, closeSideDrawer }) => {
 
   const initialMenuState = {
     menu1: false,
-    menu2: {
-      open: false,
-      subMenu1: false,
-      subMenu2: false,
-      subMenu3: false,
-      subMenu4: false
-    },
+    menu2: false,
     menu3: false,
-    menu4: false,
-    menu5: false,
-    menu6: false,
-    menu7: false,
-    menu8: false
+    menu4: false
   }
 
   const [menuState, setMenuState] = React.useState(initialMenuState)
 
   const handleMenuClick = (menuName, subMenuName) => {
-    if (menuName === 'menu2') {
-      const newMenuState = { ...menuState, menu2: { ...menuState.menu2 } }
-      if (!subMenuName) {
-        newMenuState.menu2.open = !menuState.menu2.open
-        newMenuState.menu2.subMenu1 = false
-        newMenuState.menu2.subMenu2 = false
-        newMenuState.menu2.subMenu3 = false
-        newMenuState.menu2.subMenu4 = false
-      } else if (subMenuName === 'subMenu1') {
-        newMenuState.menu2.subMenu1 = !menuState.menu2.subMenu1
-      } else if (subMenuName === 'subMenu2') {
-        newMenuState.menu2.subMenu2 = !menuState.menu2.subMenu2
-      } else if (subMenuName === 'subMenu3') {
-        newMenuState.menu2.subMenu3 = !menuState.menu2.subMenu3
-      } else if (subMenuName === 'subMenu4') {
-        newMenuState.menu2.subMenu4 = !menuState.menu2.subMenu4
-      }
-      setMenuState(newMenuState)
-    } else {
-      setMenuState({ ...menuState, [menuName]: !menuState[menuName] })
-    }
+    setMenuState({ ...menuState, [menuName]: !menuState[menuName] })
   }
 
   const handleSubMenuClick = (e, menuName, subMenuName) => {
@@ -156,65 +126,39 @@ const SideDrawer = ({ showing, closeSideDrawer }) => {
         <nav className={classes.sideDrawerNav}>
           <ul>
             <li>
-              <Link to={`/ab`} className={classes.link}>
+              <Link to={`/`} className={classes.link}>
                 Home
               </Link>
             </li>
 
-            <li
-              onClick={() => handleMenuClick('menu1')}
-              className={classes.link}
-            >
-              Dr. Walker
+            <li>
+              <Link to={`/about`} className={classes.link}>
+                About
+              </Link>
             </li>
 
-            <li
-              onClick={() => handleMenuClick('menu2')}
-              className={classes.link}
-            >
-              Face & Eyes
+            <li>
+              <Link to={`/projects`} className={classes.link}>
+                Projects
+              </Link>
             </li>
 
-            <li
-              onClick={() => handleMenuClick('menu3')}
-              className={classes.link}
-            >
-              Body
+            <li>
+              <Link to={`/services`} className={classes.link}>
+                Services
+              </Link>
             </li>
 
-            <li
-              onClick={() => handleMenuClick('menu4')}
-              className={classes.link}
-            >
-              Injectables
+            <li>
+              <Link to={`/careers`} className={classes.link}>
+                Careers
+              </Link>
             </li>
 
-            <li
-              onClick={() => handleMenuClick('menu5')}
-              className={classes.link}
-            >
-              Laser
-            </li>
-
-            <li
-              onClick={() => handleMenuClick('menu6')}
-              className={classes.link}
-            >
-              Hair
-            </li>
-
-            <li
-              onClick={() => handleMenuClick('menu7')}
-              className={classes.link}
-            >
-              Photos
-            </li>
-
-            <li
-              onClick={() => handleMenuClick('menu8')}
-              className={classes.link}
-            >
-              Contact Us
+            <li>
+              <Link to={`/contact`} className={classes.link}>
+                Contact
+              </Link>
             </li>
           </ul>
         </nav>

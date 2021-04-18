@@ -274,6 +274,226 @@ const projects = [
         project3ImgName: 'nike'
       }
     }
+  },
+  {
+    slug: '/projects/hm',
+    imgName: 'hm',
+    name: 'H&M',
+    hero: {
+      title: "World's Largest H&M Store NYC's Iconic Herald Center",
+      subtitle: 'H&M / 522 Broadway, New York, NY',
+      heroImgName: 'hm-hero'
+    },
+    infoSection: {
+      logoImgName: 'hm-logo',
+      infoParagraphs: [
+        'Occupying almost 63,000 square feet on four floors, the structure boasts several eye-catching features. Among them is a 61-foot by 45-foot terrazzo tile wall that runs from the ceiling of the cellar level to the ceiling of the third floor. The first floor atrium features a 26-foot by 16-foot LCD viewing screen, while the second floor atrium is highlighted by a stunning 21-foot-tall Rain of Light chandelier. A custom illuminated façade wraps around the exterior on 33rd and 34th Streets and Sixth Avenue.'
+      ],
+      infoRightImgName: 'hm-info-right',
+      squareFt: 63000,
+      timelineWks: '30 Week',
+      clientSince: 2008
+    },
+    videoSection: {
+      overlayImgName: 'hm-vid-overlay',
+      vidSectionBg: 'hm-vid-section-bg'
+    },
+    quoteSection: {
+      leftQuoteImgName: 'hm-quote-left',
+      quote:
+        'This was a big project for H&M. Their biggest in fact; 6,000 square feet larger than their second largest store on Fifth Avenue. For this Full Concept location, Schimenti helped H&M make a powerful statement. A custom illuminated façade wrapping the exterior announces the arrival of this megastore in Herald Square.',
+      quoter: 'H&M Project Executive'
+    },
+    newsSection: {
+      newsLogoImgName: 'hm-news-logo',
+      newsBgImgName: 'hm-news-section-bg',
+      newsTitle:
+        'H&M’s ‘Biggest Store Ever’ Feels Like A Full-Fledged Department Store',
+      newsSubtitle: 'In the news',
+      newsParagraph:
+        'It has a 35-foot modern glass facade with LCD screen, an approximately 30-foot high atrium on the second level. There are 40 fitting rooms, four floors, 34 registers, two entrances and two elevators.',
+      newsButton: 'Fashionista',
+      newsButtonLink: 'https://complex.com'
+    },
+    moreProjectsSection: {
+      project1: {
+        project1Name: 'JD Sports',
+        project1ImgName: 'jd-sports'
+      },
+      project2: {
+        project2Name: 'Krispy Kreme',
+        project2ImgName: 'krispy-kreme'
+      },
+      project3: {
+        project3Name: 'Nike',
+        project3ImgName: 'nike'
+      }
+    }
+  },
+  {
+    slug: '/projects/lidl',
+    imgName: 'lidl',
+    name: 'LIDL',
+    hero: {
+      title: 'An International Supermarket Built For Local Appeal',
+      subtitle: 'LIDL / 22 Millton Road, North Brunswick, NY',
+      heroImgName: 'lidl-hero'
+    },
+    infoSection: {
+      logoImgName: 'lidl-logo',
+      infoParagraphs: [
+        'Through a complete interior fit-out and numerous alterations to the building’s exterior shell, we were able to retrofit a new grocery store with integrated bakery, storage, and offices.',
+        'The project included wood panelling of the exterior, and the installation of 20 Miami cooler cases, along with overcoming logistical challenges of materials procurement during the peak of the Covid-19 pandemic.'
+      ],
+      infoRightImgName: 'lidl-info-right',
+      squareFt: 29963,
+      timelineWks: '20 Week',
+      clientSince: 2005
+    },
+    videoSection: {
+      overlayImgName: 'lidl-vid-overlay',
+      vidSectionBg: 'lidl-vid-section-bg'
+    },
+    quoteSection: {
+      leftQuoteImgName: 'lidl-quote-left',
+      quote:
+        'We were able to completely transform the space, inside and out, to create an incredible mercantile experience. The project team managed numerous logistical challenges to maintain steady construction.',
+      quoter: 'Lidl Project Manager'
+    },
+    newsSection: {
+      newsLogoImgName: 'lidl-news-logo',
+      newsBgImgName: 'lidl-news-section-bg',
+      newsTitle: 'Lidl Opens 28,000-Square-Foot Grocery Store',
+      newsSubtitle: 'In the news',
+      newsParagraph:
+        'German discount grocer Lidl has opened a 28,000-square-foot store at Brunswick Shopping Center, a 288,000-square-foot retail center located in North-Central New Jersey.',
+      newsButton: 'Shopping Center Business',
+      newsButtonLink: 'https://complex.com'
+    },
+    moreProjectsSection: {
+      project1: {
+        project1Name: 'JD Sports',
+        project1ImgName: 'jd-sports'
+      },
+      project2: {
+        project2Name: 'Krispy Kreme',
+        project2ImgName: 'krispy-kreme'
+      },
+      project3: {
+        project3Name: 'Nike',
+        project3ImgName: 'nike'
+      }
+    }
+  },
+  {
+    slug: '/projects/filson',
+    imgName: 'filson',
+    name: 'Filson',
+    hero: {
+      title: 'A Little Bit of The Yukon In The Big Apple',
+      subtitle: 'Filson / 876 Broadway, New York, NY',
+      heroImgName: 'filson-hero'
+    },
+    infoSection: {
+      logoImgName: 'filson-logo',
+      infoParagraphs: [
+        'Installation of a mezzanine inside a 19th century building presents some unique challenges, adding a reclaimed 1890s barn from the Pacific Northwest inside that same structure creates a completely new dimension of construction planning and carpentry. For Filson, we were able to achieve both features and help create a spectacular retail experience.',
+        'This flagship project needed a team of highly skilled and dedicated carpenters to navigate the surgical installation of a reclaimed barn trellis system; A one-of-a-kind feature that required coordination with architects and engineers who designed it inside a 3D computer environment before it was transported across the country and assembled over the course of two weeks on-site.'
+      ],
+      infoRightImgName: 'filson-info-right',
+      squareFt: 30963,
+      timelineWks: '30 Week',
+      clientSince: 2015
+    },
+    videoSection: {
+      overlayImgName: 'filson-vid-overlay',
+      vidSectionBg: 'filson-vid-section-bg'
+    },
+    quoteSection: {
+      leftQuoteImgName: 'filson-quote-left',
+      quote:
+        'Assembling a reclaimed 1890s Pacific Northwest Barn inside of a flagship location on Broadway allowed our carpenters to really flex their muscle and let their skills shine. Countless man hours went into this precision installation and the results truly speak for itself.',
+      quoter: 'Filson Project Manager'
+    },
+    newsSection: {
+      newsLogoImgName: 'filson-news-logo',
+      newsBgImgName: 'filson-news-section-bg',
+      newsTitle: 'First Look Inside Filson’s New York Flagship',
+      newsSubtitle: 'In the news',
+      newsParagraph:
+        'The brand founded in 1897 as an outfitter for Gold Rush prospectors headed for the Yukon has opened up its second outpost in the Big Apple.',
+      newsButton: 'Chain Store Age',
+      newsButtonLink: 'https://complex.com'
+    },
+    moreProjectsSection: {
+      project1: {
+        project1Name: 'JD Sports',
+        project1ImgName: 'jd-sports'
+      },
+      project2: {
+        project2Name: 'Krispy Kreme',
+        project2ImgName: 'krispy-kreme'
+      },
+      project3: {
+        project3Name: 'Nike',
+        project3ImgName: 'nike'
+      }
+    }
+  },
+  {
+    slug: '/projects/cmx-cinebistro',
+    imgName: 'cmx-cinebistro',
+    name: 'CMX Cinebistro',
+    hero: {
+      title: 'Bringing a Modern Element to the Theatre-Going Experience',
+      subtitle: 'CMX Cinebistro / 876 Broadway, New York, NY',
+      heroImgName: 'cmx-cinebistro-hero'
+    },
+    infoSection: {
+      logoImgName: 'cmx-cinebistro-logo',
+      infoParagraphs: [
+        'CMX Cinebistro prides itself on the unique experience it provides to customers, and our project team ensured this location would be a step above the rest. The Schimenti team overcame complex building challenges to complete this project in excellent time. The theatre features a full-floor kitchen to take the concept of ‘dinner and a movie’ to new heights.',
+        'This 70,000 sq. ft. total building renovation of six floors encompassed six auditoriums, two bars, a full operating kitchen, new curtain wall system and six DJ booths. It also included the installation of MEP roof units, installation of a new roofing system and building steel structure within a dumbwaiter shaft. The project lasted the duration of one year.'
+      ],
+      infoRightImgName: 'cmx-cinebistro-info-right',
+      squareFt: 70000,
+      timelineWks: '20 Week',
+      clientSince: 2018
+    },
+    videoSection: {
+      overlayImgName: 'cmx-cinebistro-vid-overlay',
+      vidSectionBg: 'cmx-cinebistro-vid-section-bg'
+    },
+    quoteSection: {
+      leftQuoteImgName: 'cmx-cinebistro-quote-left',
+      quote:
+        'We were able to overcome challenges and get the project done. It’s a beautiful theater and I’m looking forward to coming here to see a show.',
+      quoter: 'CMX Cinébistro Superintendentr'
+    },
+    newsSection: {
+      newsLogoImgName: 'cmx-cinebistro-news-logo',
+      newsBgImgName: 'cmx-cinebistro-news-section-bg',
+      newsTitle: 'First Look Inside cmx-cinebistro’s New York Flagship',
+      newsSubtitle: 'In the news',
+      newsParagraph:
+        'The brand founded in 1897 as an outfitter for Gold Rush prospectors headed for the Yukon has opened up its second outpost in the Big Apple.',
+      newsButton: 'Chain Store Age',
+      newsButtonLink: 'https://complex.com'
+    },
+    moreProjectsSection: {
+      project1: {
+        project1Name: 'JD Sports',
+        project1ImgName: 'jd-sports'
+      },
+      project2: {
+        project2Name: 'Krispy Kreme',
+        project2ImgName: 'krispy-kreme'
+      },
+      project3: {
+        project3Name: 'Nike',
+        project3ImgName: 'nike'
+      }
+    }
   }
 ]
 
