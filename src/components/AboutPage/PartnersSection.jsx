@@ -1,19 +1,31 @@
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Hidden } from '@material-ui/core'
-import aboutPartnersBg from '../../assets/images/about-page/about-partners-bg.jpg'
+
 import partnerCompanies from '../../data/partnerCompanies'
 
 const useStyles = makeStyles(theme => ({
   partnersSection: {
     padding: '20rem 0 12rem',
-    backgroundImage: `url(${aboutPartnersBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${aboutPartnersBg})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('xs')]: {
       padding: '10rem 0 6rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   title: {
     fontSize: '4rem',
@@ -73,6 +85,10 @@ const PartnersSection = props => {
 
   return (
     <section className={classes.partnersSection}>
+      <StaticImage
+        src='../../assets/images/about-page/about-partners-bg.jpg'
+        className={classes.bgImg}
+      />
       <Container>
         <h2 className={classes.title}>The Company We Keep</h2>
         <Grid container>

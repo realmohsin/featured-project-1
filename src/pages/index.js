@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { getImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import HeroSection from '../components/HeroSection'
 import ProjectSection from '../components/HomePage/ProjectSection'
@@ -11,7 +12,7 @@ import HeroContent from '../components/HeroContent'
 export default function Home ({ data }) {
   return (
     <Layout>
-      <HeroSection homePage>
+      <HeroSection heroImgData={data.homeHeroBg.childImageSharp} homePage>
         <HeroContent
           subtitle='The&Partnership / New York NY'
           title='A Modern Approach to Thinking Outside the Box'
@@ -26,3 +27,13 @@ export default function Home ({ data }) {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    homeHeroBg: file(name: { eq: "hero-img-1" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
+  }
+`

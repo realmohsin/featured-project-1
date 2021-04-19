@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Grid, Typography, Container } from '@material-ui/core'
@@ -143,9 +143,10 @@ const PhilosophySection = props => {
           <Grid item className={classes.leftSide} xs={12} lg={6}>
             <div className={classes.leftSideContainer}>
               <div className={classes.logoContainer}>
-                <Img
-                  fluid={data.philosophyLogo.childImageSharp.fluid}
+                <StaticImage
+                  src='../../assets/images/about-page/about-philosophy-logo.png'
                   alt='Philosophy Logo'
+                  placeholder='none'
                 />
               </div>
               <ThemedContentBox
@@ -175,12 +176,13 @@ const PhilosophySection = props => {
             <Grid container className={classes.rightGridContainer}>
               <Grid item className={classes.rightGridItem} xs={12} sm={6}>
                 <div>
-                  <Img
-                    fluid={data.safeIcon.childImageSharp.fluid}
+                  <StaticImage
+                    src='../../assets/images/about-page/about-philosophy-safe.png'
+                    alt='Philosophy Logo'
                     className={clsx(classes.rightIcon, classes.safeIcon)}
+                    placeholder='none'
                   />
                 </div>
-
                 <Typography variant='h3' className={classes.itemTitle}>
                   Safe
                 </Typography>
@@ -197,9 +199,11 @@ const PhilosophySection = props => {
                 sm={6}
               >
                 <div>
-                  <Img
-                    fluid={data.effectiveIcon.childImageSharp.fluid}
+                  <StaticImage
+                    src='../../assets/images/about-page/about-philosophy-effective.png'
+                    alt='Philosophy Logo'
                     className={clsx(classes.rightIcon, classes.safeIcon)}
+                    placeholder='none'
                   />
                 </div>
                 <Typography variant='h3' className={classes.itemTitle}>
@@ -212,10 +216,16 @@ const PhilosophySection = props => {
               </Grid>
               <Grid item className={classes.rightGridItem} xs={12} sm={6}>
                 <div>
-                  <Img
+                  <StaticImage
+                    src='../../assets/images/about-page/about-philosophy-agile.png'
+                    alt='Philosophy Logo'
+                    className={clsx(classes.rightIcon, classes.safeIcon)}
+                    placeholder='none'
+                  />
+                  {/* <Img
                     fluid={data.agileIcon.childImageSharp.fluid}
                     className={classes.rightIcon}
-                  />
+                  /> */}
                 </div>
                 <Typography variant='h3' className={classes.itemTitle}>
                   Agile
@@ -232,10 +242,16 @@ const PhilosophySection = props => {
                 sm={6}
               >
                 <div>
-                  <Img
+                  <StaticImage
+                    src='../../assets/images/about-page/about-philosophy-supportive.png'
+                    alt='Philosophy Logo'
+                    className={clsx(classes.rightIcon, classes.safeIcon)}
+                    placeholder='none'
+                  />
+                  {/* <Img
                     fluid={data.supportiveIcon.childImageSharp.fluid}
                     className={classes.rightIcon}
-                  />
+                  /> */}
                 </div>
                 <Typography variant='h3' className={classes.itemTitle}>
                   Supportive

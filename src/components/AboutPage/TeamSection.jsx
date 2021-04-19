@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
@@ -71,7 +71,7 @@ const Employee = ({ imgFluid, name, position }) => {
   return (
     <div className={classes.employeeCard}>
       <div className={classes.employeeImgContainer}>
-        <Img fluid={imgFluid} alt={name} className={classes.employeeImg} />
+        <GatsbyImage image={getImage(imgFluid)} alt={name} />
       </div>
 
       <div className={classes.bottomOfCard}>
@@ -92,65 +92,47 @@ const TeamSection = props => {
     query {
       employee1: file(name: { eq: "employee-1" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee2: file(name: { eq: "employee-2" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee3: file(name: { eq: "employee-3" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee4: file(name: { eq: "employee-4" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee5: file(name: { eq: "employee-5" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee6: file(name: { eq: "employee-6" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee7: file(name: { eq: "employee-7" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee8: file(name: { eq: "employee-8" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       employee9: file(name: { eq: "employee-9" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 400, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
     }
@@ -168,9 +150,7 @@ const TeamSection = props => {
           {employees.map(employee => (
             <Grid item xs={12} sm={6} md={4}>
               <Employee
-                imgFluid={
-                  data[changeImgName(employee.imgName)].childImageSharp.fluid
-                }
+                imgFluid={data[changeImgName(employee.imgName)].childImageSharp}
                 name={employee.name}
                 position={employee.position}
               />

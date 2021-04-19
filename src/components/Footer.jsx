@@ -133,6 +133,7 @@ const Footer = props => {
       <StaticImage
         src='../assets/images/common/footer-bg.jpg'
         className={classes.footerBg}
+        objectPosition='top right'
       />
       <Container>
         <div className={classes.topDiv}>

@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { makeStyles } from '@material-ui/core/styles'
@@ -9,17 +10,28 @@ import aboutSnapshotBg from '../../assets/images/about-page/about-snapshot-bg.jp
 const useStyles = makeStyles(theme => ({
   snapshotSection: {
     padding: '8rem 0 12rem',
-    backgroundImage: `url(${aboutSnapshotBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${aboutSnapshotBg})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     height: '91rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('md')]: {
       backgroundPosition: 'center'
     },
     [theme.breakpoints.down('sm')]: {
       height: '140rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridItem: {
     marginBottom: '5rem',
@@ -128,8 +140,8 @@ const SnapshotCard = ({
   const classes = useStyles()
   return (
     <div className={classes.snapshotItem}>
-      <Img
-        fluid={imgFluid}
+      <GatsbyImage
+        image={imgFluid}
         className={clsx(
           classes.icon,
           iconCorrected && classes.iconCorrected,
@@ -148,58 +160,42 @@ const SnapshotSection = props => {
     query {
       snapshot1: file(name: { eq: "snapshot-1" }) {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 430, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot2: file(name: { eq: "snapshot-2" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot3: file(name: { eq: "snapshot-3" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot4: file(name: { eq: "snapshot-4" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot5: file(name: { eq: "snapshot-5" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot6: file(name: { eq: "snapshot-6" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot7: file(name: { eq: "snapshot-7" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
       snapshot8: file(name: { eq: "snapshot-8" }) {
         childImageSharp {
-          fluid(maxWidth: 110, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(placeholder: NONE)
         }
       }
     }
@@ -209,6 +205,10 @@ const SnapshotSection = props => {
 
   return (
     <section className={classes.snapshotSection}>
+      <StaticImage
+        src='../../assets/images/about-page/about-snapshot-bg.jpg'
+        className={classes.bgImg}
+      />
       <Container>
         <Typography variant='h2' className={classes.newsTitle}>
           Company Snapshot
@@ -217,10 +217,9 @@ const SnapshotSection = props => {
           {snapshotCardData.map(snapshotCard => (
             <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
               <SnapshotCard
-                imgFluid={
+                imgFluid={getImage(
                   data[changeImgName(snapshotCard.imgName)].childImageSharp
-                    .fluid
-                }
+                )}
                 topText={snapshotCard.topText}
                 bottomText={snapshotCard.bottomText}
                 iconCorrected={snapshotCard.iconCorrected}

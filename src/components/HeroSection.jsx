@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import { useStaticQuery, graphql } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 
 // This component is an entire hero section, unless isJustNav prop is used
@@ -98,19 +97,9 @@ const CenteredLogo = ({ logoFluid }) => {
   )
 }
 
-const HeroSection = ({ children, isJustNav, homePage }) => {
+const HeroSection = ({ heroImgData, children, isJustNav, homePage }) => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      logo: file(name: { eq: "logo" }) {
-        childImageSharp {
-          fluid(maxWidth: 280) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+
   const [fadeInAdded, setFadeInAdded] = useState(false)
   const [overlayFadeOut, setOverlayFadeOut] = useState(false)
 
@@ -126,17 +115,12 @@ const HeroSection = ({ children, isJustNav, homePage }) => {
   return (
     <>
       <section
-        className={clsx(
-          classes.heroSection,
-          isJustNav && classes.isJustNav
-          // homePage && classes.invisible
-          // fadeInAdded && classes.visible
-        )}
+        className={clsx(classes.heroSection, isJustNav && classes.isJustNav)}
       >
         {!isJustNav && (
-          <StaticImage
-            src='../assets/images/home-page/hero-img-1.jpg'
-            alt='The&Partnership, New York NY'
+          <GatsbyImage
+            image={getImage(heroImgData)}
+            alt={`Company Featured Work`}
             className={classes.heroImg}
           />
         )}
@@ -150,7 +134,7 @@ const HeroSection = ({ children, isJustNav, homePage }) => {
             overlayFadeOut && classes.overlayFadeOut
           )}
         >
-          <CenteredLogo logoFluid={data.logo.childImageSharp.fluid} />
+          <CenteredLogo />
         </div>
       )}
     </>

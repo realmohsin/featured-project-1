@@ -1,4 +1,5 @@
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import aboutTraditionBg from '../../assets/images/about-page/about-tradition-bg.jpg'
@@ -7,11 +8,19 @@ import ThemedContentBox from '../ThemedContentBox'
 const useStyles = makeStyles(theme => ({
   traditionSection: {
     paddingTop: '21rem',
-    backgroundImage: `url(${aboutTraditionBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${aboutTraditionBg})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     height: '96.3rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       height: '90rem'
     },
@@ -27,6 +36,9 @@ const useStyles = makeStyles(theme => ({
       height: '95rem'
     }
   },
+  bgImg: {
+    zIndex: -10
+  },
   extraThemedBox: {
     [theme.breakpoints.down('md')]: {
       margin: 'auto'
@@ -39,6 +51,10 @@ const TraditionSection = props => {
 
   return (
     <section className={classes.traditionSection}>
+      <StaticImage
+        src='../../assets/images/about-page/about-tradition-bg.jpg'
+        className={classes.bgImg}
+      />
       <Container>
         <Grid container>
           <Grid item xs={12} sm={12} md={12} lg={6}>
