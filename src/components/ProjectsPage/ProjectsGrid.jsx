@@ -151,14 +151,14 @@ const ProjectsGrid = props => {
           )
           return (
             <Grid item xs={12} md={4} className={classes.gridItem}>
-              <Img
-                fluid={
-                  data[changeFileNameToKey(project.imgName)].childImageSharp
-                    .fluid
-                }
-                className={classes.projectImg}
-              />
-              <Link to='/' className={classes.projectTitle}>
+              <Link to={`/${project.slug}`} className={classes.projectTitle}>
+                <Img
+                  fluid={
+                    data[changeFileNameToKey(project.imgName)].childImageSharp
+                      .fluid
+                  }
+                  className={classes.projectImg}
+                />
                 <h3>{project.name}</h3>
               </Link>
               <div className={classes.overlay} />

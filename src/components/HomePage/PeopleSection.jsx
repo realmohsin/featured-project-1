@@ -1,21 +1,23 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
-import BackgroundImage from 'gatsby-background-image'
 import Slider from 'react-slick'
 import Button from '../Button'
 import ThemedContentBox from '../ThemedContentBox'
-import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
   peopleSection: {
     height: '70.1rem',
-    backgroundImage: `url(${sectionBg1})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
     padding: '13rem 0',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('md')]: {
       height: '150rem'
     },
@@ -24,9 +26,10 @@ const useStyles = makeStyles(theme => ({
       height: '140rem'
     }
   },
-  gridContainer: {
-    // marginTop: '20rem'
+  bgImg: {
+    zIndex: -10
   },
+  gridContainer: {},
   leftSide: {
     paddingTop: '4rem'
   },
@@ -38,20 +41,16 @@ const useStyles = makeStyles(theme => ({
   },
   aboutTitle: {
     ...theme.custom.title2
-    // textShadow: 'black 0px 0px 3px'
   },
   paragraph: {
-    // textShadow: 'black 0px 0px 5px',
     '&:first-of-type::before': {
       ...theme.custom.themedArrowForBefore,
       transform: 'translateY(1.9rem)'
     }
   },
   slider: {
-    // height: '56rem'
     cursor: 'move' /* fallback if grab cursor is unsupported */,
     cursor: 'grab',
-    // overflow: 'visible',
     '&:active': {
       cursor: 'grabbing'
     },
@@ -62,7 +61,6 @@ const useStyles = makeStyles(theme => ({
   clientSlide: {
     height: '56rem',
     position: 'relative',
-    // background: 'gray',
     outline: 'none'
   },
   clientImg: {
@@ -79,23 +77,29 @@ const useStyles = makeStyles(theme => ({
     left: '26%',
     width: '38.3rem',
     height: '28.1rem',
-    // background: 'blue',
     padding: '3.5rem',
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     boxShadow: theme.shadows[1],
     zIndex: 10,
-    '&::before': {
-      content: '""',
-      backgroundImage: `url(${sectionBg1})`,
-      backgroundPosition: 'top right',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+    '& > .gatsby-image-wrapper-constrained': {
       position: 'absolute',
-      zIndex: -1,
-      opacity: 0.75
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
     },
+    // '&::before': {
+    //   content: '""',
+    //   backgroundImage: `url(${sectionBg1})`,
+    //   backgroundPosition: 'top right',
+    //   top: 0,
+    //   left: 0,
+    //   right: 0,
+    //   bottom: 0,
+    //   position: 'absolute',
+    //   zIndex: -1,
+    //   opacity: 0.75
+    // },
     [theme.breakpoints.down('md')]: {
       left: '16%'
     },
@@ -115,7 +119,6 @@ const useStyles = makeStyles(theme => ({
   },
   clientName: {
     fontWeight: 'bold'
-    // marginBottom: '.2rem'
   },
   extraThemedBox: {
     [theme.breakpoints.down('md')]: {
@@ -131,38 +134,6 @@ const useStyles = makeStyles(theme => ({
 
 const PeopleSection = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      sectionBg: file(name: { eq: "section-bg-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 2732, maxHeight: 1632) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      client1: file(name: { eq: "client-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      client2: file(name: { eq: "client-2" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      client3: file(name: { eq: "client-3" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   const settings = {
     dots: false,
@@ -176,32 +147,16 @@ const PeopleSection = props => {
   }
 
   return (
-    // <BackgroundImage
-    //   Tag='section'
-    //   className={classes.peopleSection}
-    //   fluid={data.sectionBg.childImageSharp.fluid}
-    // >
     <section className={classes.peopleSection}>
+      <StaticImage
+        src='../../assets/images/common/section-bg-1.jpg'
+        alt='section background'
+        className={classes.bgImg}
+        objectPosition='top right'
+      />
       <Container className={classes.container}>
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.leftSide} xs={12} lg={6}>
-            {/* <div className={classes.contentBox}>
-              <Typography variant='h2' className={classes.aboutTitle}>
-                Building Epic Things Requires Extraordinary People.
-              </Typography>
-              <Typography
-                variant='body1'
-                gutterBottom
-                className={classes.paragraph}
-              >
-                The people of Schimenti are our most valuable and important
-                resource. They possess an energy and dedication that permeates
-                the entire company. We call it The Cheetah Factor, and it is
-                visible every day as our people overcome challenges, create
-                inventive solutions, and build strong relationships with each
-                other and our clients.
-              </Typography>
-            </div> */}
             <ThemedContentBox
               title={<>Building Epic Things Requires Extraordinary People.</>}
               extraClass={classes.extraThemedBox}
@@ -225,12 +180,18 @@ const PeopleSection = props => {
           <Grid item className={classes.rightSide} xs={12} lg={6}>
             <Slider {...settings} className={classes.slider}>
               <div className={classes.clientSlide}>
-                <Img
-                  fluid={data.client1.childImageSharp.fluid}
-                  alt='Client 1'
+                <StaticImage
+                  src='../../assets/images/home-page/client-1.jpg'
+                  alt='Client One'
                   className={classes.clientImg}
                 />
                 <div className={classes.quoteBox}>
+                  <StaticImage
+                    src='../../assets/images/common/section-bg-1.jpg'
+                    alt='section background'
+                    className={classes.bgImg}
+                    objectPosition='top right'
+                  />
                   <Typography
                     variant='body1'
                     gutterBottom
@@ -254,12 +215,18 @@ const PeopleSection = props => {
               </div>
 
               <div className={classes.clientSlide}>
-                <Img
-                  fluid={data.client2.childImageSharp.fluid}
-                  alt='Client 2'
+                <StaticImage
+                  src='../../assets/images/home-page/client-2.jpg'
+                  alt='Client Two'
                   className={classes.clientImg}
                 />
                 <div className={classes.quoteBox}>
+                  <StaticImage
+                    src='../../assets/images/common/section-bg-1.jpg'
+                    alt='section background'
+                    className={classes.bgImg}
+                    objectPosition='top right'
+                  />
                   <Typography
                     variant='body1'
                     gutterBottom
@@ -283,12 +250,18 @@ const PeopleSection = props => {
               </div>
 
               <div className={classes.clientSlide}>
-                <Img
-                  fluid={data.client3.childImageSharp.fluid}
-                  alt='Client 3'
+                <StaticImage
+                  src='../../assets/images/home-page/client-3.jpg'
+                  alt='Client Three'
                   className={classes.clientImg}
                 />
                 <div className={classes.quoteBox}>
+                  <StaticImage
+                    src='../../assets/images/common/section-bg-1.jpg'
+                    alt='section background'
+                    className={classes.bgImg}
+                    objectPosition='top right'
+                  />
                   <Typography
                     variant='body1'
                     gutterBottom

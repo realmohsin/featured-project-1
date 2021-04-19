@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -63,17 +63,6 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      logo: file(name: { eq: "logo" }) {
-        childImageSharp {
-          fluid(maxWidth: 280) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   const isActive = ({ isCurrent }) => {
     return isCurrent
@@ -123,7 +112,11 @@ const Navbar = props => {
           </li>
         </ul>
         <div className={classes.logoContainer}>
-          <Img fluid={data.logo.childImageSharp.fluid} alt='Schimenti Logo' />
+          <StaticImage
+            src='../assets/images/common/logo.png'
+            alt='Schimenti Logo'
+            placeholder='none'
+          />
         </div>
       </nav>
     </div>

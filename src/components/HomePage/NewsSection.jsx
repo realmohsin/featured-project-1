@@ -1,10 +1,9 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Typography } from '@material-ui/core'
-import BackgroundImage from 'gatsby-background-image'
 import Slider from 'react-slick'
 
 const useStyles = makeStyles(theme => ({
@@ -90,73 +89,6 @@ const useStyles = makeStyles(theme => ({
 
 const NewsSection = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      sectionBg: file(name: { eq: "section-bg-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 2732, maxHeight: 1632) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news1: file(name: { eq: "news-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news2: file(name: { eq: "news-2" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news3: file(name: { eq: "news-3" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news4: file(name: { eq: "news-4" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news5: file(name: { eq: "news-5" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news6: file(name: { eq: "news-6" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news7: file(name: { eq: "news-7" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      news8: file(name: { eq: "news-8" }) {
-        childImageSharp {
-          fluid(maxWidth: 800, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   const lessThan1550 = useMediaQuery('(max-width:1550px)')
   const lessThan1100 = useMediaQuery('(max-width:1100px)')
@@ -187,19 +119,22 @@ const NewsSection = props => {
       </Typography>
       <Slider {...settings} className={classes.slider}>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news1.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-1.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
+
           <Link to='/' className={classes.slideTitle}>
             Repositioning the Retail Market
           </Link>
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news2.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-2.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -209,8 +144,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news3.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-3.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -220,8 +156,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news4.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-4.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -231,8 +168,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news5.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-5.png'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -242,8 +180,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news6.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-6.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -253,8 +192,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news7.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-7.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />
@@ -264,8 +204,9 @@ const NewsSection = props => {
           <div className={classes.slideOverlay} />
         </div>
         <div className={classes.slide}>
-          <Img
-            fluid={data.news8.childImageSharp.fluid}
+          <StaticImage
+            src='../../assets/images/home-page/news-8.jpg'
+            alt='section background'
             className={classes.slideImg}
             id='slide-img'
           />

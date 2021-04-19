@@ -1,9 +1,8 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Hidden, Typography } from '@material-ui/core'
 import { Link } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
 import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
@@ -38,18 +37,25 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'rgba(255, 255, 255, 0.87)',
     zIndex: 10,
     position: 'relative',
-    '&::before': {
-      content: '""',
-      backgroundImage: `url(${sectionBg1})`,
-      backgroundPosition: 'top right',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+    '& > div:first-child': {
       position: 'absolute',
-      zIndex: -1,
-      opacity: 0.45
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
     },
+    // '&::before': {
+    //   content: '""',
+    //   backgroundImage: `url(${sectionBg1})`,
+    //   backgroundPosition: 'top right',
+    //   top: 0,
+    //   left: 0,
+    //   right: 0,
+    //   bottom: 0,
+    //   position: 'absolute',
+    //   zIndex: -1,
+    //   opacity: 0.45
+    // },
     [theme.breakpoints.down('sm')]: {
       margin: '-8rem auto',
       backgroundColor: 'rgba(255, 255, 255, 0.98)'
@@ -58,6 +64,9 @@ const useStyles = makeStyles(theme => ({
       padding: '3rem 2rem',
       width: '80%'
     }
+  },
+  infoBg: {
+    zIndex: -10
   },
   logoImg: {
     width: '15rem',
@@ -94,7 +103,6 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedProject = ({
   featuredProject: {
-    bigImgName,
     bigImgFluid,
     smallImgFluid,
     logoImgFluid,
@@ -110,30 +118,34 @@ const FeaturedProject = ({
       <Grid container>
         <Grid item xs={12} md={8} className={classes.imgSide}>
           <div className={classes.bigImgContainer}>
-            <Img
-              fluid={bigImgFluid}
-              className={classes.bigImg}
+            <GatsbyImage
+              image={bigImgFluid}
               alt={`View of ${companyName} project`}
+              className={classes.bigImg}
             />
-            {/* <img src={bigImg3} className={classes.bigImg} /> */}
           </div>
           <Hidden smDown>
             <div className={classes.smallImgContainer}>
-              <Img
-                fluid={smallImgFluid}
-                className={classes.smallImg}
+              <GatsbyImage
+                image={smallImgFluid}
                 alt={`View of ${companyName} project`}
+                className={classes.smallImg}
               />
             </div>
           </Hidden>
         </Grid>
         <Grid item xs={12} md={4} className={classes.infoSide}>
-          {/* <BackgroundImage Tag='div' className={classes.info} fluid={bg2Fluid}> */}
           <div className={classes.info}>
-            <Img
-              fluid={logoImgFluid}
+            <StaticImage
+              src='../../assets/images/common/section-bg-1.jpg'
+              className={classes.infoBg}
+              alt='Info Background'
+              objectPosition='top right'
+            />
+            <GatsbyImage
+              image={logoImgFluid}
+              alt={`View of ${companyName} project`}
               className={classes.logoImg}
-              alt={`${companyName} logo`}
             />
             <Typography
               variant='body1'
@@ -154,7 +166,6 @@ const FeaturedProject = ({
               View Project
             </Link>
           </div>
-          {/* </BackgroundImage> */}
         </Grid>
       </Grid>
     </article>

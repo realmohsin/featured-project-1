@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+import { StaticImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Hidden } from '@material-ui/core'
-import BackgroundImage from 'gatsby-background-image'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -16,11 +16,18 @@ import '../../styles/slick-arrows.css'
 const useStyles = makeStyles(theme => ({
   projectSection: {
     height: '100rem',
-    backgroundImage: `url(${sectionBg1})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${sectionBg1})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     padding: '16.5rem 6rem',
     position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('md')]: {
       height: '125rem'
     },
@@ -28,6 +35,9 @@ const useStyles = makeStyles(theme => ({
       padding: '14rem 0',
       height: '90rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   slider: {
     height: '80rem',
@@ -82,107 +92,64 @@ const ProjectSection = props => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
-      sectionBg: file(name: { eq: "section-bg-1" }) {
-        childImageSharp {
-          fluid(maxWidth: 2732, maxHeight: 1632) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       featured1Big: file(name: { eq: "featured-1-big" }) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured1Small: file(name: { eq: "featured-1-small" }) {
         childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured1Logo: file(name: { eq: "featured-1-logo" }) {
         childImageSharp {
-          fluid(maxWidth: 178) {
-            ...GatsbyImageSharpFluid
-          }
-          # fixed(width: 178) {
-          #   ...GatsbyImageSharpFixed
-          # }
+          gatsbyImageData
         }
       }
       featured2Big: file(name: { eq: "featured-2-big" }) {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured2Small: file(name: { eq: "featured-2-small" }) {
         childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured2Logo: file(name: { eq: "featured-2-logo" }) {
         childImageSharp {
-          fluid(maxWidth: 220) {
-            ...GatsbyImageSharpFluid
-          }
-          # fixed(width: 220) {
-          #   ...GatsbyImageSharpFixed
-          # }
+          gatsbyImageData
         }
       }
       featured3Big: file(name: { eq: "featured-3-big" }) {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured3Small: file(name: { eq: "featured-3-small" }) {
         childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured3Logo: file(name: { eq: "featured-3-logo" }) {
         childImageSharp {
-          fluid(maxWidth: 180) {
-            ...GatsbyImageSharpFluid
-          }
-          # fixed(width: 180) {
-          #   ...GatsbyImageSharpFixed
-          # }
+          gatsbyImageData
         }
       }
       featured4Big: file(name: { eq: "featured-4-big" }) {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured4Small: file(name: { eq: "featured-4-small" }) {
         childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       featured4Logo: file(name: { eq: "featured-4-logo" }) {
         childImageSharp {
-          fluid(maxWidth: 154) {
-            ...GatsbyImageSharpFluid
-          }
-          # fixed(width: 154) {
-          #   ...GatsbyImageSharpFixed
-          # }
+          gatsbyImageData
         }
       }
     }
@@ -200,27 +167,31 @@ const ProjectSection = props => {
   }
 
   return (
-    // <BackgroundImage
-    //   Tag='section'
-    //   className={classes.projectSection}
-    //   fluid={data.sectionBg.childImageSharp.fluid}
-    // >
     <section className={classes.projectSection}>
+      <StaticImage
+        src='../../assets/images/common/section-bg-1.jpg'
+        alt='section background'
+        className={classes.bgImg}
+        objectPosition='top right'
+      />
       <Slider {...settings} className={classes.slider}>
         {featuredProjectsData
           .map(featuredProject => {
             // adding childImageSharps to raw data first
             return {
               ...featuredProject,
-              bigImgFluid:
+              bigImgFluid: getImage(
                 data[changeFileNameToKey(featuredProject.bigImgName)]
-                  .childImageSharp.fluid,
-              smallImgFluid:
+                  .childImageSharp
+              ),
+              smallImgFluid: getImage(
                 data[changeFileNameToKey(featuredProject.smallImgName)]
-                  .childImageSharp.fluid,
-              logoImgFluid:
+                  .childImageSharp
+              ),
+              logoImgFluid: getImage(
                 data[changeFileNameToKey(featuredProject.logoImgName)]
-                  .childImageSharp.fluid
+                  .childImageSharp
+              )
             }
           })
           .map(featuredProject => (
@@ -231,7 +202,6 @@ const ProjectSection = props => {
         <Button isLink text='Featured Projects' extraClass={classes.button} />
       </Hidden>
     </section>
-    // </BackgroundImage>
   )
 }
 

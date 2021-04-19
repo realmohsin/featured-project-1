@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
-import BackgroundImage from 'gatsby-background-image'
 import { Parallax } from 'react-parallax'
 import parallaxBg from '../../assets/images/home-page/parallax-bg.jpg'
 import Button from '../Button'
@@ -41,11 +40,6 @@ const AboutSection = props => {
   const classes = useStyles()
 
   return (
-    // <BackgroundImage
-    //   Tag='section'
-    //   className={classes.aboutSection}
-    //   fluid={data.aboutBg.childImageSharp.fluid}
-    // ></BackgroundImage>
     <section className={classes.aboutSection}>
       <Parallax
         strength={300}

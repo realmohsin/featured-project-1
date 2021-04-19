@@ -1,18 +1,21 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography, Hidden } from '@material-ui/core'
-import BackgroundImage from 'gatsby-background-image'
-import footerBg from '../assets/images/common/footer-bg.jpg'
 import { FaFacebookF, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
   footer: {
     height: '66rem',
-    backgroundImage: `url(${footerBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     color: theme.palette.common.gray1,
     padding: '16rem 0',
     [theme.breakpoints.down('sm')]: {
@@ -22,6 +25,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       height: '100rem'
     }
+  },
+  footerBg: {
+    zIndex: -10
   },
   topDiv: {
     display: 'flex',
@@ -121,32 +127,13 @@ const useStyles = makeStyles(theme => ({
 
 const Footer = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      footerBg: file(name: { eq: "footer-bg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2400, maxHeight: 1212) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      logo: file(name: { eq: "logo" }) {
-        childImageSharp {
-          fluid(maxWidth: 280) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
-    // <BackgroundImage
-    //   Tag='section'
-    //   className={classes.footer}
-    //   fluid={data.footerBg.childImageSharp.fluid}
-    // >
     <section className={classes.footer}>
+      <StaticImage
+        src='../assets/images/common/footer-bg.jpg'
+        className={classes.footerBg}
+      />
       <Container>
         <div className={classes.topDiv}>
           <Hidden smDown>
@@ -160,7 +147,11 @@ const Footer = props => {
             </div>
           </Hidden>
           <div className={classes.logoContainer}>
-            <Img fluid={data.logo.childImageSharp.fluid} alt='logo' />
+            <StaticImage
+              src='../assets/images/common/logo.png'
+              alt='Logo'
+              placeholder='none'
+            />
           </div>
         </div>
         <Grid container className={classes.gridContainer}>

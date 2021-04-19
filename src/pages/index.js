@@ -11,7 +11,7 @@ import HeroContent from '../components/HeroContent'
 export default function Home ({ data }) {
   return (
     <Layout>
-      <HeroSection heroBgFluid={data.hero1.childImageSharp.fluid} homePage>
+      <HeroSection homePage>
         <HeroContent
           subtitle='The&Partnership / New York NY'
           title='A Modern Approach to Thinking Outside the Box'
@@ -26,36 +26,3 @@ export default function Home ({ data }) {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    hero1: file(name: { eq: "hero-img-1" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    # featured1Big: file(name: { eq: "featured-1-big" }) {
-    #   childImageSharp {
-    #     fluid(maxWidth: 1000, maxHeight: 573) {
-    #       ...GatsbyImageSharpFluid
-    #     }
-    #   }
-    # }
-    # featured1Small: file(name: { eq: "featured-1-small" }) {
-    #   childImageSharp {
-    #     fluid(maxWidth: 300, maxHeight: 450) {
-    #       ...GatsbyImageSharpFluid
-    #     }
-    #   }
-    # }
-    # featured1Logo: file(name: { eq: "featured-1-logo" }) {
-    #   childImageSharp {
-    #     fluid(maxWidth: 500, maxHeight: 223) {
-    #       ...GatsbyImageSharpFluid
-    #     }
-    #   }
-    # }
-  }
-`

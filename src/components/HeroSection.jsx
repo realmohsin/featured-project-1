@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 
 // This component is an entire hero section, unless isJustNav prop is used
@@ -10,16 +10,17 @@ const useStyles = makeStyles(theme => ({
   heroSection: {
     height: '94vh',
     position: 'relative',
-    transition: 'all 2s'
+    transition: 'all 2s',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    }
   },
   heroImg: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    height: '100%',
-    width: '100%'
+    zIndex: -10
   },
   isJustNav: {
     height: '20rem',
@@ -89,12 +90,15 @@ const CenteredLogo = ({ logoFluid }) => {
         fadeInAdded && classes.logoPostFade
       )}
     >
-      <Img fluid={logoFluid} alt='Schimenti Logo' />
+      <StaticImage
+        src='../assets/images/common/logo.png'
+        alt='Schimenti Logo'
+      />
     </div>
   )
 }
 
-const HeroSection = ({ heroBgFluid, children, isJustNav, homePage }) => {
+const HeroSection = ({ children, isJustNav, homePage }) => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     query {
@@ -129,10 +133,9 @@ const HeroSection = ({ heroBgFluid, children, isJustNav, homePage }) => {
           // fadeInAdded && classes.visible
         )}
       >
-        {/* <Navbar /> */}
         {!isJustNav && (
-          <Img
-            fluid={heroBgFluid}
+          <StaticImage
+            src='../assets/images/home-page/hero-img-1.jpg'
             alt='The&Partnership, New York NY'
             className={classes.heroImg}
           />

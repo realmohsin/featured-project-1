@@ -2,13 +2,13 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from '../components/Layout'
-import HeroSection from '../components/HeroSection'
-import HeroContent from '../components/HeroContent'
-import PhilosophySection from '../components/AboutPage/PhilosophySection'
-import TraditionSection from '../components/AboutPage/TraditionSection'
-import TeamSection from '../components/AboutPage/TeamSection'
-import SnapshotSection from '../components/AboutPage/SnapshotSection'
-import PartnersSection from '../components/AboutPage/PartnersSection'
+// import HeroSection from '../components/HeroSection'
+// import HeroContent from '../components/HeroContent'
+// import PhilosophySection from '../components/AboutPage/PhilosophySection'
+// import TraditionSection from '../components/AboutPage/TraditionSection'
+// import TeamSection from '../components/AboutPage/TeamSection'
+// import SnapshotSection from '../components/AboutPage/SnapshotSection'
+// import PartnersSection from '../components/AboutPage/PartnersSection'
 import { Hidden } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +25,7 @@ export default function AboutPage ({ data }) {
 
   return (
     <Layout>
-      <HeroSection heroBgFluid={data.aboutHeroBg.childImageSharp.fluid}>
+      {/* <HeroSection heroBgFluid={data.aboutHeroBg.childImageSharp.fluid}>
         <HeroContent
           subtitle="It's More Than Construction"
           title='Focused on customer experience, founded on a passion for excellence and timeliness, all to provide the highest quality of service to our clients.'
@@ -40,10 +40,7 @@ export default function AboutPage ({ data }) {
         <SnapshotSection />
       </Hidden>
       <TeamSection />
-      {/* <Hidden xsDown>
-        <CommunitySection />
-      </Hidden> */}
-      <TraditionSection />
+      <TraditionSection /> */}
     </Layout>
   )
 }
