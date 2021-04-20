@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery, navigate } from 'gatsby'
+import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Img from 'gatsby-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     border: `2px solid ${theme.palette.secondary.main}`,
     position: 'relative',
     overflow: 'hidden',
+    cursor: 'pointer',
     '&:hover > div': {
       backgroundColor: 'rgba(0,0,0,0)'
     },
@@ -55,86 +57,62 @@ const ProjectsGrid = props => {
     query {
       primark: file(name: { eq: "primark" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       massimoDutti: file(name: { eq: "massimo-dutti" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(height: 397)
         }
       }
       samsung: file(name: { eq: "samsung" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 631)
         }
       }
       nike: file(name: { eq: "nike" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       hm: file(name: { eq: "hm" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       krispyKreme: file(name: { eq: "krispy-kreme" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       jdSports: file(name: { eq: "jd-sports" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(height: 397)
         }
       }
       lidl: file(name: { eq: "lidl" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(height: 397)
         }
       }
       filson: file(name: { eq: "filson" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 631)
         }
       }
       mcdonalds: file(name: { eq: "mcdonalds" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
       cmxCinebistro: file(name: { eq: "cmx-cinebistro" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 631)
         }
       }
       schimentiHq: file(name: { eq: "schimenti-hq" }) {
         childImageSharp {
-          fluid(maxWidth: 631, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
     }
@@ -150,15 +128,27 @@ const ProjectsGrid = props => {
             changeFileNameToKey(project.imgName)
           )
           return (
-            <Grid item xs={12} md={4} className={classes.gridItem}>
-              <Link to={`/${project.slug}`} className={classes.projectTitle}>
-                <Img
+            <Grid
+              item
+              xs={12}
+              md={4}
+              className={classes.gridItem}
+              onClick={() => navigate(`/${project.slug}`)}
+            >
+              <GatsbyImage
+                image={getImage(
+                  data[changeFileNameToKey(project.imgName)].childImageSharp
+                )}
+                className={classes.projectImg}
+              />
+              {/* <Img
                   fluid={
                     data[changeFileNameToKey(project.imgName)].childImageSharp
                       .fluid
                   }
                   className={classes.projectImg}
-                />
+                /> */}
+              <Link to={`/${project.slug}`} className={classes.projectTitle}>
                 <h3>{project.name}</h3>
               </Link>
               <div className={classes.overlay} />
