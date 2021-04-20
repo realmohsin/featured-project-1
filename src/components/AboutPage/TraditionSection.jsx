@@ -2,15 +2,11 @@ import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
-import aboutTraditionBg from '../../assets/images/about-page/about-tradition-bg.jpg'
 import ThemedContentBox from '../ThemedContentBox'
 
 const useStyles = makeStyles(theme => ({
   traditionSection: {
     paddingTop: '21rem',
-    // backgroundImage: `url(${aboutTraditionBg})`,
-    // backgroundSize: 'cover',
-    // backgroundPosition: '0% 0%',
     height: '96.3rem',
     color: 'white',
     position: 'relative',

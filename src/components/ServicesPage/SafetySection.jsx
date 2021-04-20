@@ -1,24 +1,33 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
 import { IoMdArrowDropright } from 'react-icons/io'
-import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
   safetySection: {
     padding: '14rem 0 19rem',
-    backgroundImage: `url(${sectionBg1})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${sectionBg1})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '12rem 0 15rem'
     },
     [theme.breakpoints.down('xs')]: {
       padding: '10rem 0 9rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   safetyItem: {
     marginBottom: '0.4rem',
@@ -60,20 +69,15 @@ const useStyles = makeStyles(theme => ({
 
 const SafetySection = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      servicesSafety: file(name: { eq: "services-safety" }) {
-        childImageSharp {
-          fluid(maxWidth: 300, maxHeight: 176, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <section className={classes.safetySection}>
+      <StaticImage
+        src='../../assets/images/common/section-bg-1.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <Grid container>
           <Grid item xs={12} md={8} className={classes.leftGridItem}>
@@ -118,10 +122,11 @@ const SafetySection = props => {
           </Grid>
           <Grid item xs={12} md={4} className={classes.rightGridItem}>
             <div className={classes.safetyImgContainer}>
-              <Img
-                fluid={data.servicesSafety.childImageSharp.fluid}
-                alt='Think Safe, Work Safe, Live Safe'
+              <StaticImage
+                src='../../assets/images/services-page/services-safety.png'
                 className={classes.safetyImg}
+                alt='Think Safe, Work Safe, Live Safe'
+                placeholder='none'
               />
             </div>
           </Grid>

@@ -3,7 +3,6 @@ import { StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Hidden, Typography } from '@material-ui/core'
 import { Link } from 'gatsby'
-import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
   featuredProject: {},

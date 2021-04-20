@@ -1,25 +1,34 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
-import videoSafetyBg from '../../assets/images/services-page/video-safety-bg.jpg'
 import { FaPlay } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
   videoSafetySection: {
     padding: '0rem 0 19rem',
-    backgroundImage: `url(${videoSafetyBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${videoSafetyBg})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     height: '138.4rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       height: '148rem'
     },
     [theme.breakpoints.down('xs')]: {
       height: '150rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridContainer: {
     marginTop: '-7rem',
@@ -157,39 +166,20 @@ const useStyles = makeStyles(theme => ({
 
 const VideoSafetySection = props => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query {
-      videoOverlay: file(name: { eq: "services-video-overlay" }) {
-        childImageSharp {
-          fluid(maxWidth: 2200, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      abc: file(name: { eq: "abc" }) {
-        childImageSharp {
-          fixed(width: 150) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      emr: file(name: { eq: "emr" }) {
-        childImageSharp {
-          fluid(maxWidth: 110, maxHeight: 130, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
 
   return (
     <section className={classes.videoSafetySection}>
+      <StaticImage
+        src='../../assets/images/services-page/video-safety-bg.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <div className={classes.video}>
           <div className={classes.overlayContainer}>
-            <Img
-              fluid={data.videoOverlay.childImageSharp.fluid}
+            <StaticImage
+              src='../../assets/images/services-page/services-video-overlay.jpg'
               alt='Safety Video overlay'
               className={classes.videoOverlay}
             />
@@ -216,9 +206,9 @@ const VideoSafetySection = props => {
           <Grid item className={classes.rightSide} xs={12} md={6}>
             <div className={classes.emrContainer}>
               <div className={classes.emrTitleContainer}>
-                <Img
-                  fluid={data.emr.childImageSharp.fluid}
-                  alt='emr'
+                <StaticImage
+                  src='../../assets/images/services-page/emr.png'
+                  alt='EMR'
                   className={classes.emrImg}
                 />
                 <div>
@@ -241,9 +231,9 @@ const VideoSafetySection = props => {
               </Typography>
             </div>
             <div className={classes.abcContainer}>
-              <Img
-                fixed={data.abc.childImageSharp.fixed}
-                alt='abc'
+              <StaticImage
+                src='../../assets/images/services-page/abc.png'
+                alt='ABC'
                 className={classes.abcImg}
               />
               <Typography variant='body1' className={classes.contentText}>

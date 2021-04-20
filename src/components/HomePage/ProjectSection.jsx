@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import featuredProjectsData from '../../data/featuredProjects'
 import FeaturedProject from './FeaturedProject'
-import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 import Button from '../Button'
 import changeFileNameToKey from '../../utils/changeFileNameToKey'
 import '../../styles/slick-arrows.css'
@@ -195,7 +194,10 @@ const ProjectSection = props => {
             }
           })
           .map(featuredProject => (
-            <FeaturedProject featuredProject={featuredProject} />
+            <FeaturedProject
+              featuredProject={featuredProject}
+              key={featuredProject.companyName}
+            />
           ))}
       </Slider>
       <Hidden xsDown>

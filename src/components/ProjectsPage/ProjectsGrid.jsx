@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link, useStaticQuery, navigate } from 'gatsby'
-import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import projectsList from '../../data/projectsList'

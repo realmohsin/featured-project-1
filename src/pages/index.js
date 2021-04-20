@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { getImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import HeroSection from '../components/HeroSection'
 import ProjectSection from '../components/HomePage/ProjectSection'
