@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
@@ -122,10 +122,15 @@ const ExploreSection = props => {
             <Typography variant='h3' className={classes.title}>
               Explore Careers
             </Typography>
-            <Img
-              fluid={data.explore1.childImageSharp.fluid}
+            <StaticImage
+              src='../../assets/images/careers-page/explore-1.jpg'
+              alt='Explore'
               className={classes.exploreCareersImg}
             />
+            {/* <Img
+              fluid={data.explore1.childImageSharp.fluid}
+              className={classes.exploreCareersImg}
+            /> */}
             <ThemedContentBox
               title='Beginning Your Career in Construction'
               extraClass={classes.extraThemedBox}
@@ -155,10 +160,15 @@ const ExploreSection = props => {
             <Typography variant='h3' className={classes.title}>
               Connect with our Recruiter
             </Typography>
-            <Img
-              fluid={data.explore2.childImageSharp.fluid}
+            <StaticImage
+              src='../../assets/images/careers-page/explore-2.jpg'
+              alt='Explore'
               className={classes.recruiterImg}
             />
+            {/* <Img
+              fluid={data.explore2.childImageSharp.fluid}
+              className={classes.recruiterImg}
+            /> */}
             <Typography variant='body1' className={classes.joinMessage}>
               Join Our Team of Dynamic and Talented Professionals
             </Typography>

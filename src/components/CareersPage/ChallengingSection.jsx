@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography, Hidden } from '@material-ui/core'
 import Button from '../Button'
@@ -10,9 +10,17 @@ import sectionBg2 from '../../assets/images/common/section-bg-2.jpg'
 const useStyles = makeStyles(theme => ({
   challengingSection: {
     padding: '10rem 0 30rem',
-    backgroundImage: `url(${sectionBg2})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${sectionBg2})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('md')]: {
       paddingBottom: '22rem'
     },
@@ -23,6 +31,9 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: '6rem',
       paddingTop: '8rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridContainer: {
     marginBottom: '6rem',
@@ -135,16 +146,26 @@ const ChallengingSection = props => {
 
   return (
     <section className={classes.challengingSection}>
+      <StaticImage
+        src='../../assets/images/common/section-bg-2.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <Typography variant='h2' className={classes.title}>
           CHALLENGING TOMORROW’S LEADERS
         </Typography>
         <Grid container className={classes.gridContainer}>
           <Grid item xs={12} md={5} lg={3} className={classes.gridItemImg}>
-            <Img
-              fluid={data.challenging1.childImageSharp.fluid}
+            <StaticImage
+              src='../../assets/images/careers-page/challenging-1.png'
               className={classes.challengeImg}
             />
+            {/* <Img
+              fluid={data.challenging1.childImageSharp.fluid}
+              className={classes.challengeImg}
+            /> */}
           </Grid>
           <Grid item xs={12} md={7} lg={9} className={classes.gridItemQuote}>
             <div>
@@ -203,23 +224,34 @@ const ChallengingSection = props => {
               />
             </Grid>
             <Grid item xs={12} md={5} lg={3}>
-              <Img
-                fluid={data.challenging2.childImageSharp.fluid}
+              <StaticImage
+                src='../../assets/images/careers-page/challenging-2.jpg'
                 className={clsx(
                   classes.challengeImg,
                   classes.rightChallengeImg
                 )}
               />
+              {/* <Img
+                fluid={data.challenging2.childImageSharp.fluid}
+                className={clsx(
+                  classes.challengeImg,
+                  classes.rightChallengeImg
+                )}
+              /> */}
             </Grid>
           </Grid>
         </Hidden>
 
         <Grid container className={classes.gridContainer}>
           <Grid item xs={12} md={5} lg={3} className={classes.gridItemImg}>
-            <Img
-              fluid={data.challenging3.childImageSharp.fluid}
+            <StaticImage
+              src='../../assets/images/careers-page/challenging-3.png'
               className={classes.challengeImg}
             />
+            {/* <Img
+              fluid={data.challenging3.childImageSharp.fluid}
+              className={classes.challengeImg}
+            /> */}
           </Grid>
           <Grid item xs={12} md={7} lg={9} className={classes.gridItemQuote}>
             <div>

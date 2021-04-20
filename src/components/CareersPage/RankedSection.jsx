@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
@@ -105,11 +105,16 @@ const RankedSection = props => {
             </ThemedContentBox>
           </Grid>
           <Grid item xs={12} md={4} className={classes.topRightSide}>
-            <Img
+            {/* <StaticImage
+              src='../../assets/images/careers-page/quote-bubble.png'
+              alt='quote'
+              className={classes.quoteImg}
+            /> */}
+            {/* <Img
               fluid={data.quote.childImageSharp.fluid}
               alt='quote'
               className={classes.quoteImg}
-            />
+            /> */}
           </Grid>
         </Grid>
         <Grid container className={classes.statGridContainer}>

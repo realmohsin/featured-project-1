@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   heroSection: {
+    overflowY: 'hidden',
     height: '94vh',
     position: 'relative',
     transition: 'all 2s',

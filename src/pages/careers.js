@@ -2,12 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { makeStyles } from '@material-ui/core/styles'
 import Layout from '../components/Layout'
-// import HeroSection from '../components/HeroSection'
-// import HeroContent from '../components/HeroContent'
-// import RankedSection from '../components/CareersPage/RankedSection'
-// import ChallengingSection from '../components/CareersPage/ChallengingSection'
-// import CareersVideoSection from '../components/CareersPage/CareersVideoSection'
-// import ExploreSection from '../components/CareersPage/ExploreSection'
+import HeroSection from '../components/HeroSection'
+import HeroContent from '../components/HeroContent'
+import RankedSection from '../components/CareersPage/RankedSection'
+import ChallengingSection from '../components/CareersPage/ChallengingSection'
+import CareersVideoSection from '../components/CareersPage/CareersVideoSection'
+import ExploreSection from '../components/CareersPage/ExploreSection'
 
 const useStyles = makeStyles(theme => ({
   extraHeroContent: {
@@ -23,7 +23,7 @@ export default function AboutPage ({ data }) {
 
   return (
     <Layout>
-      {/* <HeroSection heroBgFluid={data.careersHeroBg.childImageSharp.fluid}>
+      <HeroSection heroImgData={data.careersHeroBg.childImageSharp}>
         <HeroContent
           subtitle='Elevate Your Career'
           title='Cultivating, inspiring and challenging future leaders to overcome boundaries, stretch goals and reach new heights.'
@@ -35,7 +35,7 @@ export default function AboutPage ({ data }) {
       <RankedSection />
       <ChallengingSection />
       <CareersVideoSection />
-      <ExploreSection /> */}
+      <ExploreSection />
     </Layout>
   )
 }
@@ -44,9 +44,7 @@ export const query = graphql`
   query {
     careersHeroBg: file(name: { eq: "careers-hero-bg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000, maxHeight: 1335, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

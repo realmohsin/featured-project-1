@@ -1,9 +1,8 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
-import videoCareersBg from '../../assets/images/careers-page/video-careers-bg.jpg'
 import { FaPlay } from 'react-icons/fa'
 import ThemedContentBox from '../ThemedContentBox'
 import employeeBenefits from '../../data/employeeBenefits'
@@ -12,14 +11,25 @@ import Button from '../Button'
 const useStyles = makeStyles(theme => ({
   careersVideoSection: {
     padding: '0rem 0 19rem',
-    backgroundImage: `url(${videoCareersBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    // backgroundImage: `url(${videoCareersBg})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: '0% 0%',
     height: '138.4rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       height: '146rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridContainer: {
     marginTop: '-7rem',
@@ -184,14 +194,25 @@ const CareersVideoSection = props => {
 
   return (
     <section className={classes.careersVideoSection}>
+      <StaticImage
+        src='../../assets/images/careers-page/video-careers-bg.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <div className={classes.video}>
           <div className={classes.overlayContainer}>
-            <Img
+            <StaticImage
+              src='../../assets/images/careers-page/careers-video-overlay.jpg'
+              alt='Safety Video Overlay'
+              className={classes.videoOverlay}
+            />
+            {/* <Img
               fluid={data.videoOverlay.childImageSharp.fluid}
               alt='Safety Video overlay'
               className={classes.videoOverlay}
-            />
+            /> */}
           </div>
           <div className={classes.playButtonContainer}>
             <FaPlay size='2em' className={classes.playButton} />
