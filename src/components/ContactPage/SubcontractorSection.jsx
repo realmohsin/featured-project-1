@@ -1,4 +1,5 @@
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Container, Typography } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
@@ -13,10 +14,21 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: '0% 0%',
     height: '93.4rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('xs')]: {
       paddingTop: '14rem',
       height: '88rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   extraThemedBox: {
     [theme.breakpoints.down('xs')]: {
@@ -35,6 +47,12 @@ const SubcontractorSection = () => {
 
   return (
     <section className={classes.subcontractorSection}>
+      <StaticImage
+        src='../../assets/images/contact-page/contact-subcontractors-bg.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <Grid container>
           <Grid item xs={0} md={0} lg={6} />

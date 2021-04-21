@@ -7,9 +7,6 @@ import {
   GoogleMap,
   Marker
 } from 'react-google-maps'
-import Map1 from './GoogleMaps/Map1'
-import Map2 from './GoogleMaps/Map2'
-import Map3 from './GoogleMaps/Map3'
 
 // there is no h1 on this page, consider adding (invisible) one
 
