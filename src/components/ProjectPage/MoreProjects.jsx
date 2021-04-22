@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 
@@ -62,8 +62,8 @@ const MoreProjects = ({
         <Grid container>
           <Grid item xs={12} md={4} className={classes.gridItem}>
             <div className={classes.project}>
-              <Img
-                fluid={project1ImgFluid}
+              <GatsbyImage
+                image={getImage(project1ImgFluid)}
                 alt={`${project1Name}`}
                 className={classes.projectImg}
               />
@@ -72,8 +72,8 @@ const MoreProjects = ({
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridItem}>
             <div className={classes.project}>
-              <Img
-                fluid={project2ImgFluid}
+              <GatsbyImage
+                image={getImage(project2ImgFluid)}
                 alt={`${project2Name}`}
                 className={classes.projectImg}
               />
@@ -82,8 +82,8 @@ const MoreProjects = ({
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridItem}>
             <div className={classes.project}>
-              <Img
-                fluid={project3ImgFluid}
+              <GatsbyImage
+                image={getImage(project3ImgFluid)}
                 alt={`${project3Name}`}
                 className={classes.projectImg}
               />

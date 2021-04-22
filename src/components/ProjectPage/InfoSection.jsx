@@ -1,19 +1,26 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Container } from '@material-ui/core'
 import ThemedContentBox from '../ThemedContentBox'
-import sectionBg1 from '../../assets/images/common/section-bg-1.jpg'
 
 const useStyles = makeStyles(theme => ({
   infoSection: {
     padding: '14rem 0 14rem',
-    backgroundImage: `url(${sectionBg1})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0% 0%',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '12rem 0 4rem'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   leftGridItem: {
     paddingRight: '3rem'
@@ -79,6 +86,12 @@ const InfoSection = ({
 
   return (
     <section className={classes.infoSection}>
+      <StaticImage
+        src='../../assets/images/common/section-bg-1.jpg'
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <Grid container>
           <Grid item xs={12} md={6} lg={8} className={classes.leftGridItem}>
@@ -95,8 +108,8 @@ const InfoSection = ({
           </Grid>
           <Grid item xs={12} md={6} lg={4} className={classes.rightGridItem}>
             <div className={classes.rightImgContainer}>
-              <Img
-                fluid={rightImgFluid}
+              <GatsbyImage
+                image={getImage(rightImgFluid)}
                 alt='Think Safe, Work Safe, Live Safe'
                 className={classes.safetyImg}
               />

@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
@@ -9,7 +9,18 @@ const useStyles = makeStyles(theme => ({
   videoSafetySection: {
     padding: '0rem 0 4rem',
     backgroundSize: 'center',
-    color: 'white'
+    color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridContainer: {
     marginTop: '-7rem'
@@ -45,7 +56,9 @@ const useStyles = makeStyles(theme => ({
       transform: 'scale(1.05)'
     }
   },
-  videoOverlay: {},
+  videoOverlay: {
+    height: '100%'
+  },
   playButtonContainer: {
     width: '11rem',
     height: '11rem',
@@ -69,16 +82,24 @@ const ProjectVideoSection = ({ overlayImgFluid, vidSectionBgFluid }) => {
   const classes = useStyles()
 
   return (
-    <BackgroundImage
+    <section className={classes.videoSafetySection}>
+      <GatsbyImage
+        image={getImage(vidSectionBgFluid)}
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
+
+      {/* <BackgroundImage
       Tag='section'
       className={classes.videoSafetySection}
       fluid={vidSectionBgFluid}
-    >
+    > */}
       <Container>
         <div className={classes.video}>
           <div className={classes.overlayContainer}>
-            <Img
-              fluid={overlayImgFluid}
+            <GatsbyImage
+              image={getImage(overlayImgFluid)}
               alt='Safety Video overlay'
               className={classes.videoOverlay}
             />
@@ -88,7 +109,7 @@ const ProjectVideoSection = ({ overlayImgFluid, vidSectionBgFluid }) => {
           </div>
         </div>
       </Container>
-    </BackgroundImage>
+    </section>
   )
 }
 

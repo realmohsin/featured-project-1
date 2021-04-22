@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 
@@ -75,8 +75,8 @@ const ThemedContentBox = ({
       )}
 
       {headerImgFluid && (
-        <Img
-          fluid={headerImgFluid}
+        <GatsbyImage
+          image={getImage(headerImgFluid)}
           alt='Think Safe, Work Safe, Live Safe'
           className={classes.headerImg}
         />

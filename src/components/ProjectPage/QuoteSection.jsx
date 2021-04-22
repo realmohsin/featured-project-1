@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid } from '@material-ui/core'
 
@@ -41,7 +41,8 @@ const QuoteSection = ({ quote, quoter, leftQuoteImgFluid }) => {
       <Container>
         <Grid container className={classes.gridContainer}>
           <Grid item xs={12} md={6} className={classes.leftGridItem}>
-            <Img fluid={leftQuoteImgFluid} alt='Quoter' />
+            <GatsbyImage image={getImage(leftQuoteImgFluid)} alt='Quoter' />
+            {/* <Img fluid={leftQuoteImgFluid} alt='Quoter' /> */}
           </Grid>
           <Grid item xs={12} md={6}>
             <div className={classes.quoteBox}>

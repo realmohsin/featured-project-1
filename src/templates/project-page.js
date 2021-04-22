@@ -12,32 +12,32 @@ import MoreProjects from '../components/ProjectPage/MoreProjects'
 const ProjectPageTemplate = ({ data, pageContext }) => {
   return (
     <Layout>
-      <HeroSection heroBgFluid={data.heroImg.childImageSharp.fluid}>
+      <HeroSection heroImgData={data.heroImg.childImageSharp}>
         <HeroContent
           subtitle={pageContext.hero.subtitle}
           title={pageContext.hero.title}
         />
       </HeroSection>
       <InfoSection
-        logoFluid={data.logoImg.childImageSharp.fluid}
+        logoFluid={data.logoImg.childImageSharp}
         infoParagraphs={pageContext.infoSection.infoParagraphs}
-        rightImgFluid={data.infoRightImg.childImageSharp.fluid}
+        rightImgFluid={data.infoRightImg.childImageSharp}
         squareFt={pageContext.infoSection.squareFt}
         timelineWks={pageContext.infoSection.timelineWks}
         clientSince={pageContext.infoSection.clientSince}
       />
       <ProjectVideoSection
-        overlayImgFluid={data.overlayImg.childImageSharp.fluid}
-        vidSectionBgFluid={data.vidSectionBg.childImageSharp.fluid}
+        overlayImgFluid={data.overlayImg.childImageSharp}
+        vidSectionBgFluid={data.vidSectionBg.childImageSharp}
       />
       <QuoteSection
-        leftQuoteImgFluid={data.leftQuoteImg.childImageSharp.fluid}
+        leftQuoteImgFluid={data.leftQuoteImg.childImageSharp}
         quote={pageContext.quoteSection.quote}
         quoter={pageContext.quoteSection.quoter}
       />
       <NewsSection
-        newsLogoImgFluid={data.newsLogoImg.childImageSharp.fluid}
-        newsBgImgFluid={data.newsBgImg.childImageSharp.fluid}
+        newsLogoImgFluid={data.newsLogoImg.childImageSharp}
+        newsBgImgFluid={data.newsBgImg.childImageSharp}
         newsTitle={pageContext.newsSection.newsTitle}
         newsSubtitle={pageContext.newsSection.newsSubtitle}
         newsParagraph={pageContext.newsSection.newsParagraph}
@@ -48,9 +48,9 @@ const ProjectPageTemplate = ({ data, pageContext }) => {
         project1Name={pageContext.moreProjectsSection.project1Name}
         project2Name={pageContext.moreProjectsSection.project2Name}
         project3Name={pageContext.moreProjectsSection.project3Name}
-        project1ImgFluid={data.project1Img.childImageSharp.fluid}
-        project2ImgFluid={data.project2Img.childImageSharp.fluid}
-        project3ImgFluid={data.project3Img.childImageSharp.fluid}
+        project1ImgFluid={data.project1Img.childImageSharp}
+        project2ImgFluid={data.project2Img.childImageSharp}
+        project3ImgFluid={data.project3Img.childImageSharp}
       />
     </Layout>
   )
@@ -72,79 +72,57 @@ export const query = graphql`
   ) {
     heroImg: file(name: { eq: $heroImgName }) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     logoImg: file(name: { eq: $logoImgName }) {
       childImageSharp {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     infoRightImg: file(name: { eq: $infoRightImgName }) {
       childImageSharp {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     overlayImg: file(name: { eq: $overlayImgName }) {
       childImageSharp {
-        fluid(maxWidth: 1235, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(height: 743)
       }
     }
     vidSectionBg: file(name: { eq: $vidSectionBg }) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     leftQuoteImg: file(name: { eq: $leftQuoteImgName }) {
       childImageSharp {
-        fluid(maxWidth: 550, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     newsLogoImg: file(name: { eq: $newsLogoImgName }) {
       childImageSharp {
-        fluid(maxWidth: 350, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     newsBgImg: file(name: { eq: $newsBgImgName }) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     project1Img: file(name: { eq: $project1ImgName }) {
       childImageSharp {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     project2Img: file(name: { eq: $project2ImgName }) {
       childImageSharp {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     project3Img: file(name: { eq: $project3ImgName }) {
       childImageSharp {
-        fluid(maxWidth: 400, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
   }

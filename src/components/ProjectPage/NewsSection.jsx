@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
 import { Container, Grid, Typography } from '@material-ui/core'
 import BackgroundImage from 'gatsby-background-image'
@@ -10,10 +10,21 @@ const useStyles = makeStyles(theme => ({
     padding: '12rem 0',
     height: '96rem',
     color: 'white',
+    position: 'relative',
+    '& > .gatsby-image-wrapper-constrained': {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    },
     [theme.breakpoints.down('sm')]: {
       height: '85rem',
       padding: '9rem 0'
     }
+  },
+  bgImg: {
+    zIndex: -10
   },
   gridContainer: {
     padding: '12rem 0'
@@ -60,16 +71,18 @@ const NewsSection = ({
   const classes = useStyles()
 
   return (
-    <BackgroundImage
-      Tag='section'
-      className={classes.newsSection}
-      fluid={newsBgImgFluid}
-    >
+    <section className={classes.newsSection}>
+      <GatsbyImage
+        image={getImage(newsBgImgFluid)}
+        alt='Background'
+        className={classes.bgImg}
+        objectPosition='0% 0%'
+      />
       <Container>
         <Grid container className={classes.gridContainer}>
           <Grid item xs={0} md={6}>
-            <Img
-              fluid={newsLogoImgFluid}
+            <GatsbyImage
+              image={getImage(newsLogoImgFluid)}
               alt='News Company Logo'
               className={classes.newsLogo}
             />
@@ -94,7 +107,7 @@ const NewsSection = ({
           </Grid>
         </Grid>
       </Container>
-    </BackgroundImage>
+    </section>
   )
 }
 
