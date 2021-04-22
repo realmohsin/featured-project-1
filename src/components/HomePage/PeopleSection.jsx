@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     '& > .gatsby-image-wrapper-constrained': {
       position: 'absolute',
+      height: '100%',
       top: 0,
       bottom: 0,
       right: 0,
@@ -27,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   bgImg: {
-    zIndex: -10
+    zIndex: -10,
+    height: '100%'
   },
   gridContainer: {},
   leftSide: {

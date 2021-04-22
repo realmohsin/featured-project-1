@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
+import { BgImage } from 'gbimage-bridge'
+import BackgroundImage from 'gatsby-background-image'
 
 // This component is an entire hero section, unless isJustNav prop is used
 
@@ -10,17 +12,10 @@ const useStyles = makeStyles(theme => ({
     overflowY: 'hidden',
     height: '94vh',
     position: 'relative',
-    transition: 'all 2s',
-    '& > .gatsby-image-wrapper-constrained': {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      right: 0,
-      left: 0
-    }
+    transition: 'all 2s'
   },
   heroImg: {
-    zIndex: -10
+    height: '100%'
   },
   isJustNav: {
     height: '20rem',
@@ -93,6 +88,7 @@ const CenteredLogo = ({ logoFluid }) => {
       <StaticImage
         src='../assets/images/common/logo.png'
         alt='Schimenti Logo'
+        placeholder='none'
       />
     </div>
   )
@@ -113,19 +109,21 @@ const HeroSection = ({ heroImgData, children, isJustNav, homePage }) => {
     }
   }, [])
   console.log('overlayFadeOut value: ', overlayFadeOut)
+
+  if (isJustNav) {
+    return <div className={clsx(classes.heroSection, classes.isJustNav)} />
+  }
+
+  const image = getImage()
+
   return (
     <>
-      <section
-        className={clsx(classes.heroSection, isJustNav && classes.isJustNav)}
-      >
-        {!isJustNav && (
-          <GatsbyImage
-            image={getImage(heroImgData)}
-            alt={`Company Featured Work`}
-            className={classes.heroImg}
-          />
-        )}
-
+      <section className={classes.heroSection}>
+        <GatsbyImage
+          image={getImage(heroImgData)}
+          alt='Interior Display'
+          className={classes.heroImg}
+        />
         {children}
       </section>
       {homePage && (
