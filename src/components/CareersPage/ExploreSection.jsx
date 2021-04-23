@@ -161,7 +161,7 @@ const ExploreSection = props => {
               Connect with our Recruiter
             </Typography>
             <StaticImage
-              src='../../assets/images/careers-page/explore-2.jpg'
+              src='../../assets/images/careers-page/explore-2.png'
               alt='Explore'
               className={classes.recruiterImg}
             />
