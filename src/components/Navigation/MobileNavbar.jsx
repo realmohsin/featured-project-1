@@ -7,7 +7,7 @@ import Toggle from './Toggle'
 const useStyles = makeStyles(theme => ({
   mobileNavbar: {
     backgroundColor: theme.palette.secondary.dark,
-    padding: '0.95rem',
+    padding: '0.15rem 0.95rem',
     position: 'fixed',
     top: 0,
     boxShadow: theme.shadows[3],
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   logoContainer: {
     height: '100%',
-    width: '10rem'
+    width: '7.5rem'
   }
 }))
 

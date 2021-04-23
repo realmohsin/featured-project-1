@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
-import { BgImage } from 'gbimage-bridge'
-import BackgroundImage from 'gatsby-background-image'
 
 // This component is an entire hero section, unless isJustNav prop is used
 
@@ -67,7 +65,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const CenteredLogo = ({ logoFluid }) => {
+const CenteredLogo = () => {
   const classes = useStyles()
   const [fadeInAdded, setFadeInAdded] = useState(false)
 

@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { makeStyles, Box } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import CSSTransition from 'react-transition-group/CSSTransition'
-
-import logo from '../../../assets/images/common/logo.png'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const useStyles = makeStyles(theme => ({
   sideDrawer: {
@@ -73,9 +72,13 @@ const useStyles = makeStyles(theme => ({
     paddingRight: '1rem',
     fontWeight: 'normal'
   },
-
+  logoContainer: {
+    paddingTop: '5rem',
+    display: 'flex',
+    justifyContent: 'center'
+  },
   logo: {
-    width: '22rem',
+    width: '15rem',
     margin: '0 auto'
   },
   subMenuUl: {
@@ -119,9 +122,14 @@ const SideDrawer = ({ showing, closeSideDrawer }) => {
       </CSSTransition>
 
       <div className={sideDrawerClasses.join(' ')}>
-        <Box>
-          <img src={logo} alt='logo' className={classes.logo} />
-        </Box>
+        <div className={classes.logoContainer}>
+          <StaticImage
+            src='../../../assets/images/common/logo.png'
+            alt='Logo'
+            className={classes.logo}
+          />
+          {/* <img src={logo} alt='logo' className={classes.logo} /> */}
+        </div>
 
         <nav className={classes.sideDrawerNav}>
           <ul>

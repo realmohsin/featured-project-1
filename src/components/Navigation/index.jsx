@@ -7,13 +7,13 @@ import SideDrawer from './SideDrawer/index.jsx'
 const Navigation = props => {
   const [showingSideDrawer, setShowingSideDrawer] = useState(false)
 
-  useEffect(() => {
-    if (showingSideDrawer) {
-      document.body.style.position = 'fixed'
-    } else {
-      document.body.style.position = 'static'
-    }
-  }, [showingSideDrawer])
+  // useEffect(() => {
+  //   if (showingSideDrawer) {
+  //     document.body.style.position = 'fixed'
+  //   } else {
+  //     document.body.style.position = 'static'
+  //   }
+  // }, [showingSideDrawer])
 
   const toggleSideDrawer = () => {
     setShowingSideDrawer(showingSideDrawer => !showingSideDrawer)
