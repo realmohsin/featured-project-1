@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { makeStyles } from '@material-ui/core/styles'
+import anime from 'animejs'
 
 // This component is an entire hero section, unless isJustNav prop is used
 
@@ -33,56 +34,21 @@ const useStyles = makeStyles(theme => ({
     zIndex: '200',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    transition: 'all 1.5s'
+    alignItems: 'center'
   },
   logoContainer: {
     width: '22rem',
     padding: '1rem',
     opacity: 0,
-    transition: 'all 1.5s'
-  },
-  logoPreFade: {
-    opacity: 0,
-    transform: 'scale(0.5)'
-  },
-  logoPostFade: {
-    opacity: 1,
-    transform: 'scale(1)'
-  },
-  invisible: {
-    opacity: 0,
-    transition: 'all 2s'
-  },
-  visible: {
-    opacity: 1,
-    transition: 'all 2s'
-  },
-  overlayFadeOut: {
-    opacity: 0,
-    zIndex: -100,
-    transition: 'all 1.5s'
+    transform: 'scale(0.1)'
   }
 }))
 
 const CenteredLogo = () => {
   const classes = useStyles()
-  const [fadeInAdded, setFadeInAdded] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFadeInAdded(true)
-    }, 1500)
-  }, [])
 
   return (
-    <div
-      className={clsx(
-        classes.logoContainer,
-        classes.logoPreFade,
-        fadeInAdded && classes.logoPostFade
-      )}
-    >
+    <div id='logo-container' className={classes.logoContainer}>
       <StaticImage
         src='../assets/images/common/logo.png'
         alt='Schimenti Logo'
@@ -95,24 +61,45 @@ const CenteredLogo = () => {
 const HeroSection = ({ heroImgData, children, isJustNav, homePage }) => {
   const classes = useStyles()
 
-  const [fadeInAdded, setFadeInAdded] = useState(false)
-  const [overlayFadeOut, setOverlayFadeOut] = useState(false)
+  const [overlayExists, setOverlayExists] = useState(true)
+
+  const animate = () => {
+    const timeline = anime.timeline({
+      complete: () => setOverlayExists(false)
+    })
+
+    timeline
+      .add({
+        targets: '#logo-container',
+        duration: 3000,
+        easing: 'easeOutQuint',
+        opacity: 1,
+        scale: 1.2
+      })
+      .add({
+        targets: '#logo-container',
+        duration: 1000,
+        easing: 'easeInOutQuart',
+        opacity: 0,
+        scale: 0.5
+      })
+      .add({
+        targets: '#initial-overlay',
+        duration: 1000,
+        easing: 'easeInOutQuart',
+        opacity: 0
+        // scale: 0.1
+      })
+  }
 
   useEffect(() => {
-    if (homePage) {
-      setTimeout(() => {
-        console.log('overlay changed')
-        setOverlayFadeOut(true)
-      }, 3750)
-    }
+    if (isJustNav) return
+    animate()
   }, [])
-  console.log('overlayFadeOut value: ', overlayFadeOut)
 
   if (isJustNav) {
     return <div className={clsx(classes.heroSection, classes.isJustNav)} />
   }
-
-  const image = getImage()
 
   return (
     <>
@@ -124,13 +111,8 @@ const HeroSection = ({ heroImgData, children, isJustNav, homePage }) => {
         />
         {children}
       </section>
-      {homePage && (
-        <div
-          className={clsx(
-            classes.initialOverlay,
-            overlayFadeOut && classes.overlayFadeOut
-          )}
-        >
+      {homePage && overlayExists && (
+        <div id='initial-overlay' className={classes.initialOverlay}>
           <CenteredLogo />
         </div>
       )}

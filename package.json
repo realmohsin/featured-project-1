@@ -1,6 +1,6 @@
 {
-  "name": "rm-template-2",
-  "description": "rm-template-2",
+  "name": "featured-website-1",
+  "description": "2nd Featured Website for realmohsin.com",
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@react-google-maps/api": "^2.1.1",
+    "animejs": "^3.2.1",
     "clsx": "^1.1.1",
     "gatsby": "^2.32.12",
     "gatsby-background-image": "^1.5.2",
