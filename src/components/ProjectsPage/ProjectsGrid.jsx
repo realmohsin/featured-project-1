@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     },
     '&:hover .gatsby-image-wrapper': {
       transform: 'scale(1.02)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      border: 'none',
+      borderBottom: `4px solid ${theme.palette.secondary.main}`
     }
   },
   projectImg: {
@@ -140,13 +144,6 @@ const ProjectsGrid = props => {
                 )}
                 className={classes.projectImg}
               />
-              {/* <Img
-                  fluid={
-                    data[changeFileNameToKey(project.imgName)].childImageSharp
-                      .fluid
-                  }
-                  className={classes.projectImg}
-                /> */}
               <Link to={`/${project.slug}`} className={classes.projectTitle}>
                 <h3>{project.name}</h3>
               </Link>

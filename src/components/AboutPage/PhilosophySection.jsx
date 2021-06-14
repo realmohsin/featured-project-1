@@ -67,7 +67,10 @@ const useStyles = makeStyles(theme => ({
   },
   itemTitle: {
     fontSize: '3.1rem',
-    marginBottom: '1.5rem'
+    marginBottom: '1.5rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.5rem'
+    }
   },
   rightIcon: {
     width: '9.2rem',

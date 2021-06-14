@@ -216,7 +216,7 @@ const ChallengingSection = props => {
               </div>
               <Button
                 isLink
-                text='Explore Project Management Careers'
+                text='Explore Management Careers'
                 extraClass={clsx(
                   classes.buttonExtraClass,
                   classes.buttonOnRight
@@ -273,7 +273,7 @@ const ChallengingSection = props => {
             </div>
             <Button
               isLink
-              text='Explore Project Management Careers'
+              text='Explore Management Careers'
               extraClass={classes.buttonExtraClass}
             />
           </Grid>

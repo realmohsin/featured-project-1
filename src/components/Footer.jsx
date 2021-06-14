@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
       height: '72rem'
     },
     [theme.breakpoints.down('xs')]: {
-      height: '100rem'
+      height: '88rem',
+      padding: '9rem 0 4rem'
     }
   },
   footerBg: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   gridContainer: {
     marginTop: '5rem',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '2rem'
+      marginTop: '0.5rem'
     }
   },
   addressTitle: {
@@ -92,7 +93,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: '12rem'
     },
     [theme.breakpoints.down('xs')]: {
-      margin: '10rem auto 0',
+      margin: '7rem auto 0',
       transform: 'translateX(-1.5rem)'
     }
   },
@@ -111,7 +112,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 'auto',
     fontSize: '1.25rem',
     [theme.breakpoints.down('xs')]: {
-      margin: '7rem auto 0'
+      margin: '3rem auto 0'
     }
   },
   privacyLink: {

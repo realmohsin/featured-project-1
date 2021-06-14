@@ -56,11 +56,14 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold'
   },
   joinMessage: {
-    fontSize: '4.1rem',
+    fontSize: '4rem',
     marginTop: '5rem',
     marginBottom: '6rem',
     fontWeight: 'bold',
-    lineHeight: '1.4'
+    lineHeight: '1.4',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.9rem'
+    }
   },
   rankMessage: {
     marginTop: '5rem',
@@ -73,6 +76,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: '2rem auto 10rem',
       width: '70%'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
     }
   },
   extraThemedBox: {

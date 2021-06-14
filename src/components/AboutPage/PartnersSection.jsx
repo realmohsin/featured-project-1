@@ -29,7 +29,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: '4rem',
-    marginBottom: '9rem'
+    marginBottom: '9rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.8rem',
+      marginBottom: '6rem'
+    }
   },
   gridItem: {
     paddingRight: '3rem'
@@ -43,7 +47,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: '2.1rem',
     fontWeight: 'bold',
     marginBottom: '2rem',
-    letterSpacing: '1px'
+    letterSpacing: '1px',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.9rem'
+    }
   },
   noTitle: {
     fontSize: '2.2rem',
@@ -54,11 +61,11 @@ const useStyles = makeStyles(theme => ({
   },
   listItem: {
     padding: '1.3rem 0 0.75rem',
-    fontSize: '1.3rem',
+    fontSize: '1.4rem',
     borderBottom: '1px solid #3D3F3A',
     color: '#ccc',
     [theme.breakpoints.down('xs')]: {
-      fontSize: '1.2rem',
+      fontSize: '1.4rem',
       padding: '1.2rem 0 0.6rem'
     }
   }

@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('sm')]: {
       padding: '12rem 0 4rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '8rem 0 3rem'
     }
   },
   bgImg: {
@@ -43,7 +46,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   statContainer: {
-    padding: '8rem 0 15rem'
+    padding: '8rem 0 15rem',
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: '4rem'
+    }
   },
   statGridItem: {
     borderLeft: '1px solid #ccc',
@@ -66,6 +72,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     [theme.breakpoints.down('md')]: {
       fontSize: '4rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3rem'
     }
   },
   statLabel: {

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       padding: '11rem 0',
-      height: '140rem'
+      height: '138rem'
     }
   },
   bgImg: {
@@ -35,7 +35,9 @@ const useStyles = makeStyles(theme => ({
   leftSide: {
     paddingTop: '4rem'
   },
-  rightSide: {},
+  rightSide: {
+    marginTop: '-3rem'
+  },
   contentBox: {
     ...theme.custom.themedBorderAndPadding,
     width: '55rem',
@@ -63,15 +65,20 @@ const useStyles = makeStyles(theme => ({
   clientSlide: {
     height: '56rem',
     position: 'relative',
-    outline: 'none'
+    outline: 'none',
+    margin: '0 auto',
+    padding: '0 0.5rem'
   },
   clientImg: {
     width: '30rem',
     height: '39.8rem',
     [theme.breakpoints.down('md')]: {
       margin: '0 auto',
-      width: '35rem'
+      width: '32rem'
     }
+    // [theme.breakpoints.down('xs')]: {
+    //   margin: '0 auto'
+    // }
   },
   quoteBox: {
     position: 'absolute',
@@ -90,30 +97,23 @@ const useStyles = makeStyles(theme => ({
       right: 0,
       left: 0
     },
-    // '&::before': {
-    //   content: '""',
-    //   backgroundImage: `url(${sectionBg1})`,
-    //   backgroundPosition: 'top right',
-    //   top: 0,
-    //   left: 0,
-    //   right: 0,
-    //   bottom: 0,
-    //   position: 'absolute',
-    //   zIndex: -1,
-    //   opacity: 0.75
-    // },
     [theme.breakpoints.down('md')]: {
       left: '16%'
     },
     [theme.breakpoints.down('xs')]: {
       transform: 'scale(0.9)',
-      width: '33rem',
+      width: '32rem',
       height: '32rem',
-      left: '10%'
+      left: 'auto',
+      right: '4%',
+      padding: '2.5rem'
     }
   },
   quoteText: {
-    marginBottom: '2.2rem'
+    marginBottom: '2.2rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.4rem'
+    }
   },
   miniThemeBox: {
     borderLeft: `4px solid ${theme.palette.primary.main}`,
@@ -175,7 +175,7 @@ const PeopleSection = props => {
             <Button
               isLink
               text='More About Us'
-              to='/'
+              to='/about'
               extraClass={classes.extraButtonClass}
             />
           </Grid>

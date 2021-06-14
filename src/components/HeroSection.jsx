@@ -37,10 +37,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   logoContainer: {
-    width: '22rem',
+    width: '14rem',
     padding: '1rem',
     opacity: 0,
-    transform: 'scale(0.1)'
+    transform: 'scale(0.2)'
   }
 }))
 
@@ -71,13 +71,15 @@ const HeroSection = ({ heroImgData, children, isJustNav, homePage }) => {
     timeline
       .add({
         targets: '#logo-container',
-        duration: 3000,
-        easing: 'easeOutQuint',
+        delay: 1000,
+        duration: 2000,
+        easing: 'easeInQuad',
         opacity: 1,
-        scale: 1.2
+        scale: 1.8
       })
       .add({
         targets: '#logo-container',
+        delay: 500,
         duration: 1000,
         easing: 'easeInOutQuart',
         opacity: 0,

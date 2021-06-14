@@ -61,7 +61,8 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       padding: '3rem 2rem',
-      width: '80%'
+      width: '80%',
+      margin: '-9rem auto'
     }
   },
   infoBg: {
@@ -107,7 +108,8 @@ const FeaturedProject = ({
     logoImgFluid,
     companyName,
     quoteText,
-    quoter
+    quoter,
+    url
   }
 }) => {
   const classes = useStyles()
@@ -161,7 +163,7 @@ const FeaturedProject = ({
                 {quoter}
               </Typography>
             </div>
-            <Link to='/' className={classes.viewProjectLink}>
+            <Link to={url} className={classes.viewProjectLink}>
               View Project
             </Link>
           </div>

@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       margin: '3rem 0 8rem'
     },
     [theme.breakpoints.down('xs')]: {
-      margin: '0rem 0 6rem'
+      margin: '0rem 0 0rem'
     }
   },
   quoteImg: {
@@ -50,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '5rem',
     [theme.breakpoints.down('md')]: {
       marginBottom: '4rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: '3rem'
     }
   },
   statPercent: {

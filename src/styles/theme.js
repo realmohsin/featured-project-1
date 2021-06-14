@@ -42,7 +42,7 @@ const theme = createMuiTheme({
             fontSize: '58%'
           },
           '@media (max-width: 600px)': {
-            fontSize: '56%'
+            fontSize: '53%'
           }
         },
         a: {

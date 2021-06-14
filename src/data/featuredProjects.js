@@ -6,7 +6,8 @@ export default [
     quoteText:
       'Amazing effort and countless man hours went into this precision installation and the results truly speak for itself.',
     companyName: 'Filson',
-    quoter: 'Project Manager'
+    quoter: 'Project Manager',
+    url: '/projects/filson'
   },
   {
     bigImgName: 'featured-2-big',
@@ -15,7 +16,8 @@ export default [
     quoteText:
       'This build created a welcoming, dynamic space and an incredible consumer experience.',
     companyName: 'Bank of America',
-    quoter: 'Project Manager'
+    quoter: 'Project Manager',
+    url: '/projects'
   },
   {
     bigImgName: 'featured-3-big',
@@ -24,7 +26,8 @@ export default [
     quoteText:
       "You know you're building something incredibly special when the project includes an interactive basketball court inside a SoHo retail experience.",
     companyName: 'Nike',
-    quoter: 'Project Manager'
+    quoter: 'Project Manager',
+    url: '/projects/nike'
   },
   {
     bigImgName: 'featured-4-big',
@@ -33,6 +36,7 @@ export default [
     quoteText:
       'This location functions as a cultural destination where the public can experience and explore technology just outside of state-of-the-art corporate space.',
     companyName: 'Samsung',
-    quoter: 'Project Executive'
+    quoter: 'Project Executive',
+    url: '/projects/samsung'
   }
 ]

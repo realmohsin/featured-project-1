@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   newsTitle: {
-    fontSize: '1.8rem',
+    fontSize: '1.9rem',
     margin: '3rem 0 7rem',
     paddingLeft: '15rem',
     textTransform: 'uppercase',

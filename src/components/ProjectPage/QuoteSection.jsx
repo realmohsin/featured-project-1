@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('md')]: {
       padding: '0 5rem',
       marginBottom: '4rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '0 1rem'
     }
   },
   quoteBox: {
@@ -25,6 +28,9 @@ const useStyles = makeStyles(theme => ({
     '&::before': {
       ...theme.custom.themedArrowForBefore,
       top: '2rem'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.1rem'
     }
   },
   quoter: {

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       height: '148rem'
     },
     [theme.breakpoints.down('xs')]: {
-      height: '150rem'
+      height: '147rem'
     }
   },
   bgImg: {
@@ -89,7 +89,10 @@ const useStyles = makeStyles(theme => ({
   emrTitle: {
     fontSize: '4.2rem',
     fontWeight: 'bold',
-    marginTop: '1.1rem'
+    marginTop: '1.1rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3.8rem'
+    }
   },
   emrSubTitle: {
     fontSize: '1.6rem',
@@ -129,7 +132,7 @@ const useStyles = makeStyles(theme => ({
       height: '40rem'
     },
     [theme.breakpoints.down('xs')]: {
-      width: '96%',
+      width: '100%',
       height: '26rem'
     }
   },

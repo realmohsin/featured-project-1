@@ -61,10 +61,10 @@ const useStyles = makeStyles(theme => ({
       }
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: '2.6rem !important'
+      fontSize: '2.8rem !important'
     },
     '@media (max-width: 360px)': {
-      fontSize: '2.2rem !important'
+      fontSize: '2.4rem !important'
     }
   },
   button: {

@@ -24,6 +24,11 @@ const useStyles = makeStyles(theme => ({
     '&:hover > #arrow': {
       opacity: 1,
       transform: 'translateX(80%)'
+    },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.1rem',
+      lineHeight: '5rem',
+      padding: ' 0 3.5rem'
     }
   },
   arrow: {

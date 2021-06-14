@@ -15,8 +15,8 @@ export default function Home ({ data }) {
         <HeroContent
           subtitle='The&Partnership / New York NY'
           title='A Modern Approach to Thinking Outside the Box'
-          buttonText='View Project'
-          url='/'
+          buttonText='View Projects'
+          url='/projects'
         />
       </HeroSection>
       <ProjectSection />

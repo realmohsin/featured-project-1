@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     ...theme.custom.title2,
     marginBottom: '1rem',
     [theme.breakpoints.down('xs')]: {
-      fontSize: '3rem'
+      fontSize: '2.8rem'
     }
   },
   subtitle: {

@@ -68,7 +68,7 @@ export const query = graphql`
     $newsBgImgName: String!
     $project1ImgName: String!
     $project2ImgName: String!
-    $project3ImgName: String!
+    $project3ImgName: String! 
   ) {
     heroImg: file(name: { eq: $heroImgName }) {
       childImageSharp {

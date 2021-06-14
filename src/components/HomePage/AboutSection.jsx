@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     height: '111rem',
     color: 'white',
     [theme.breakpoints.down('xs')]: {
-      height: '100rem'
+      height: '110rem'
     }
   },
   parallax: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   gridContainer: {
     marginTop: '32rem',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '21rem'
+      marginTop: '15rem'
     }
   },
   extraThemedBox: {
@@ -68,7 +68,7 @@ const AboutSection = props => {
                   we are assigned. This has helped us grow successful
                   relationships with some of the most prominent brands in the
                   world, such as Bed Bath & Beyond, GAP, Kohl’s, Massimo Dutti,
-                  Sephora, Target, Victoria’s Secret and ZARA.
+                  Victoria’s Secret and ZARA.
                 </Typography>
                 <Typography variant='body1' gutterBottom>
                   With a staff of over 100 trade professionals, a field-tested
@@ -80,7 +80,7 @@ const AboutSection = props => {
               <Button
                 isLink
                 text='More About Us'
-                to='/'
+                to='/about'
                 alt='About Page'
                 extraClass={classes.extraButtonClass}
               />

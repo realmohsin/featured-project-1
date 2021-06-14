@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
       padding: '8rem 0 6rem'
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop: '6rem'
+      padding: '6rem 0 4rem'
     }
   },
   extraThemedBox: {

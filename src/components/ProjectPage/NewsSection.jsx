@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: '85rem',
       padding: '9rem 0'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '90rem',
+      padding: '2rem 0 8rem'
     }
   },
   bgImg: {
@@ -40,7 +44,10 @@ const useStyles = makeStyles(theme => ({
   aboutTitle: {
     ...theme.custom.title2,
     textShadow: 'black 0px 0px 3px',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.8rem'
+    }
   },
   subtitle: {
     textTransform: 'uppercase',
@@ -55,7 +62,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.7rem'
   },
   newsLogo: {
-    maxWidth: '18rem'
+    maxWidth: '18rem',
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '15rem',
+      marginBottom: '8rem'
+    }
   }
 }))
 
